@@ -13,7 +13,7 @@ import { useAuth } from "../../context/AuthContext";
 import LinkButton from "../LinkButton";
 import { useTranslation } from "react-i18next";
 
-function SideBar({ sideBarIsOpen }) {
+function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
   const { user } = useAuth();
   const { t: translate } = useTranslation();
   const sideBarOpen = sideBarIsOpen
@@ -43,7 +43,7 @@ function SideBar({ sideBarIsOpen }) {
         ...sideBarOpen,
       }}
     >
-      <Item to="/" className="account">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/" className="account">
         <Avatar>
           <PersonIcon fontSize="1.5rem" />
         </Avatar>
@@ -78,35 +78,35 @@ function SideBar({ sideBarIsOpen }) {
           )}
         </Box>
       </Item>
-      <Item to="/salesPage/categories">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/categories">
         <ShoppingCartIcon sx={{ color: "#5BBCFF", fontSize: "1.5rem" }} />
         {sideBarIsOpen && <Content>{translate("sideBarItems.sales")}</Content>}
       </Item>
-      <Item to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <SellIcon sx={{ color: "#D20062", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.PriceView")}</Content>
         )}
       </Item>
-      <Item to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <UndoIcon sx={{ color: "#D20062", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.returnTransactions")}</Content>
         )}
       </Item>
-      <Item to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <StoreIcon sx={{ color: "#6C22A6", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.directProductEntry")}</Content>
         )}
       </Item>
-      <Item to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <CollectionsIcon sx={{ color: "#6C22A6", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content>{translate("sideBarItems.collections")}</Content>
         )}
       </Item>
-      <Item to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <SettingsIcon sx={{ color: "#96E9C6", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content>{translate("sideBarItems.Settings")}</Content>
