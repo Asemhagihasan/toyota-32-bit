@@ -4,44 +4,43 @@ import SalesContent from "../../ui/SalesContent";
 import { getCategoryById } from "../../services/saleContentApi";
 import { useEffect, useState } from "react";
 import Loader from "../../ui/Loader";
-import { Typography } from "@mui/material";
+import Error from "../../ui/Error";
 
 function Products() {
   const [category, setCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errMessage, setErrMessage] = useState(null);
   let { id } = useParams();
   const slicedId = id.slice(1);
 
   useEffect(() => {
-    function fetchCategory() {
-      setIsLoading(true);
-      getCategoryById(slicedId)
-        .then((data) => {
-          setCategory(data?.data);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching category:", error);
-        })
-        .finally(setIsLoading(false));
+    async function fetchCategory() {
+      try {
+        setIsLoading(true);
+        const data = await getCategoryById(slicedId);
+        setCategory(data);
+        setErrMessage(null);
+      } catch (err) {
+        setErrMessage(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchCategory();
   }, [slicedId]);
 
   return (
     <>
+      {errMessage && <Error message={errMessage} />}
       <Loader isLoading={isLoading} />
-      <SalesContent>
-        {Array.isArray(category.children) ? (
-          category?.children.map((product) => (
-            <Product product={product} key={product.id} />
-          ))
-        ) : (
-          <Typography>
-            Something went wrong while getting products. 😢
-          </Typography>
-        )}
-      </SalesContent>
+      {!errMessage && !isLoading && (
+        <SalesContent>
+          {Array.isArray(category.children) &&
+            category?.children.map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
+        </SalesContent>
+      )}
     </>
   );
 }

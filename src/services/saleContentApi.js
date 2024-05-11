@@ -21,7 +21,22 @@ export function getCategoryById(id) {
     .get(`https://661c1c1ce7b95ad7fa69b72a.mockapi.io/api/v3/categories/${id}`)
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
-        return response;
+        return response.data;
+      } else {
+        throw new Error("Network response was not ok");
+      }
+    })
+    .catch(() => {
+      throw new Error("Failed getting products.");
+    });
+}
+
+export function getProducts(page) {
+  return axios
+    .get(`http://localhost:8000/data/${page}`)
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return response.data.children;
       } else {
         throw new Error("Network response was not ok");
       }
