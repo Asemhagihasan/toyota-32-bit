@@ -24,7 +24,7 @@ function AllProducts() {
         setIsLoading(false);
         setErrMessage(null);
       } catch (err) {
-        setErrMessage("Fiald geting data");
+        setErrMessage(err.message);
       } finally {
         setIsLoading(false);
       }
