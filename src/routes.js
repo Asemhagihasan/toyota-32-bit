@@ -9,7 +9,7 @@ import Categories, {
 import SalesPage from "./pages/SalesPage/SalesPage";
 import QRScanner from "./features/sales/QRScanner.jsx";
 import Error from "./ui/Error";
-import ProductsWithNoBarcode from "./features/Products/ProductsWithNoBarcode.jsx";
+import AllProducts from "./features/Products/AllProducts";
 
 const routes = [
   {
@@ -46,8 +46,8 @@ const routes = [
             auth: true,
           },
           {
-            path: "productsWithNoBarcode",
-            element: <ProductsWithNoBarcode />,
+            path: "allProducts",
+            element: <AllProducts />,
             auth: true,
           },
         ],
