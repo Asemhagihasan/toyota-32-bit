@@ -12,11 +12,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function ItemList({ items }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const anchorRef = useRef(null);
+  const location = useLocation();
 
   function handleToggle() {
     setOpen((prevOpen) => !prevOpen);
@@ -92,7 +93,11 @@ function ItemList({ items }) {
                     <MenuItem
                       onClick={() => {
                         setOpen(false);
-                        navigate(item.to);
+                        if (location.pathname === item.to) {
+                          return;
+                        } else {
+                          navigate(item.to);
+                        }
                       }}
                     >
                       {item.name}
