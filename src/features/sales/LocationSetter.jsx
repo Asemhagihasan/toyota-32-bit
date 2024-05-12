@@ -47,9 +47,8 @@ function LocationSetter() {
         </Link>
         <ItemList
           items={[
-            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
-            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
-            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
+            { name: "AllProducts", to: "/salesPage/allProducts" },
+            { name: "AllProducts", to: "/salesPage/allProducts" },
           ]}
         />
       </Stack>
