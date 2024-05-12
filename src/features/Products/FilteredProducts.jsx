@@ -4,23 +4,38 @@ import { getProducts } from "../../services/saleContentApi";
 import Loader from "../../ui/Loader";
 import Error from "../../ui/Error";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function AllProducts() {
+function FilteredProducts() {
   const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
+  const location = useLocation();
+  const isFavoritSelected = location.pathname === "/salesPage/favoritProducts";
 
   function handelLoade() {
     setPage((prev) => prev + 1);
   }
 
   useEffect(() => {
+    setProducts([]);
+  }, [location]);
+
+  useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
         const data = await getProducts(page);
-        setProducts((prev) => [...prev, ...data]);
+        if (isFavoritSelected) {
+          const FilteredByIsFavorit = data.filter((item) => {
+            return item.isFavorit === true;
+          });
+          setProducts((prev) => [...prev, ...FilteredByIsFavorit]);
+        } else {
+          setProducts((prev) => [...prev, ...data]);
+        }
+
         setIsLoading(false);
         setErrMessage(null);
       } catch (err) {
@@ -30,7 +45,7 @@ function AllProducts() {
       }
     }
     fetchData();
-  }, [page]);
+  }, [page, isFavoritSelected]);
 
   return (
     <>
@@ -46,4 +61,4 @@ function AllProducts() {
   );
 }
 
-export default AllProducts;
+export default FilteredProducts;
