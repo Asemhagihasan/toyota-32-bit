@@ -9,7 +9,7 @@ import Categories, {
 import SalesPage from "./pages/SalesPage/SalesPage";
 import QRScanner from "./features/sales/QRScanner.jsx";
 import Error from "./ui/Error";
-import AllProducts from "./features/Products/AllProducts";
+import FilteredProducts from "./features/Products/FilteredProducts";
 
 const routes = [
   {
@@ -47,7 +47,12 @@ const routes = [
           },
           {
             path: "allProducts",
-            element: <AllProducts />,
+            element: <FilteredProducts />,
+            auth: true,
+          },
+          {
+            path: "favoritProducts",
+            element: <FilteredProducts />,
             auth: true,
           },
         ],
