@@ -2,6 +2,7 @@ import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useIsActiveLink } from "../../hooks/useIsActiveLink";
 import { useTranslation } from "react-i18next";
+import ItemList from "../../ui/ItemList";
 
 function LocationSetter() {
   const { t: translate } = useTranslation();
@@ -18,7 +19,6 @@ function LocationSetter() {
         }}
       >
         <Link
-          style={{ marginRight: "1rem" }}
           className={`linkBtn ${
             useIsActiveLink("/salesPage/categories") ? "activeLink" : ""
           }`}
@@ -27,7 +27,6 @@ function LocationSetter() {
           {translate("setLocation.categories")}
         </Link>
         <button
-          style={{ marginRight: "1rem" }}
           className={`linkBtn ${
             useIsActiveLink("/salesPage/categories/:")
               ? "activeLink"
@@ -39,7 +38,6 @@ function LocationSetter() {
           {translate("setLocation.products")}
         </button>
         <Link
-          style={{ marginRight: "1rem" }}
           className={`linkBtn ${
             useIsActiveLink("/salesPage/qrscanner") ? "activeLink" : ""
           }`}
@@ -47,17 +45,13 @@ function LocationSetter() {
         >
           {translate("setLocation.scanner")}
         </Link>
-        <Link
-          style={{ marginRight: "1rem" }}
-          className={`linkBtn ${
-            useIsActiveLink("/salesPage/productsWithNoBarcode")
-              ? "activeLink"
-              : ""
-          }`}
-          to="productsWithNoBarcode"
-        >
-          {translate("setLocation.productWithoutBarcode")}
-        </Link>
+        <ItemList
+          items={[
+            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
+            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
+            { name: "AllProducts", to: "/salesPage/productsWithNoBarcode" },
+          ]}
+        />
       </Stack>
     </>
   );
