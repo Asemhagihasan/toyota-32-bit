@@ -48,7 +48,7 @@ function LocationSetter() {
         <ItemList
           items={[
             { name: "AllProducts", to: "/salesPage/allProducts" },
-            { name: "AllProducts", to: "/salesPage/allProducts" },
+            { name: "Favorit products", to: "/salesPage/favoritProducts" },
           ]}
         />
       </Stack>
