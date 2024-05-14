@@ -1,10 +1,13 @@
 import Product from "../../ui/Product";
 import SalesContent from "../../ui/SalesContent";
-import { getProducts } from "../../services/saleContentApi";
+import { getAllProducts, getProducts } from "../../services/saleContentApi";
 import Loader from "../../ui/Loader";
 import Error from "../../ui/Error";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
+import useProductSearch from "../../hooks/useProductSearch";
+import CustomInput from "../../ui/CustomInput";
+import { Stack } from "@mui/material";
 
 function FilteredProducts() {
   const [page, setPage] = useState(1);
@@ -12,7 +15,10 @@ function FilteredProducts() {
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
   const location = useLocation();
+  const Allproducts = useLoaderData();
   const isFavoritSelected = location.pathname === "/salesPage/favoritProducts";
+  const { query, setQuery, foundProduct, searched } =
+    useProductSearch(Allproducts);
 
   function handelLoade() {
     setPage((prev) => prev + 1);
@@ -49,8 +55,21 @@ function FilteredProducts() {
 
   return (
     <>
+      <CustomInput
+        text="Search by code or name"
+        sx={{
+          "--Input-focusedHighlight":
+            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
+          borderBottomRightRadius: `${foundProduct ? "0" : ""}`,
+          borderBottomLeftRadius: `${foundProduct ? "0" : ""}`,
+        }}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      {searched && !foundProduct && <Stack>No Item</Stack>}
       {errMessage && <Error message={errMessage} />}
       <Loader isLoading={isLoading} />
+
       <SalesContent>
         {products.map((product) => (
           <Product product={product} key={product.id} />
@@ -59,6 +78,11 @@ function FilteredProducts() {
       {products.length !== 0 && <button onClick={handelLoade}>Loade</button>}
     </>
   );
+}
+
+export async function loader() {
+  const products = await getAllProducts();
+  return products;
 }
 
 export default FilteredProducts;
