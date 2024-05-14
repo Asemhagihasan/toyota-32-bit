@@ -7,7 +7,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
-import Input from "@mui/joy/Input";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import Loader from "../../ui/Loader";
 import { ToastContainer } from "react-toastify";
@@ -16,6 +15,7 @@ import axios from "axios";
 import { showToastMessage } from "../../utils/showToastMessage";
 import { useTranslation } from "react-i18next";
 import LinkButton from "../../ui/LinkButton";
+import CustomInput from "../../ui/CustomInput";
 
 function LoginForm() {
   const { user, setUser } = useAuth();
@@ -146,11 +146,9 @@ function LoginForm() {
           <Stack spacing={2} sx={{ width: "90%" }}>
             <Typography variant="h6">{translate("auth.prompt")}</Typography>
             <Box sx={{ position: "relative" }}>
-              <Input
+              <CustomInput
                 fullWidth
-                placeholder={translate("auth.userCode")}
-                color="secondary"
-                variant="solid"
+                text={translate("auth.userCode")}
                 id="text-input"
                 value={userCode}
                 onChange={onChangeInput}
@@ -158,14 +156,10 @@ function LoginForm() {
                   setShowTextKeyboard(true);
                   setShowPassKeyboard(false);
                 }}
-                required
                 sx={{
-                  height: "3rem",
                   "&:hover": {
                     border: "2px solid #333",
                   },
-                  boxShadow: "0 1px 2px rgba(0,0,0,.12)",
-                  minWidth: "375px",
                 }}
               />
               <IconButton
@@ -180,13 +174,10 @@ function LoginForm() {
                 <KeyboardIcon />
               </IconButton>
             </Box>
-
             <Box sx={{ position: "relative" }}>
-              <Input
+              <CustomInput
+                text={translate("auth.password")}
                 fullWidth
-                placeholder={translate("auth.password")}
-                color="secondary"
-                variant="solid"
                 id="pass-input"
                 value={userPass}
                 onChange={onChangeInput}
@@ -194,12 +185,10 @@ function LoginForm() {
                   setShowTextKeyboard(false);
                   setShowPassKeyboard(true);
                 }}
-                required
                 sx={{
-                  height: "3rem",
-                  "&:hover": { border: "2px solid #333" },
-                  boxShadow: "0 1px 2px rgba(0,0,0,.12)",
-                  minWidth: "375px",
+                  "&:hover": {
+                    border: "2px solid #333",
+                  },
                 }}
               />
               <IconButton
