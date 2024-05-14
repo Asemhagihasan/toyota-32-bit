@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-function useProductSearch(categories) {
+function useProductSearch(categories, initialQuery = "") {
   const [foundProduct, setFoundProduct] = useState(null);
   const [searched, setSearched] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   useEffect(() => {
     if (!query) {
       setFoundProduct(null);
