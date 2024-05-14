@@ -45,3 +45,17 @@ export function getProducts(page) {
       throw new Error("Failed getting products.");
     });
 }
+export function getAllProducts() {
+  return axios
+    .get("http://localhost:8000/data")
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return response.data;
+      } else {
+        throw new Error("Network response was not ok");
+      }
+    })
+    .catch(() => {
+      throw new Error("Failed getting products.");
+    });
+}
