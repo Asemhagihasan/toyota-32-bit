@@ -10,6 +10,7 @@ import SalesPage from "./pages/SalesPage/SalesPage";
 import QRScanner from "./features/sales/QRScanner.jsx";
 import Error from "./ui/Error";
 import FilteredProducts from "./features/Products/FilteredProducts";
+import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
 
 const routes = [
   {
@@ -49,11 +50,13 @@ const routes = [
             path: "allProducts",
             element: <FilteredProducts />,
             auth: true,
+            loader: ProductsLoader,
           },
           {
             path: "favoritProducts",
             element: <FilteredProducts />,
             auth: true,
+            loader: ProductsLoader,
           },
         ],
       },
