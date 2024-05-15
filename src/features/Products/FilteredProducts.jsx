@@ -20,7 +20,7 @@ function FilteredProducts() {
   const { query, setQuery, foundProduct, searched } =
     useProductSearch(Allproducts);
 
-  function handelLoade() {
+  function handleLoad() {
     setPage((prev) => prev + 1);
   }
 
@@ -66,19 +66,21 @@ function FilteredProducts() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {searched && !foundProduct && query.length >= 3 && <Stack>No Item</Stack>}
-
-      <SalesContent>
-        {foundProduct ? (
-          <Product product={foundProduct} key={foundProduct.id} />
-        ) : (
-          products.map((product) => (
-            <Product product={product} key={product.id} />
-          ))
-        )}
-      </SalesContent>
-      {products.length !== 0 && !foundProduct && (
-        <button onClick={handelLoade}>Loade</button>
+      {searched && !foundProduct && query.length >= 3 ? (
+        <Stack>No Item</Stack>
+      ) : (
+        <SalesContent>
+          {foundProduct ? (
+            <Product product={foundProduct} key={foundProduct.id} />
+          ) : (
+            <>
+              {products.map((product) => (
+                <Product product={product} key={product.id} />
+              ))}
+              <button onClick={handleLoad}>Load</button>
+            </>
+          )}
+        </SalesContent>
       )}
     </>
   );
