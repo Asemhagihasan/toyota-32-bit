@@ -62,8 +62,6 @@ function FilteredProducts() {
         sx={{
           "--Input-focusedHighlight":
             "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
-          borderBottomRightRadius: `${foundProduct ? "0" : ""}`,
-          borderBottomLeftRadius: `${foundProduct ? "0" : ""}`,
         }}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
