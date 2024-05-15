@@ -13,11 +13,14 @@ import {
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useIsActiveLink } from "../hooks/useIsActiveLink";
 function ItemList({ items }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const anchorRef = useRef(null);
   const location = useLocation();
+  const isActive = useIsActiveLink("/salesPage/allProducts");
+  console.log(isActive);
 
   function handleToggle() {
     setOpen((prevOpen) => !prevOpen);
@@ -44,7 +47,6 @@ function ItemList({ items }) {
         onClick={handleToggle}
         variant="contained"
         sx={{
-          backgroundColor: "#fff",
           color: "#000",
           "&:hover": { backgroundColor: "#e67e22" },
           padding: "0.385rem 2rem",
@@ -52,6 +54,7 @@ function ItemList({ items }) {
           fontSize: "0.875rem",
           maxHeight: "36.2px",
           width: "172px",
+          backgroundColor: isActive ? "#e67e22" : "#fff",
         }}
         disableElevation
       >
@@ -92,11 +95,10 @@ function ItemList({ items }) {
                 >
                   {items.map((item) => (
                     <MenuItem
+                      key={item.to}
                       onClick={() => {
                         setOpen(false);
-                        if (location.pathname === item.to) {
-                          return;
-                        } else {
+                        if (location.pathname !== item.to) {
                           navigate(item.to);
                         }
                       }}
