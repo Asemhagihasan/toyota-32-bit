@@ -55,6 +55,8 @@ function FilteredProducts() {
 
   return (
     <>
+      <Loader isLoading={isLoading} />
+      {errMessage && <Error message={errMessage} />}
       <CustomInput
         text="Search by code or name"
         sx={{
@@ -66,16 +68,20 @@ function FilteredProducts() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {searched && !foundProduct && <Stack>No Item</Stack>}
-      {errMessage && <Error message={errMessage} />}
-      <Loader isLoading={isLoading} />
+      {searched && !foundProduct && query.length >= 3 && <Stack>No Item</Stack>}
 
       <SalesContent>
-        {products.map((product) => (
-          <Product product={product} key={product.id} />
-        ))}
+        {foundProduct ? (
+          <Product product={foundProduct} key={foundProduct.id} />
+        ) : (
+          products.map((product) => (
+            <Product product={product} key={product.id} />
+          ))
+        )}
       </SalesContent>
-      {products.length !== 0 && <button onClick={handelLoade}>Loade</button>}
+      {products.length !== 0 && !foundProduct && (
+        <button onClick={handelLoade}>Loade</button>
+      )}
     </>
   );
 }
