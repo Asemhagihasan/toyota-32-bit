@@ -20,8 +20,7 @@ function ItemList({ items }) {
   const anchorRef = useRef(null);
   const location = useLocation();
   const isActive = useIsActiveLink("/salesPage/allProducts");
-  console.log(isActive);
-
+  const isActive1 = useIsActiveLink("/salesPage/favoritProducts");
   function handleToggle() {
     setOpen((prevOpen) => !prevOpen);
   }
@@ -54,7 +53,7 @@ function ItemList({ items }) {
           fontSize: "0.875rem",
           maxHeight: "36.2px",
           width: "172px",
-          backgroundColor: isActive ? "#e67e22" : "#fff",
+          backgroundColor: isActive || isActive1 ? "#e67e22" : "#fff",
         }}
         disableElevation
       >
