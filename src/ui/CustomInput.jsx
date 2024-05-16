@@ -13,7 +13,7 @@ function CustomInput({ text, sx, ...props }) {
         //   border: "2px solid #333",
         // },
         boxShadow: "0 1px 2px rgba(0,0,0,.12)",
-        minWidth: "375px",
+        minWidth: "275px",
         maxWidth: "612px",
         ...sx,
       }}
