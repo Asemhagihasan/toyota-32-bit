@@ -10,4 +10,5 @@
 .simple-keyboard {
   min-width: 375px;
   max-width: 1200px !important;
+  background-color: transparent !important;
 }
