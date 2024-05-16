@@ -4,7 +4,7 @@ import { getCategories } from "../../services/saleContentApi";
 import { useLoaderData } from "react-router-dom";
 import useProductSearch from "../../hooks/useProductSearch";
 import CustomInput from "../../ui/CustomInput";
-import { Stack } from "@mui/material";
+import NotFoundCart from "../../ui/NotFoundCart";
 import Product from "../../ui/Product";
 
 function Categories() {
@@ -22,16 +22,19 @@ function Categories() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {searched && !foundProduct && query.length >= 3 && <Stack>No Item</Stack>}
-      <SalesContent>
-        {foundProduct ? (
-          <Product product={foundProduct} key={foundProduct.code} />
-        ) : (
-          categories.map((category) => (
-            <CategoriItem key={category.id} category={category} />
-          ))
-        )}
-      </SalesContent>
+      {searched && !foundProduct && query.length >= 3 ? (
+        <NotFoundCart />
+      ) : (
+        <SalesContent>
+          {foundProduct ? (
+            <Product product={foundProduct} key={foundProduct.code} />
+          ) : (
+            categories.map((category) => (
+              <CategoriItem key={category.id} category={category} />
+            ))
+          )}
+        </SalesContent>
+      )}
     </>
   );
 }
