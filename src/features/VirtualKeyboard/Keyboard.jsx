@@ -6,7 +6,7 @@ import "./index.css";
 import { useState } from "react";
 import { MenuItem, Select } from "@mui/material";
 
-function VirtualKeyboard({ setInput, keyboard }) {
+function VirtualKeyboard({ setInput, keyboard, ip }) {
   const [keyboardLayout, setKeyboardLayout] = useState(turkish);
   const [layout, setLayout] = useState("default");
 
@@ -39,21 +39,42 @@ function VirtualKeyboard({ setInput, keyboard }) {
 
   return (
     <>
-      <Keyboard
-        keyboardRef={(r) => (keyboard.current = r)}
-        {...keyboardLayout}
-        layoutName={layout}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-      />
-      <Select
-        onChange={(e) => onChangeLanguage(e)}
-        inputProps={{ defaultValue: "turkish" }}
-        sx={{ width: "40%" }}
-      >
-        <MenuItem value={"turkish"}>Turkish</MenuItem>
-        <MenuItem value={"englishLayout"}>English</MenuItem>
-      </Select>
+      {ip ? (
+        <Keyboard
+          keyboardRef={(r) => (keyboard.current = r)}
+          {...keyboardLayout}
+          layoutName={"ip"}
+          layout={{
+            default: [""],
+            ip: ["7 8 9", "4 5 6", "1 2 3", "{bksp} 0"],
+          }}
+          display={{
+            "{bksp}": "del",
+            "{enter}": "enter",
+          }}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          onRender={() => console.log("Rendered")}
+        />
+      ) : (
+        <>
+          <Keyboard
+            keyboardRef={(r) => (keyboard.current = r)}
+            {...keyboardLayout}
+            layoutName={layout}
+            onChange={onChange}
+            onKeyPress={onKeyPress}
+          />
+          <Select
+            onChange={(e) => onChangeLanguage(e)}
+            inputProps={{ defaultValue: "turkish" }}
+            sx={{ width: "40%" }}
+          >
+            <MenuItem value={"turkish"}>Turkish</MenuItem>
+            <MenuItem value={"englishLayout"}>English</MenuItem>
+          </Select>
+        </>
+      )}
     </>
   );
 }
