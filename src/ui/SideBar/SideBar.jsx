@@ -82,7 +82,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         <ShoppingCartIcon sx={{ color: "#5BBCFF", fontSize: "1.5rem" }} />
         {sideBarIsOpen && <Content>{translate("sideBarItems.sales")}</Content>}
       </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/allProducts">
         <SellIcon sx={{ color: "#D20062", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.PriceView")}</Content>
