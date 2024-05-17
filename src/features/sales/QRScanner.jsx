@@ -11,13 +11,12 @@ function QRScanner() {
   const qrBoxEl = useRef(null);
   const [qrOn, setQrOn] = useState(true);
   const [scannedResult, setScannedResult] = useState("");
-  const [clicked, setClicked] = useState(false);
   function onScanSuccess(result) {
     setScannedResult(result?.data);
   }
 
   function onScanFail(err) {
-    // console.log(err);
+    console.log(err);
   }
 
   useEffect(() => {
@@ -60,7 +59,7 @@ function QRScanner() {
   return (
     <Stack
       sx={{
-        margin: "0 auto",
+        // margin: "0 auto",
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
