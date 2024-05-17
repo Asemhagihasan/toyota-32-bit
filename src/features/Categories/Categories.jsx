@@ -6,13 +6,14 @@ import useProductSearch from "../../hooks/useProductSearch";
 import CustomInput from "../../ui/CustomInput";
 import NotFoundCart from "../../ui/NotFoundCart";
 import Product from "../../ui/Product";
+import { Box, Stack } from "@mui/material";
 
 function Categories() {
   const { categories } = useLoaderData();
   const { query, setQuery, foundProduct, searched } =
     useProductSearch(categories);
   return (
-    <>
+    <Stack spacing={1.5}>
       <CustomInput
         text="Search by code or name"
         sx={{
@@ -35,7 +36,7 @@ function Categories() {
           )}
         </SalesContent>
       )}
-    </>
+    </Stack>
   );
 }
 

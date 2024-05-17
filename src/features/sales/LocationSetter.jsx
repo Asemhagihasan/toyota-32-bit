@@ -13,9 +13,9 @@ function LocationSetter() {
         sx={{
           display: "flex",
           flexDirection: "row",
+          flexWrap: "wrap",
           gap: "1rem",
           alignItems: "center",
-          overflowX: "scroll",
         }}
       >
         <Link
