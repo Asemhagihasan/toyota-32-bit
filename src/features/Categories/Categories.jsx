@@ -6,7 +6,7 @@ import useProductSearch from "../../hooks/useProductSearch";
 import CustomInput from "../../ui/CustomInput";
 import NotFoundCart from "../../ui/NotFoundCart";
 import Product from "../../ui/Product";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 function Categories() {
   const { categories } = useLoaderData();
