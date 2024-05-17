@@ -9,16 +9,14 @@ import {
   MenuList,
   Paper,
   Popper,
+  Stack,
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useIsActiveLink } from "../hooks/useIsActiveLink";
-function ItemList({ items }) {
+function ItemList({ items, text, sx }) {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
   const anchorRef = useRef(null);
-  const location = useLocation();
   const isActive = useIsActiveLink("/salesPage/allProducts");
   const isActive1 = useIsActiveLink("/salesPage/favoritProducts");
   function handleToggle() {
@@ -39,7 +37,7 @@ function ItemList({ items }) {
   }, [open]);
 
   return (
-    <div>
+    <Stack>
       <Button
         ref={anchorRef}
         id="composition-button"
@@ -52,8 +50,8 @@ function ItemList({ items }) {
           fontWeight: "500",
           fontSize: "0.875rem",
           maxHeight: "36.2px",
-          width: "172px",
           backgroundColor: isActive || isActive1 ? "#e67e22" : "#fff",
+          ...sx,
         }}
         disableElevation
       >
@@ -65,7 +63,7 @@ function ItemList({ items }) {
           }}
         >
           {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          <Typography variant="subtitle2">Show Price</Typography>
+          <Typography variant="subtitle2">{text}</Typography>
         </Box>
       </Button>
       <Popper
@@ -94,13 +92,12 @@ function ItemList({ items }) {
                 >
                   {items.map((item) => (
                     <MenuItem
-                      key={item.to}
+                      key={item.name}
                       onClick={() => {
                         setOpen(false);
-                        if (location.pathname !== item.to) {
-                          navigate(item.to);
-                        }
+                        item.handleClick();
                       }}
+                      sx={{ ...sx }}
                     >
                       {item.name}
                     </MenuItem>
@@ -111,7 +108,7 @@ function ItemList({ items }) {
           </Grow>
         )}
       </Popper>
-    </div>
+    </Stack>
   );
 }
 
