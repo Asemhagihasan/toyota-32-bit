@@ -1,11 +1,13 @@
 import { Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsActiveLink } from "../../hooks/useIsActiveLink";
 import { useTranslation } from "react-i18next";
 import ItemList from "../../ui/ItemList";
 
 function LocationSetter() {
   const { t: translate } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -46,9 +48,27 @@ function LocationSetter() {
           {translate("setLocation.scanner")}
         </Link>
         <ItemList
+          text="Show Price"
+          sx={{ width: "172px" }}
           items={[
-            { name: "AllProducts", to: "/salesPage/allProducts" },
-            { name: "Favorit products", to: "/salesPage/favoritProducts" },
+            {
+              name: "AllProducts",
+              handleClick: () => {
+                if (location.pathname !== "/salesPage/allProducts") {
+                  navigate("/salesPage/allProducts");
+                }
+                return;
+              },
+            },
+            {
+              name: "Favorit products",
+              handleClick: () => {
+                if (location.pathname !== "/salesPage/favoritProducts") {
+                  navigate("/salesPage/favoritProducts");
+                }
+                return;
+              },
+            },
           ]}
         />
       </Stack>
