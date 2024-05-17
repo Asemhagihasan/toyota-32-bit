@@ -7,7 +7,7 @@ import Loader from "../../ui/Loader";
 import Error from "../../ui/Error";
 
 function Products() {
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState(null); // Changed initial state to null
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
   let { id } = useParams();
@@ -33,14 +33,16 @@ function Products() {
     <>
       {errMessage && <Error message={errMessage} />}
       <Loader isLoading={isLoading} />
-      {!errMessage && !isLoading && (
-        <SalesContent>
-          {Array.isArray(category.children) &&
-            category?.children.map((product) => (
-              <Product product={product} key={product.id} />
-            ))}
-        </SalesContent>
-      )}
+      {!errMessage &&
+        !isLoading &&
+        category && ( // Added null check for category
+          <SalesContent>
+            {Array.isArray(category.children) &&
+              category.children.map((product) => (
+                <Product product={product} key={product.id} />
+              ))}
+          </SalesContent>
+        )}
     </>
   );
 }
