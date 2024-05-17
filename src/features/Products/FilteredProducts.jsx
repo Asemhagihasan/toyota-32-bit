@@ -56,7 +56,7 @@ function FilteredProducts() {
   }, [page, isFavoritSelected]);
 
   return (
-    <>
+    <Box>
       <Loader isLoading={isLoading} />
       {errMessage && <Error message={errMessage} />}
 
@@ -65,6 +65,7 @@ function FilteredProducts() {
           display: "flex",
           alignItems: "center",
           gap: "2rem",
+          marginBottom: "1rem",
         }}
       >
         <CustomInput
@@ -111,6 +112,7 @@ function FilteredProducts() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            marginTop: "1rem",
           }}
         >
           <button className="linkBtn" onClick={handleLoad}>
@@ -118,7 +120,7 @@ function FilteredProducts() {
           </button>
         </Container>
       )}
-    </>
+    </Box>
   );
 }
 
