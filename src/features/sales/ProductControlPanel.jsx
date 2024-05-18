@@ -1,19 +1,12 @@
 import { Box, Button, Stack } from "@mui/material";
-import { useState } from "react";
-import { useRef } from "react";
 import CustomInput from "../../ui/CustomInput";
 import ItemList from "../../ui/ItemList";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
+import { useProductPanel } from "../../context/ProductControlPanelContext";
 
 function ProductControlPanel() {
-  const keyboard = useRef();
-  const [value, setValue] = useState("");
-  function onChangeInput(e) {
-    const input = e.target.value;
-    if (isNaN(input)) return;
-    setValue(input);
-    keyboard?.current?.setInput(input);
-  }
+  const { value, onChangeInput, keyboard, setValue } = useProductPanel();
+
   return (
     <Box
       sx={{
