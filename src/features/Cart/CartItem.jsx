@@ -1,8 +1,10 @@
 import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import QuantityControl from "./QuantityControl";
+import { useCart } from "../../context/CartContext";
 
 function CartItem({ item }) {
+  const { dispatch } = useCart();
   return (
     <>
       <Card
@@ -46,14 +48,17 @@ function CartItem({ item }) {
               KDV %{item.KDV * 100}
             </Typography>
           </Box>
-          <QuantityControl />
+          <QuantityControl
+            quantity={item.quantity}
+            productId={item.productId}
+          />
           <Box>
             <Typography
               variant="subtitle1"
               component="p"
               sx={{ fontWeight: "500", fontSize: "1.2rem", color: "gray" }}
             >
-              $ {item.price}
+              $ {item.totalPrice}
             </Typography>
           </Box>
           <IconButton
@@ -62,6 +67,9 @@ function CartItem({ item }) {
               height: "2rem",
               color: "gray",
               fontWeight: "400",
+            }}
+            onClick={() => {
+              dispatch({ type: "deleteItem", payload: item.productId });
             }}
           >
             <CloseIcon />
