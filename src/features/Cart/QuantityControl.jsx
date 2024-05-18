@@ -1,6 +1,8 @@
 import { IconButton, Stack, Typography } from "@mui/material";
+import { useCart } from "../../context/CartContext";
 
-function QuantityControl() {
+function QuantityControl({ quantity, productId }) {
+  const { dispatch } = useCart();
   return (
     <Stack
       direction="row"
@@ -13,11 +15,25 @@ function QuantityControl() {
         borderRadius: "2rem",
       }}
     >
-      <IconButton sx={{ width: "30px", height: "30px" }}>+</IconButton>
+      <IconButton
+        onClick={() => {
+          dispatch({ type: "increaseItemQuantity", payload: productId });
+        }}
+        sx={{ width: "30px", height: "30px" }}
+      >
+        +
+      </IconButton>
       <Typography variant="subtitle2" sx={{ color: "gray", fontSize: "16px" }}>
-        2
+        {quantity}
       </Typography>
-      <IconButton sx={{ width: "30px", height: "30px" }}>-</IconButton>
+      <IconButton
+        onClick={() => {
+          dispatch({ type: "decreaseItemQuantity", payload: productId });
+        }}
+        sx={{ width: "30px", height: "30px" }}
+      >
+        -
+      </IconButton>
     </Stack>
   );
 }
