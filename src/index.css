@@ -54,12 +54,12 @@ code {
 
 .active {
   background-color: #e5e5e5;
-  border-left: solid 3px #e67e22;
+  border-left: solid 3px #e28743;
 }
 
 .link {
   font-size: 1rem;
-  color: #e67e22;
+  color: #e28743;
   transition: color 0.3s;
   text-decoration: none;
   border: none;
@@ -90,13 +90,13 @@ code {
 }
 
 .linkBtn:hover {
-  background-color: #e67e22;
+  background-color: #e28743;
 }
 
 .activeLink,
 .activeLink:link,
 .activeLink:visited {
-  background-color: #e67e22;
+  background-color: #e28743;
 }
 
 .addBtn {
@@ -105,7 +105,7 @@ code {
   height: 36px;
   font-size: 20px;
   font-weight: 500;
-  background-color: #e67e22;
+  background-color: #e28743;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -127,7 +127,7 @@ code {
 }
 
 .addBtn:hover {
-  background-color: #cf711f;
+  background-color: #e67e22;
 }
 
 .qr-reader {
