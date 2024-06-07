@@ -53,8 +53,16 @@ function reducer(state, action) {
 function CartProvider({ children }) {
   const [{ cart }, dispatch] = useReducer(reducer, initialstate);
 
+  function getCurrentQuantity(id) {
+    return cart.find((item) => item.productId === id)?.quantity ?? 0;
+  }
+
+  function getCart() {
+    return cart;
+  }
+
   return (
-    <CartContext.Provider value={{ cart, dispatch }}>
+    <CartContext.Provider value={{ dispatch, getCurrentQuantity, getCart }}>
       {children}
     </CartContext.Provider>
   );
@@ -62,6 +70,9 @@ function CartProvider({ children }) {
 
 function useCart() {
   const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
   return context;
 }
 

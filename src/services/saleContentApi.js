@@ -31,6 +31,27 @@ export function getCategoryById(id) {
     });
 }
 
+export async function getProductById(id) {
+  try {
+    const categories = await getCategories();
+    console.log(categories);
+    for (const category of categories) {
+      const product = category?.children.find(
+        (product) => product.productCode === id
+      );
+      if (product) {
+        return product;
+      }
+    }
+  } catch (err) {
+    console.error(
+      "An error occurred while fetching or processing categories:",
+      err
+    );
+    throw err;
+  }
+}
+
 export function getProducts(page) {
   return axios
     .get(`http://localhost:8000/data/${page}`)

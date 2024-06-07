@@ -4,6 +4,9 @@ import QrScanner from "qr-scanner";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { getProductById } from "../../services/saleContentApi";
+import { useCart } from "../../context/CartContext";
+import { useProductPanel } from "../../context/ProductControlPanelContext";
 
 function QRScanner() {
   const scanner = useRef();
@@ -11,14 +14,41 @@ function QRScanner() {
   const qrBoxEl = useRef(null);
   const [qrOn, setQrOn] = useState(true);
   const [scannedResult, setScannedResult] = useState("");
+  const [scannedProduct, setScannedProduct] = useState({});
+  const { dispatch, getCurrentQuantity } = useCart();
+  const { value, setValue } = useProductPanel();
   function onScanSuccess(result) {
     setScannedResult(result?.data);
   }
 
+  useEffect(() => {
+    async function getProduct() {
+      if (scannedResult) {
+        const product = await getProductById(+scannedResult);
+        const { id, productCode, name, price, KDV } = product;
+        const isInCart = getCurrentQuantity(id);
+        if (!isInCart) {
+          const newItem = {
+            productId: id,
+            productCode: productCode,
+            name: name,
+            quantity: +value || 1,
+            price: price,
+            totalPrice: parseFloat((price * (+value || 1)).toFixed(2)),
+            KDV: KDV,
+          };
+          value.length > 0 && setValue("");
+          dispatch({ type: "addItem", payload: newItem });
+          setScannedProduct(product);
+          return;
+        }
+      }
+    }
+    getProduct();
+  }, [scannedResult]);
   function onScanFail(err) {
-    console.log(err);
+    // console.log(err);
   }
-
   useEffect(() => {
     if (videoEl?.current && !scanner.current) {
       scanner.current = new QrScanner(videoEl?.current, onScanSuccess, {
@@ -92,18 +122,29 @@ function QRScanner() {
         {/* Show Data Result if scan is success */}
       </Stack>
       {scannedResult && (
-        <Typography
+        <Stack
           sx={{
-            color: "#333",
-            backgroundColor: "#e5e5e5",
-            width: "420px",
-            height: "50px",
+            width: "450px",
             borderRadius: "5px",
             padding: "10px 15px",
+            boxSizing: "border-box",
+            color: "#333",
+            backgroundColor: "#e5e5e5",
           }}
         >
-          Scanned Result: {scannedResult}
-        </Typography>
+          <Typography variant="subtitle2">
+            Scanned Result: {scannedProduct.productCode}
+          </Typography>
+          <Typography variant="subtitle2">
+            name: {scannedProduct.name}
+          </Typography>
+          <Typography variant="subtitle2">
+            price: {scannedProduct.price}
+          </Typography>
+          <Typography variant="subtitle2">
+            unit: {scannedProduct.unit}
+          </Typography>
+        </Stack>
       )}
     </Stack>
   );

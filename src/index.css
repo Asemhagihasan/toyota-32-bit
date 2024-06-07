@@ -17,14 +17,14 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 6px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background-color: rgb(114, 113, 113);
+  background-color: rgb(114, 113, 113);
   border-radius: 10px;
-  height: 200px; */
+  height: 200px;
 }
 
 ::-webkit-scrollbar-track {
@@ -86,6 +86,7 @@ code {
   transition: all 0.5s;
   background-color: #fff;
   color: #000;
+  box-sizing: border-box;
 }
 
 .linkBtn:hover {
