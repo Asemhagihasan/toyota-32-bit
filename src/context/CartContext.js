@@ -61,8 +61,18 @@ function CartProvider({ children }) {
     return cart;
   }
 
+  function getTotalPrice() {
+    const total = cart.reduce(
+      (sum, currentItem) => sum + currentItem.totalPrice,
+      0
+    );
+    return parseFloat(total.toFixed(2));
+  }
+
   return (
-    <CartContext.Provider value={{ dispatch, getCurrentQuantity, getCart }}>
+    <CartContext.Provider
+      value={{ dispatch, getCurrentQuantity, getCart, getTotalPrice }}
+    >
       {children}
     </CartContext.Provider>
   );

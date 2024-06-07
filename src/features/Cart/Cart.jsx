@@ -1,53 +1,57 @@
-import { Box, Divider, IconButton, Stack } from "@mui/material";
+import { Box, Button, Divider, IconButton, Stack } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import CartItem from "./CartItem";
 import { useCart } from "../../context/CartContext";
 import EmptyCart from "./EmptyCart";
+import CartTotal from "./CartTotal";
 
 function Cart() {
   const [clicked, setClicked] = useState(false);
-  const { cart } = useCart();
+  const { getCart, getTotalPrice, dispatch } = useCart();
+  const cartItems = getCart();
+  const total = getTotalPrice();
 
   return (
-    <Box
-      sx={{
-        height: { xs: "92vh" },
-        position: "absolute",
-        top: "0",
-        right: "0",
-      }}
-    >
+    <>
       {!clicked && (
-        <button
-          onClick={() => {
-            setClicked((e) => !e);
+        <Button
+          onClick={() => setClicked(true)}
+          sx={{
+            position: "fixed",
+            top: "4rem",
+            right: "1rem",
+            zIndex: 101,
+            color: "orange",
           }}
-          style={{ position: "absolute", top: "0", right: "0" }}
         >
-          click
-        </button>
+          Open Cart
+        </Button>
       )}
       <Stack
+        flexDirection="column"
+        justifyContent="space-between"
         sx={{
+          overflowY: "auto",
+          height: { xs: "92vh", md: "92vh" },
           width: {
             xs: clicked ? "300px" : "0px",
             md: clicked ? "400px" : "0px",
             lg: clicked ? "400px" : "0px",
           },
-          maxWidth: "600px",
-          height: "100%",
+          position: "absolute",
+          top: "0",
+          right: "0",
           backgroundColor: " #f5f7f8",
           borderTopLeftRadius: "12px",
           transition: "width .4s",
           boxShadow: "0 3px 5px rgba(0,0,0,.15)",
+          zIndex: 100,
         }}
       >
-        {clicked && (
+        <Box>
           <IconButton
-            onClick={() => {
-              setClicked(false);
-            }}
+            onClick={() => setClicked(false)}
             sx={{
               width: "2rem",
               height: "2rem",
@@ -58,14 +62,37 @@ function Cart() {
           >
             <CloseIcon />
           </IconButton>
+          <Divider />
+          {!cartItems.length && <EmptyCart />}
+          {cartItems.map((item, index) => (
+            <CartItem key={index} item={item} />
+          ))}
+        </Box>
+        {cartItems.length > 0 && (
+          <Box
+            sx={{
+              width: "100%",
+              backgroundColor: "#063970",
+              borderTopLeftRadius: "12px",
+              borderTopRightRadius: "12px",
+            }}
+          >
+            <CartTotal content={{ text: "Ara Toplam", totalPrice: total }} />
+            <CartTotal content={{ text: "Toplam Tutar", totalPrice: total }} />
+            <Box sx={{ paddingLeft: "0.8rem" }}>
+              <Button
+                onClick={() => dispatch({ type: "clearCart" })}
+                color="error"
+                sx={{}}
+              >
+                Belge iptal
+              </Button>
+              <Button sx={{ color: "orange" }}> Belge Bitir</Button>
+            </Box>
+          </Box>
         )}
-        <Divider />
-        {!cart.length && clicked && <EmptyCart />}
-        {cart.map((item, index) => (
-          <CartItem key={index} item={item} />
-        ))}
       </Stack>
-    </Box>
+    </>
   );
 }
 
