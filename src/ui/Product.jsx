@@ -3,15 +3,13 @@ import { useCart } from "../context/CartContext";
 import { useProductPanel } from "../context/ProductControlPanelContext";
 
 function Product({ product }) {
-  const { dispatch, cart } = useCart();
+  const { dispatch, getCurrentQuantity } = useCart();
   const { value, setValue } = useProductPanel();
   const { id, productCode, name, price, image, unit, KDV } = product;
-  const currentQuantity =
-    cart.find((item) => item.productId === product.id)?.quantity ?? 0;
+  const currentQuantity = getCurrentQuantity(id);
   const isInCart = currentQuantity > 0;
   function handelClick() {
-    const check = cart.find((item) => item.productId === product.id);
-    if (!check) {
+    if (!isInCart) {
       const newItem = {
         productId: id,
         productCode: productCode,
