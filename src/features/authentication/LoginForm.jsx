@@ -51,6 +51,7 @@ function LoginForm() {
     event.preventDefault();
     if (user.isAuthanticated) {
       setDefaultErrMessage(translate("errors.alreadyLoggedInMessage"));
+      return;
     }
     const formData = new FormData(event.target);
     const userData = {
@@ -158,7 +159,7 @@ function LoginForm() {
                 }}
                 sx={{
                   "&:hover": {
-                    border: "2px solid #333",
+                    border: "2px solid #063970",
                   },
                 }}
               />
@@ -187,7 +188,7 @@ function LoginForm() {
                 }}
                 sx={{
                   "&:hover": {
-                    border: "2px solid #333",
+                    border: "2px solid #063970",
                   },
                 }}
               />
@@ -221,10 +222,10 @@ function LoginForm() {
             variant="contained"
             type="submit"
             sx={{
-              backgroundColor: "rgb(33, 43, 54)",
+              backgroundColor: "#063970",
               borderRadius: "12px",
               minWidth: "300px",
-              "&:hover": { backgroundColor: "rgb(33, 43, 54)" },
+              "&:hover": { backgroundColor: "#154c79" },
               color: "#fff",
               fontWeight: "bold",
               fontSize: "0.875rem",

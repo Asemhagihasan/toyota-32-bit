@@ -15,9 +15,9 @@ function Header({ handelButton }) {
         height: "2.5rem",
         position: "sticky",
         top: "0",
-        backgroundColor: "#333",
+        backgroundColor: "#063970 ",
         justifyContent: "space-between",
-        zIndex: "13",
+        zIndex: "1001",
         color: "#fff",
       }}
     >
