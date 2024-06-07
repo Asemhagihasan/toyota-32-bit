@@ -6,7 +6,7 @@ import { useCart } from "../../context/CartContext";
 function CartItem({ item }) {
   const { dispatch } = useCart();
   return (
-    <>
+    <Box>
       <Card
         sx={{
           width: "100%",
@@ -76,7 +76,7 @@ function CartItem({ item }) {
           </IconButton>
         </CardContent>
       </Card>
-    </>
+    </Box>
   );
 }
 
