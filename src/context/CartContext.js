@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 const CartContext = createContext();
 const initialstate = {
@@ -52,6 +58,37 @@ function reducer(state, action) {
 
 function CartProvider({ children }) {
   const [{ cart }, dispatch] = useReducer(reducer, initialstate);
+  const [appliedPromotion, setAppliedPromotion] = useState(null);
+  const [total, setTotal] = useState({
+    subTotal: 0,
+    totalAmount: 0,
+  });
+
+  useEffect(() => {
+    const updatedSubTotal = calculateSubTotal(cart);
+    const updatedTotalAmount = calculateTotalAmount(
+      updatedSubTotal,
+      appliedPromotion
+    );
+    setTotal({
+      subTotal: updatedSubTotal,
+      totalAmount: updatedTotalAmount,
+    });
+  }, [cart, appliedPromotion]);
+
+  function calculateSubTotal(cart) {
+    return parseFloat(
+      cart.reduce((sum, item) => sum + item.totalPrice, 0).toFixed(2)
+    );
+  }
+
+  function calculateTotalAmount(subTotal, promotion) {
+    if (promotion === "30 $ ve üzeri %10 indirim") {
+      return (subTotal >= 30 ? subTotal * 0.9 : subTotal).toFixed(2);
+    } else {
+      return subTotal;
+    }
+  }
 
   function getCurrentQuantity(id) {
     return cart.find((item) => item.productId === id)?.quantity ?? 0;
@@ -61,17 +98,16 @@ function CartProvider({ children }) {
     return cart;
   }
 
-  function getTotalPrice() {
-    const total = cart.reduce(
-      (sum, currentItem) => sum + currentItem.totalPrice,
-      0
-    );
-    return parseFloat(total.toFixed(2));
-  }
-
   return (
     <CartContext.Provider
-      value={{ dispatch, getCurrentQuantity, getCart, getTotalPrice }}
+      value={{
+        dispatch,
+        getCurrentQuantity,
+        getCart,
+        total,
+        setAppliedPromotion,
+        appliedPromotion,
+      }}
     >
       {children}
     </CartContext.Provider>
