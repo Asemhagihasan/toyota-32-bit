@@ -1,4 +1,11 @@
-import { Box, Button, Divider, IconButton, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import CartItem from "./CartItem";
@@ -8,10 +15,10 @@ import CartTotal from "./CartTotal";
 
 function Cart() {
   const [clicked, setClicked] = useState(false);
-  const { getCart, getTotalPrice, dispatch } = useCart();
+  const { getCart, total, dispatch, appliedPromotion, setAppliedPromotion } =
+    useCart();
   const cartItems = getCart();
-  const total = getTotalPrice();
-
+  if (appliedPromotion && total.subTotal < 30) setAppliedPromotion(null);
   return (
     <>
       {!clicked && (
@@ -77,8 +84,24 @@ function Cart() {
               borderTopRightRadius: "12px",
             }}
           >
-            <CartTotal content={{ text: "Ara Toplam", totalPrice: total }} />
-            <CartTotal content={{ text: "Toplam Tutar", totalPrice: total }} />
+            {appliedPromotion && (
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  padding: "0.4rem 1.2rem",
+                  color: "#fff",
+                  fontSize: "16px",
+                }}
+              >
+                {appliedPromotion} kampanyasi uygulandi
+              </Typography>
+            )}
+            <CartTotal
+              content={{ text: "Ara Toplam", total: total.subTotal }}
+            />
+            <CartTotal
+              content={{ text: "Toplam Tutar", total: total.totalAmount }}
+            />
             <Box sx={{ paddingLeft: "0.8rem" }}>
               <Button
                 onClick={() => dispatch({ type: "clearCart" })}
