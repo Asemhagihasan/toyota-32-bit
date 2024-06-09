@@ -1,5 +1,5 @@
 import AppLayout from "./ui/AppLayout/AppLayout";
-import Home from "./ui/Home/Home";
+import Home from "./pages/Home/Home";
 import LoginLayout from "./pages/Login/LoginLayout";
 import PrivateRoute from "./utils/PrivateRoute";
 import Products from "./features/Products/Products";
