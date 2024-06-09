@@ -11,12 +11,8 @@ function CartTotal({ content }) {
         fontSize: "16px",
       }}
     >
-      <Typography variant="subtitle2" color="#fff" sx={{ font: "16px" }}>
-        {content.text}
-      </Typography>
-      <Typography variant="subtitle2" color="#fff" sx={{ font: "16px" }}>
-        {content.totalPrice} $
-      </Typography>
+      <Typography variant="subtitle2">{content.text}</Typography>
+      <Typography variant="subtitle2">{content.total} $</Typography>
     </Stack>
   );
 }
