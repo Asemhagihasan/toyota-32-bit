@@ -19,6 +19,8 @@ function ItemList({ items, text, sx }) {
   const anchorRef = useRef(null);
   const isActive = useIsActiveLink("/salesPage/allProducts");
   const isActive1 = useIsActiveLink("/salesPage/favoritProducts");
+
+  console.log(items);
   function handleToggle() {
     setOpen((prevOpen) => !prevOpen);
   }
@@ -92,14 +94,15 @@ function ItemList({ items, text, sx }) {
                 >
                   {items.map((item) => (
                     <MenuItem
-                      key={item.name}
+                      disabled={item.disable}
+                      key={item.description}
                       onClick={() => {
                         setOpen(false);
-                        item.handleClick();
+                        item.handelClick();
                       }}
                       sx={{ ...sx }}
                     >
-                      {item.name}
+                      {item.description}
                     </MenuItem>
                   ))}
                 </MenuList>

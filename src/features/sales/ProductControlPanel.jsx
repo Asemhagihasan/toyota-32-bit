@@ -3,9 +3,11 @@ import CustomInput from "../../ui/CustomInput";
 import ItemList from "../../ui/ItemList";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import { useProductPanel } from "../../context/ProductControlPanelContext";
+import { useCart } from "../../context/CartContext";
 
 function ProductControlPanel() {
   const { value, onChangeInput, keyboard, setValue } = useProductPanel();
+  const { setAppliedPromotion, total } = useCart();
 
   return (
     <Box
@@ -14,7 +16,6 @@ function ProductControlPanel() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        // justifyContent: "center",
       }}
     >
       <Box
@@ -55,15 +56,16 @@ function ProductControlPanel() {
         text="kampanya getir"
         items={[
           {
-            name: "3 Al 2 ode",
-            handleClick: () => {
-              console.log("Kampanya secildi");
+            description: "30 $ ve üzeri %10 indirim",
+            disable: total.subTotal < 30,
+            handelClick: () => {
+              setAppliedPromotion("30 $ ve üzeri %10 indirim");
             },
           },
           {
-            name: "10 %",
-            handleClick: () => {
-              console.log("Kampanya secildi");
+            description: "3 Al 2 ode",
+            handelClick: () => {
+              setAppliedPromotion("3 Al 2 ode");
             },
           },
         ]}

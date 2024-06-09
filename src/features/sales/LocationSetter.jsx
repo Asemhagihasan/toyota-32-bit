@@ -52,8 +52,8 @@ function LocationSetter() {
           sx={{ width: "172px" }}
           items={[
             {
-              name: "AllProducts",
-              handleClick: () => {
+              description: "All Products",
+              handelClick: () => {
                 if (location.pathname !== "/salesPage/allProducts") {
                   navigate("/salesPage/allProducts");
                 }
@@ -61,8 +61,8 @@ function LocationSetter() {
               },
             },
             {
-              name: "Favorit products",
-              handleClick: () => {
+              description: "Favorit products",
+              handelClick: () => {
                 if (location.pathname !== "/salesPage/favoritProducts") {
                   navigate("/salesPage/favoritProducts");
                 }
