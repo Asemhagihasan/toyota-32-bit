@@ -11,12 +11,12 @@ import QRScanner from "./features/sales/QRScanner.jsx";
 import Error from "./ui/Error";
 import FilteredProducts from "./features/Products/FilteredProducts";
 import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
+import NoInternetConnection from "./ui/NoInternetConnection.jsx";
 
 const routes = [
   {
     name: "AppLayout",
     element: <AppLayout />,
-    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -49,6 +49,7 @@ const routes = [
           {
             path: "allProducts",
             element: <FilteredProducts />,
+            errorElement: <Error />,
             auth: true,
             loader: ProductsLoader,
           },
@@ -60,14 +61,16 @@ const routes = [
           },
         ],
       },
+      {
+        path: "/NoInternetConnection",
+        element: <NoInternetConnection />,
+      },
     ],
   },
   {
     name: "auth",
     path: "/auth",
     element: <LoginLayout />,
-    // action: loginAction,
-    // loader: fetchUsers,
   },
   // {
   //   element: <PageNotFoud />,
