@@ -1,10 +1,10 @@
 import { Card, CardMedia, Stack, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
-import { useProductPanel } from "../context/ProductControlPanelContext";
+import { useInputControl } from "../context/InputControlContext";
 
 function Product({ product }) {
   const { dispatch, getCurrentQuantity } = useCart();
-  const { value, setValue } = useProductPanel();
+  const { value, setValue } = useInputControl();
   const { id, productCode, name, price, image, unit, KDV } = product;
   const currentQuantity = getCurrentQuantity(id);
   const isInCart = currentQuantity > 0;
