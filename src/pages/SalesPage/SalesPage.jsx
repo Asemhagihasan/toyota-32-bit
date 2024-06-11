@@ -1,17 +1,27 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import LocationSetter from "../../features/sales/LocationSetter";
 import { Outlet } from "react-router-dom";
-import Cart from "../../features/Cart/Cart";
 import ProductControlPanel from "../../features/sales/ProductControlPanel";
-
+import Cart from "../../features/Cart/Cart";
+import Footer from "./Footer";
+import { useState } from "react";
+import PaymentPanel from "../../features/sales/PaymentPanel";
+import LinkButton from "../../ui/LinkButton";
 function SalesPage() {
+  const [makePayment, setMakePayment] = useState(false);
+  const styledBaseOnState = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "300px",
+  };
   return (
     <>
       <Box
         sx={{
           position: "relative",
           height: "100%",
-          padding: "1rem 1rem ",
+          padding: "1rem 1rem 0 1rem",
+          ...(makePayment && styledBaseOnState),
         }}
       >
         <Stack
@@ -19,22 +29,39 @@ function SalesPage() {
           sx={{
             paddingTop: "1.2rem",
             width: "100%",
-            // marginLeft: { xs: "2.5rem", lg: "0" },
           }}
         >
-          <LocationSetter />
-          <Stack
-            direction="row-reverse"
-            flexWrap="wrap"
-            justifyContent="start"
-            gap={2}
+          <Typography
+            variant="subtitle1"
+            sx={{ textAlign: "center", color: "gray" }}
           >
-            <ProductControlPanel />
-            <Outlet />
-          </Stack>
+            The store is currently online and available to shoppers
+          </Typography>
+          {makePayment ? (
+            <>
+              <PaymentPanel setMakePayment={setMakePayment} />
+              <LinkButton to="-1" onClick={() => setMakePayment(false)}>
+                &larr; Back to sale page
+              </LinkButton>
+            </>
+          ) : (
+            <>
+              <LocationSetter />
+              <Stack
+                direction="row-reverse"
+                flexWrap="wrap"
+                justifyContent="start"
+                gap={2}
+              >
+                <ProductControlPanel />
+                <Outlet />
+              </Stack>
+            </>
+          )}
         </Stack>
+        <Footer />
       </Box>
-      <Cart />
+      <Cart setMakePayment={setMakePayment} />
     </>
   );
 }
