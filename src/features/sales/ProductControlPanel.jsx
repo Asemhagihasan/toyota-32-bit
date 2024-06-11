@@ -2,11 +2,11 @@ import { Box, Button, Stack } from "@mui/material";
 import CustomInput from "../../ui/CustomInput";
 import ItemList from "../../ui/ItemList";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
-import { useProductPanel } from "../../context/ProductControlPanelContext";
+import { useInputControl } from "../../context/InputControlContext";
 import { useCart } from "../../context/CartContext";
 
 function ProductControlPanel() {
-  const { value, onChangeInput, keyboard, setValue } = useProductPanel();
+  const { value, onChangeInput, keyboard, setValue } = useInputControl();
   const { setAppliedPromotion, total } = useCart();
 
   return (
