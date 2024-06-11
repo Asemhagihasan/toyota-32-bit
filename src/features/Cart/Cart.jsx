@@ -1,24 +1,22 @@
-import {
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import CloseIcon from "../../ui/CloseButton";
 import CartItem from "./CartItem";
 import { useCart } from "../../context/CartContext";
 import EmptyCart from "./EmptyCart";
 import CartTotal from "./CartTotal";
 
-function Cart() {
+function Cart({ setMakePayment }) {
   const [clicked, setClicked] = useState(false);
   const { getCart, total, dispatch, appliedPromotion, setAppliedPromotion } =
     useCart();
   const cartItems = getCart();
   if (appliedPromotion && total.subTotal < 30) setAppliedPromotion(null);
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setClicked(false);
+    }
+  }, [cartItems]);
   return (
     <>
       {!clicked && (
@@ -57,25 +55,14 @@ function Cart() {
         }}
       >
         <Box>
-          <IconButton
-            onClick={() => setClicked(false)}
-            sx={{
-              width: "2rem",
-              height: "2rem",
-              margin: "0.7rem 0 0.5rem 1.5rem",
-              border: "1px solid #e5e5e5",
-              boxShadow: "0 3px 5px rgba(0,0,0,.15)",
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
+          <CloseIcon setClicked={setClicked} />
           <Divider />
           {!cartItems.length && <EmptyCart />}
           {cartItems.map((item, index) => (
             <CartItem key={index} item={item} />
           ))}
         </Box>
-        {cartItems.length > 0 && (
+        {cartItems.length > 0 && clicked && (
           <Box
             sx={{
               width: "100%",
@@ -106,11 +93,18 @@ function Cart() {
               <Button
                 onClick={() => dispatch({ type: "clearCart" })}
                 color="error"
-                sx={{}}
               >
                 Belge iptal
               </Button>
-              <Button sx={{ color: "orange" }}> Belge Bitir</Button>
+              <Button
+                onClick={() => {
+                  setClicked(false);
+                  setMakePayment(true);
+                }}
+                sx={{ color: "orange" }}
+              >
+                Finish & pay
+              </Button>
             </Box>
           </Box>
         )}

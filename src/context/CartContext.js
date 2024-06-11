@@ -90,6 +90,15 @@ function CartProvider({ children }) {
     }
   }
 
+  function calculateTotalTax() {
+    return cart
+      .reduce((sum, item) => {
+        if (item.quantity > 1) return sum + item.KDV * item.quantity;
+        return sum + item.KDV;
+      }, 0)
+      .toFixed(2);
+  }
+
   function getCurrentQuantity(id) {
     return cart.find((item) => item.productId === id)?.quantity ?? 0;
   }
@@ -107,6 +116,7 @@ function CartProvider({ children }) {
         total,
         setAppliedPromotion,
         appliedPromotion,
+        calculateTotalTax,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import routes from "./routes";
 import { CartProvider } from "./context/CartContext";
-import { ProductPanelProvider } from "./context/ProductControlPanelContext";
+import { InputControlProvider } from "./context/InputControlContext";
 import { ConnectionStatusProvider } from "./context/ConnectionStatus";
 
 function App() {
@@ -10,11 +10,11 @@ function App() {
   return (
     <AuthProvider>
       <ConnectionStatusProvider>
-        <ProductPanelProvider>
+        <InputControlProvider>
           <CartProvider>
             <RouterProvider router={router} />
           </CartProvider>
-        </ProductPanelProvider>
+        </InputControlProvider>
       </ConnectionStatusProvider>
     </AuthProvider>
   );

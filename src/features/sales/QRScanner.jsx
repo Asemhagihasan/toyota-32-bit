@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { getProductById } from "../../services/saleContentApi";
 import { useCart } from "../../context/CartContext";
-import { useProductPanel } from "../../context/ProductControlPanelContext";
+import { useInputControl } from "../../context/InputControlContext";
 
 function QRScanner() {
   const scanner = useRef();
@@ -16,7 +16,7 @@ function QRScanner() {
   const [scannedResult, setScannedResult] = useState("");
   const [scannedProduct, setScannedProduct] = useState({});
   const { dispatch, getCurrentQuantity } = useCart();
-  const { value, setValue } = useProductPanel();
+  const { value, setValue } = useInputControl();
   function onScanSuccess(result) {
     setScannedResult(result?.data);
   }
