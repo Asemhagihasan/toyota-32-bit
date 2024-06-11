@@ -1,11 +1,11 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
 import { useConnection } from "../../context/ConnectionStatus";
-function Home() {
+function CaseConnectionStatus() {
   const { isOnline } = useConnection();
   return (
-    <Stack pl={1} direction="row" gap="6px" alignItems="center" mb={1}>
-      <Typography variant="body2" mb="2px">
+    <Stack pl={1} direction="row" gap="6px" alignItems="center">
+      <Typography variant="subtitle2">
         Store is {isOnline ? "online" : "offline"}
       </Typography>
       <Stack
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default CaseConnectionStatus;
