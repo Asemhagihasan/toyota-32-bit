@@ -8,10 +8,8 @@ import CartTotal from "./CartTotal";
 
 function Cart({ setMakePayment }) {
   const [clicked, setClicked] = useState(false);
-  const { getCart, total, dispatch, appliedPromotion, setAppliedPromotion } =
-    useCart();
+  const { getCart, total, dispatch, reduction } = useCart();
   const cartItems = getCart();
-  if (appliedPromotion && total.subTotal < 30) setAppliedPromotion(null);
   useEffect(() => {
     if (cartItems.length === 0) {
       setClicked(false);
@@ -71,7 +69,7 @@ function Cart({ setMakePayment }) {
               borderTopRightRadius: "12px",
             }}
           >
-            {appliedPromotion && (
+            {reduction && (
               <Typography
                 variant="subtitle2"
                 sx={{
@@ -80,7 +78,7 @@ function Cart({ setMakePayment }) {
                   fontSize: "16px",
                 }}
               >
-                {appliedPromotion} kampanyasi uygulandi
+                {reduction.name} kampanyasi uygulandi
               </Typography>
             )}
             <CartTotal
