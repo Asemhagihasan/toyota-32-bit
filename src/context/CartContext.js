@@ -58,7 +58,7 @@ function reducer(state, action) {
 
 function CartProvider({ children }) {
   const [{ cart }, dispatch] = useReducer(reducer, initialstate);
-  const [appliedPromotion, setAppliedPromotion] = useState(null);
+  const [reduction, setReduction] = useState(null);
   const [total, setTotal] = useState({
     subTotal: 0,
     totalAmount: 0,
@@ -66,15 +66,12 @@ function CartProvider({ children }) {
 
   useEffect(() => {
     const updatedSubTotal = calculateSubTotal(cart);
-    const updatedTotalAmount = calculateTotalAmount(
-      updatedSubTotal,
-      appliedPromotion
-    );
+    const updatedTotalAmount = calculateTotalAmount(updatedSubTotal, reduction);
     setTotal({
       subTotal: updatedSubTotal,
       totalAmount: updatedTotalAmount,
     });
-  }, [cart, appliedPromotion]);
+  }, [cart, reduction]);
 
   function calculateSubTotal(cart) {
     return parseFloat(
@@ -82,12 +79,10 @@ function CartProvider({ children }) {
     );
   }
 
-  function calculateTotalAmount(subTotal, promotion) {
-    if (promotion === "30 $ ve üzeri %10 indirim") {
-      return (subTotal >= 30 ? subTotal * 0.9 : subTotal).toFixed(2);
-    } else {
-      return subTotal;
-    }
+  function calculateTotalAmount(subTotal, reduction) {
+    if (reduction)
+      return (subTotal * (1 - reduction.discount / 100)).toFixed(2);
+    return subTotal;
   }
 
   function calculateTotalTax() {
@@ -114,8 +109,8 @@ function CartProvider({ children }) {
         getCurrentQuantity,
         getCart,
         total,
-        setAppliedPromotion,
-        appliedPromotion,
+        setReduction,
+        reduction,
         calculateTotalTax,
       }}
     >

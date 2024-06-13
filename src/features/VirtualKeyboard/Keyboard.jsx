@@ -54,7 +54,7 @@ function VirtualKeyboard({ setInput, keyboard, ip }) {
           }}
           onChange={onChange}
           onKeyPress={onKeyPress}
-          onRender={() => console.log("Rendered")}
+          // onRender={() => console.log("Rendered")}
         />
       ) : (
         <>

@@ -14,13 +14,15 @@ import {
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useIsActiveLink } from "../hooks/useIsActiveLink";
-function ItemList({ items, text, sx }) {
+import { useCart } from "../context/CartContext";
+function ItemList({ items, text, sx, handelClick }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const isActive = useIsActiveLink("/salesPage/allProducts");
   const isActive1 = useIsActiveLink("/salesPage/favoritProducts");
+  const { total } = useCart();
+  const isReducton = items[0].isApplicable;
 
-  console.log(items);
   function handleToggle() {
     setOpen((prevOpen) => !prevOpen);
   }
@@ -37,7 +39,6 @@ function ItemList({ items, text, sx }) {
 
     prevOpen.current = open;
   }, [open]);
-
   return (
     <Stack>
       <Button
@@ -94,11 +95,13 @@ function ItemList({ items, text, sx }) {
                 >
                   {items.map((item) => (
                     <MenuItem
-                      disabled={item.disable}
                       key={item.description}
+                      disabled={
+                        isReducton ? !item.isApplicable(total.subTotal) : false
+                      }
                       onClick={() => {
                         setOpen(false);
-                        item.handelClick();
+                        isReducton ? handelClick(item) : item.handelClick();
                       }}
                       sx={{ ...sx }}
                     >

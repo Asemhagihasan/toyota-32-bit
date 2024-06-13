@@ -1,8 +1,8 @@
 import { createContext, useContext, useRef, useState } from "react";
 
-const productPanelContext = createContext();
+const InputControlContext = createContext();
 
-function ProductPanelProvider({ children }) {
+function InputControlProvider({ children }) {
   const keyboard = useRef();
   const [value, setValue] = useState("");
   function onChangeInput(e) {
@@ -12,17 +12,17 @@ function ProductPanelProvider({ children }) {
     keyboard?.current?.setInput(input);
   }
   return (
-    <productPanelContext.Provider
+    <InputControlContext.Provider
       value={{ value, onChangeInput, keyboard, setValue }}
     >
       {children}
-    </productPanelContext.Provider>
+    </InputControlContext.Provider>
   );
 }
 
-function useProductPanel() {
-  const context = useContext(productPanelContext);
+function useInputControl() {
+  const context = useContext(InputControlContext);
   return context;
 }
 
-export { useProductPanel, ProductPanelProvider };
+export { useInputControl, InputControlProvider };
