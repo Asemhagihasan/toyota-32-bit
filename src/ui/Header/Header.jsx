@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import AuthButton from "../../features/authentication/AuthButton";
@@ -17,7 +17,7 @@ function Header({ handelButton }) {
         top: "0",
         backgroundColor: "#063970 ",
         justifyContent: "space-between",
-        zIndex: "1001",
+        zIndex: 103,
         color: "#fff",
       }}
     >
