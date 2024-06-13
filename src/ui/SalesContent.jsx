@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 function SalesContent({ children }) {
   return (
     <Stack
-      maxWidth={600}
+      maxWidth={630}
       direction="row"
       flexWrap="wrap"
       justifyContent="start"
