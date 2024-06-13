@@ -5,8 +5,6 @@ import SideBar from "../SideBar/SideBar";
 import { useState } from "react";
 import Loader from "../Loader";
 
-// import Loader from "../Loader";
-
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -26,16 +24,16 @@ function AppLayout() {
         }}
       >
         <Stack overflow="auto" sx={{ backgroundColor: "#F5F7F8" }}>
+          <SideBar
+            sideBarIsOpen={sideBarIsOpen}
+            setSideBarIsOpen={setSideBarIsOpen}
+          />
           <Stack
             sx={{ ml: { xs: "0", s: "0", md: "0", lg: "5.5rem" } }}
             zIndex={1}
           >
             <Outlet />
           </Stack>
-          <SideBar
-            sideBarIsOpen={sideBarIsOpen}
-            setSideBarIsOpen={setSideBarIsOpen}
-          />
         </Stack>
       </Stack>
     </>
