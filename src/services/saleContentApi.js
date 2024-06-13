@@ -12,13 +12,13 @@ export function getCategories() {
         throw new Error("Network response was not ok.");
       }
     })
-    .catch(() => {
-      throw new Error("Failed getting categories.");
+    .catch((err) => {
+      throw new Error(err.message);
     });
 }
 export function getCategoryById(id) {
   return axios
-    .get(`https://661c1c1ce7b95ad7fa69b72a.mockapi.io/api/v3/categories/${id}`)
+    .get(`${API_URL}/${id}`)
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
         return response.data;
