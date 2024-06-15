@@ -49,7 +49,7 @@ function LocationSetter() {
         </Link>
         <ItemList
           text="Show Price"
-          sx={{ width: "172px" }}
+          sx={{ width: "174px" }}
           items={[
             {
               description: "All Products",

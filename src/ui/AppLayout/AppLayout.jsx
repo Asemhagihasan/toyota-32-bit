@@ -23,7 +23,7 @@ function AppLayout() {
           position: "relative",
         }}
       >
-        <Stack overflow="auto" sx={{ backgroundColor: "#F5F7F8" }}>
+        <Stack overflow="auto">
           <SideBar
             sideBarIsOpen={sideBarIsOpen}
             setSideBarIsOpen={setSideBarIsOpen}

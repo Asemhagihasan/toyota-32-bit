@@ -5,8 +5,8 @@ function Content({ children }) {
     <Typography
       variant="subtitle2"
       sx={{
-        color: "rgba(0, 0, 0, .87);",
-        fontWeight: "600",
+        color: "var(--color-grey-800);",
+        fontWeight: "500",
         fontSize: "1rem",
       }}
     >

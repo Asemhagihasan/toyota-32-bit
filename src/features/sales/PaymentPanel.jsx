@@ -44,7 +44,10 @@ function PaymentPanel({ setMakePayment }) {
         >
           <Box width="375px" mb="6px">
             {!sendEmail && email.length > 0 && (
-              <Typography variant="subtitle1" sx={{ color: "gray" }}>
+              <Typography
+                variant="subtitle1"
+                sx={{ color: "var(--color-grey-700)" }}
+              >
                 Added ****@gmail.com
               </Typography>
             )}
@@ -53,13 +56,22 @@ function PaymentPanel({ setMakePayment }) {
               disableElevation
               sx={{
                 backgroundColor: `${
-                  paymentMethod === "nakit" ? "#e28743" : "#fff"
+                  paymentMethod === "nakit"
+                    ? "var(--color-brand-600)"
+                    : "var(--color-grey-0)"
                 }`,
-                color: `${paymentMethod === "nakit" ? "#fff" : "#333"}`,
+                color: `${
+                  paymentMethod === "nakit"
+                    ? "var(--color-brand-50)"
+                    : "var(--color-grey-700)"
+                }`,
                 width: "180px",
                 marginRight: "3px",
                 marginLeft: "5px",
-                "&:hover": { backgroundColor: "#e28743" },
+                "&:hover": {
+                  backgroundColor: "var(--color-brand-700)",
+                  color: "var(--color-brand-50)",
+                },
               }}
               onClick={() => {
                 setPaymentMethod("nakit");
@@ -72,10 +84,19 @@ function PaymentPanel({ setMakePayment }) {
               disableElevation
               sx={{
                 backgroundColor: `${
-                  paymentMethod === "krediKart" ? "#e28743" : "#fff"
+                  paymentMethod === "krediKart"
+                    ? "var(--color-brand-600)"
+                    : "var(--color-grey-0)"
                 }`,
-                color: `${paymentMethod === "krediKart" ? "#fff" : "#333"}`,
-                "&:hover": { backgroundColor: "#e28743" },
+                color: `${
+                  paymentMethod === "krediKart"
+                    ? "var(--color-brand-50)"
+                    : "var(--color-grey-700)"
+                }`,
+                "&:hover": {
+                  backgroundColor: "var(--color-brand-700)",
+                  color: "var(--color-brand-50)",
+                },
                 width: "180px",
               }}
               onClick={() => {
@@ -88,8 +109,6 @@ function PaymentPanel({ setMakePayment }) {
           <CustomInput
             text="Please enter the payment amount"
             sx={{
-              "--Input-focusedHighlight":
-                "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
               width: "370px",
               marginLeft: "5px",
             }}
@@ -111,8 +130,8 @@ function PaymentPanel({ setMakePayment }) {
               }}
               disableElevation
               sx={{
-                backgroundColor: "#e28743",
-                "&:hover": { backgroundColor: "#e67e22" },
+                backgroundColor: "var(--color-brand-600)",
+                "&:hover": { backgroundColor: "var(--color-brand-700)" },
               }}
               variant="contained"
             >
@@ -125,7 +144,7 @@ function PaymentPanel({ setMakePayment }) {
               disabled={value < (+total?.totalAmount || total.subTotal)}
               sx={{
                 backgroundColor: "green",
-                "&:hover": { backgroundColor: "green" },
+                "&:hover": { backgroundColor: "var(--color-green-300)" },
               }}
               onClick={() => {
                 setModel(true);

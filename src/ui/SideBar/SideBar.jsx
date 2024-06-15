@@ -1,12 +1,11 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 
 import PersonIcon from "@mui/icons-material/Person";
-import SellIcon from "@mui/icons-material/Sell";
+import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import UndoIcon from "@mui/icons-material/Undo";
-import StoreIcon from "@mui/icons-material/Store";
-import CollectionsIcon from "@mui/icons-material/Collections";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Item from "./Item";
 import Content from "./Content";
 import { useAuth } from "../../context/AuthContext";
@@ -24,11 +23,11 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
     <Stack
       sx={{
         overflowY: "auto",
-        height: { xs: "auto", md: "92vh" },
+        height: "92vh",
         flexDirection: "column",
         width: "4.5rem",
         boxShadow: "0 3px 5px rgba(0,0,0,.15)",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "var(--color-grey-0)",
         position: "absolute",
         top: "0",
         // left: "0",
@@ -53,14 +52,18 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
               <Typography
                 component="p"
                 variant="h6"
-                sx={{ fontSize: "1rem", color: "#000", fontWeight: "600" }}
+                sx={{
+                  fontSize: "1rem",
+                  color: "var(--color-grey-800)",
+                  fontWeight: "600",
+                }}
               >
                 {translate("sideBarItems.user")}
               </Typography>
               <Typography
                 variant="subtitle1"
                 sx={{
-                  color: "grey",
+                  color: "var(--color-grey-500)",
                   fontWeight: "600",
                   fontSize: "1rem",
                   textOverflow: "ellipsis",
@@ -78,36 +81,39 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
           )}
         </Box>
       </Item>
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
+        <HomeOutlinedIcon
+          sx={{
+            color: "var(--color-grey-400)",
+            fontSize: "1.7rem",
+          }}
+        />
+        {sideBarIsOpen && <Content>Home</Content>}
+      </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/categories">
-        <ShoppingCartIcon sx={{ color: "#5BBCFF", fontSize: "1.5rem" }} />
+        <ShoppingCartOutlinedIcon
+          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
+        />
         {sideBarIsOpen && <Content>{translate("sideBarItems.sales")}</Content>}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/allProducts">
-        <SellIcon sx={{ color: "#D20062", fontSize: "1.5rem" }} />
+        <SellOutlinedIcon
+          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
+        />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.PriceView")}</Content>
         )}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <UndoIcon sx={{ color: "#D20062", fontSize: "1.5rem" }} />
+        <UndoIcon sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.returnTransactions")}</Content>
         )}
       </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <StoreIcon sx={{ color: "#6C22A6", fontSize: "1.5rem" }} />
-        {sideBarIsOpen && (
-          <Content> {translate("sideBarItems.directProductEntry")}</Content>
-        )}
-      </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <CollectionsIcon sx={{ color: "#6C22A6", fontSize: "1.5rem" }} />
-        {sideBarIsOpen && (
-          <Content>{translate("sideBarItems.collections")}</Content>
-        )}
-      </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <SettingsIcon sx={{ color: "#96E9C6", fontSize: "1.5rem" }} />
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/settings">
+        <SettingsIcon
+          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
+        />
         {sideBarIsOpen && (
           <Content>{translate("sideBarItems.Settings")}</Content>
         )}

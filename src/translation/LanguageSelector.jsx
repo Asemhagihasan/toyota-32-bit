@@ -1,44 +1,30 @@
-import {
-  Box,
-  FormControl,
-  InputBase,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext ";
 
-function LanguageSelector() {
-  const { i18n } = useTranslation();
-  const storedLan = localStorage.getItem("i18nextLng");
-  const [selectedLanguage, setSelectedLanguage] = useState(storedLan || "");
-  function changeLanguage(event) {
-    const lng = event.target.value;
-    setSelectedLanguage(lng);
-    i18n.changeLanguage(lng);
+function LanguageSelector({ sx }) {
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+  function handleChange(event) {
+    changeLanguage(event.target.value);
   }
-
   return (
     <Box
-      sx={{ display: { xs: "none", s: "none", md: "block" } }}
+      sx={{ display: { xs: "none", s: "none", md: "block" }, ...sx }}
       maxWidth={120}
       mt="6px"
     >
       <FormControl fullWidth size="small">
         <InputLabel id="demo-simple-select-label">
-          <LanguageIcon sx={{ color: "#fff" }} />
+          <LanguageIcon sx={{ color: "var(--color-grey-700)" }} />
         </InputLabel>
 
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={selectedLanguage}
-          onChange={(event) => changeLanguage(event)}
-          sx={{
-            color: "#fff",
-          }}
+          onChange={(event) => handleChange(event)}
+          sx={{ color: "var(--color-grey-700)" }}
         >
           <MenuItem value={"en"}>English</MenuItem>
           <MenuItem value={"tr"}>Turkish</MenuItem>

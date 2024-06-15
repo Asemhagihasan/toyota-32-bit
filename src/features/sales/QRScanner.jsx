@@ -112,7 +112,7 @@ function QRScanner() {
           height: "250px",
           position: "relative",
           cursor: "pointer",
-          border: "2px dashed #777",
+          border: "2px dashed var(--color-grey-600)",
         }}
       >
         {/* QR */}

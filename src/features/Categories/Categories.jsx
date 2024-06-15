@@ -18,7 +18,7 @@ function Categories() {
         text="Search by code or name"
         sx={{
           "--Input-focusedHighlight":
-            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
+            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",
         }}
         value={query}
         onChange={(e) => setQuery(e.target.value)}

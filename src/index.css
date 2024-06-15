@@ -1,3 +1,40 @@
+:root {
+  --color-grey-0: #fff;
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f3f4f6;
+  --color-grey-200: #e5e7eb;
+  --color-grey-300: #d1d5db;
+  --color-grey-400: #9ca3af;
+  --color-grey-500: #6b7280;
+  --color-grey-600: #4b5563;
+  --color-grey-700: #374151;
+  --color-grey-800: #1f2937;
+  --color-grey-900: #111827;
+  --scrool-color: rgb(114, 113, 113);
+
+  --color-green-300: #008000;
+
+  --color-brand-50: #eef2ff;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+}
+
+[data-theme="dark"] {
+  --color-grey-0: #18212f;
+  --color-grey-50: #111827;
+  --color-grey-100: #1f2937;
+  --color-grey-200: #374151;
+  --color-grey-300: #4b5563;
+  --color-grey-400: #6b7280;
+  --color-grey-500: #9ca3af;
+  --color-grey-600: #d1d5db;
+  --color-grey-700: #e5e7eb;
+  --color-grey-800: #f3f4f6;
+  --color-grey-900: #f9fafb;
+}
+* {
+  transition: background-color 0.3s ease-in-out;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,7 +42,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f7f8;
+  background-color: var(--color-grey-50);
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -22,7 +59,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
+  background-color: var(--scrool-color);
   border-radius: 10px;
   height: 200px;
 }
@@ -43,23 +80,32 @@ code {
   transition: all 0.5s;
 }
 .item:hover {
-  background-color: #e5e5e5;
+  background-color: var(--color-grey-100);
+}
+.item:hover > svg {
+  color: var(--color-brand-600);
+}
+.active > svg {
+  color: var(--color-brand-600);
+}
+.active:link {
+  color: var(--color-brand-600);
 }
 
 .account {
   padding-left: 1.2rem;
-  border-bottom: solid 2px #f1eee9;
+  border-bottom: solid 2px var(--color-grey-200);
   text-overflow: ellipsis;
 }
 
 .active {
-  background-color: #e5e5e5;
-  border-left: solid 3px #e28743;
+  background-color: var(--color-grey-100);
+  border-left: solid 3px var(--color-brand-600);
 }
 
 .link {
   font-size: 1rem;
-  color: #e28743;
+  color: var(--color-brand-600);
   transition: color 0.3s;
   text-decoration: none;
   border: none;
@@ -84,19 +130,22 @@ code {
   cursor: pointer;
   font-family: inherit;
   transition: all 0.5s;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--color-grey-0);
+  color: var(--color-grey-700);
+  border: 1px solid var(--color-grey-200);
   box-sizing: border-box;
 }
 
 .linkBtn:hover {
-  background-color: #e28743;
+  background-color: var(--color-brand-700);
+  color: var(--color-brand-50);
 }
 
 .activeLink,
 .activeLink:link,
 .activeLink:visited {
-  background-color: #e28743;
+  background-color: var(--color-brand-600);
+  color: var(--color-brand-50);
 }
 
 .addBtn {
@@ -105,7 +154,8 @@ code {
   height: 36px;
   font-size: 20px;
   font-weight: 500;
-  background-color: #e28743;
+  background-color: var(--color-brand-600);
+  color: var(--color-brand-50);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -118,16 +168,16 @@ code {
 }
 
 .disableBtn {
-  background-color: #e5e5e5;
+  background-color: var(--color-grey-300) !important;
+  /* color: var(--color-grey-50); */
   cursor: not-allowed;
 }
-
 .disableBtn:hover {
-  background-color: #d3d3d3;
+  color: var(--color-grey-600);
 }
 
 .addBtn:hover {
-  background-color: #e67e22;
+  background-color: var(--color-brand-700);
 }
 
 .qr-reader {
@@ -136,7 +186,7 @@ code {
   margin: 0 auto;
   position: relative;
   cursor: pointer;
-  border: 2px dashed #777;
+  border: 2px dashed var(--color-grey-600);
 }
 
 video {
@@ -175,7 +225,7 @@ video {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
+  background: var(--color-grey-200);
   padding: 14px 28px;
   border-radius: 3px;
   max-width: 600px;

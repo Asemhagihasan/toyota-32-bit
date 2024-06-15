@@ -18,7 +18,7 @@ function EmailForm({ email, setEmail, setSendEmail }) {
         text="Please enter the user's email address"
         sx={{
           "--Input-focusedHighlight":
-            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
+            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500,var(--color-orange-100) ))) !important",
           width: "100% - 10px",
           marginLeft: "5px",
         }}
@@ -30,8 +30,8 @@ function EmailForm({ email, setEmail, setSendEmail }) {
         variant="contained"
         disableElevation
         sx={{
-          backgroundColor: "#e28743",
-          "&:hover": { backgroundColor: "#e67e22" },
+          backgroundColor: "var(--color-orange-200)",
+          "&:hover": { backgroundColor: "var(--color-orange-200)" },
           mt: "1rem",
         }}
         onClick={() => {

@@ -5,7 +5,7 @@ function Popup({ children }) {
     <Stack className="modal">
       <Stack
         className="overlay"
-        sx={{ background: "rgba(211, 211, 211, 0.8)" }}
+        sx={{ background: "var(--color-grey-100)" }}
       ></Stack>
       <Box
         sx={{
@@ -15,7 +15,7 @@ function Popup({ children }) {
           height: "82vh",
           transform: "translate(-50%, -35%)",
           lineHeight: "1.4",
-          backgroundColor: "#fff",
+          backgroundColor: "var(--color-grey-0)",
           padding: "16px 24px",
           borderRadius: "12px",
           maxWidth: "600px",
