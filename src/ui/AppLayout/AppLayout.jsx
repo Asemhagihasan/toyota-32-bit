@@ -16,7 +16,7 @@ function AppLayout() {
   return (
     <>
       <Loader isLoading={isLoading} />
-      <Header handelButton={handelButton} />
+      <Header sideBarIsOpen={sideBarIsOpen} handelButton={handelButton} />
       <Stack
         sx={{
           height: "92vh",
