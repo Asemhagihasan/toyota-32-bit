@@ -6,7 +6,7 @@ function Home() {
   return (
     <Box
       sx={{
-        width: "25%",
+        width: "30%",
         height: "92vh",
         display: "flex",
         flexDirection: "column",

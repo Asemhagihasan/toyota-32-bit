@@ -15,24 +15,28 @@ function Header({ handelButton }) {
         height: "2.5rem",
         position: "sticky",
         top: "0",
-        backgroundColor: "#063970 ",
+        backgroundColor: "var(--color-grey-0)",
+        borderBottom: "1px solid var(--color-grey-200)",
         justifyContent: "space-between",
         zIndex: 103,
         color: "#fff",
       }}
     >
       <Content>
-        <IconButton aria-label="menu-icon" onClick={handelButton}>
+        <IconButton
+          sx={{ "&:hover": { backgroundColor: "var(--color-grey-0)" } }}
+          aria-label="menu-icon"
+          onClick={handelButton}
+        >
           <MenuIcon
             sx={{
               fontWeight: "bold",
               fontSize: "1.5rem",
-              color: "#fff",
+              color: "var(--color-grey-700)",
               ml: "0.875rem",
             }}
           />
         </IconButton>
-        {/* <Typography variant="h5">Item List</Typography> */}
       </Content>
       <Content>
         <LanguageSelector />

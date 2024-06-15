@@ -47,13 +47,23 @@ function ItemList({ items, text, sx, handelClick }) {
         onClick={handleToggle}
         variant="contained"
         sx={{
-          color: "#000",
-          "&:hover": { backgroundColor: "#e67e22" },
+          "&:hover": {
+            backgroundColor: "var(--color-brand-700)",
+            color: "var(--color-grey-50)",
+          },
           padding: "0.385rem 2rem",
+          border: "1px solid var(--color-grey-200)",
           fontWeight: "500",
           fontSize: "0.875rem",
-          maxHeight: "36.2px",
-          backgroundColor: isActive || isActive1 ? "#e67e22" : "#fff",
+          maxHeight: "38.2px",
+          backgroundColor:
+            isActive || isActive1
+              ? "var(--color-brand-600)"
+              : "var(--color-grey-0)",
+          color:
+            isActive || isActive1
+              ? "var(--color-grey-50)"
+              : "var(--color-grey-600)",
           ...sx,
         }}
         disableElevation

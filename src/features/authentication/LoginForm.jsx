@@ -129,8 +129,7 @@ function LoginForm() {
           alignItems="center"
           spacing={3}
           sx={{
-            backgroundColor: "#fff",
-            border: "1px solid #fff",
+            backgroundColor: "var( --color-grey-0)",
             borderRadius: "16px",
             boxShadow: "0 3px 5px rgba(0,0,0,.15)",
             padding: "1rem 2rem",
@@ -140,12 +139,14 @@ function LoginForm() {
         >
           <Typography
             variant="h4"
-            sx={{ color: "rgb(33, 43, 54)", fontWeight: "bold" }}
+            sx={{ color: "var(--color-grey-700)", fontWeight: "bold" }}
           >
             {translate("auth.welcome")}
           </Typography>
           <Stack spacing={2} sx={{ width: "90%" }}>
-            <Typography variant="h6">{translate("auth.prompt")}</Typography>
+            <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
+              {translate("auth.prompt")}
+            </Typography>
             <Box sx={{ position: "relative" }}>
               <CustomInput
                 fullWidth
@@ -157,18 +158,13 @@ function LoginForm() {
                   setShowTextKeyboard(true);
                   setShowPassKeyboard(false);
                 }}
-                sx={{
-                  "&:hover": {
-                    border: "2px solid #063970",
-                  },
-                }}
               />
               <IconButton
                 sx={{
                   position: "absolute",
                   top: "8px",
                   left: "92%",
-                  color: `${showTextKeyboard ? "#0B6BCB" : ""}`,
+                  color: `${showTextKeyboard ? "var(--color-brand-600)" : ""}`,
                 }}
                 onClick={() => handelShowKeypord("text")}
               >
@@ -186,18 +182,13 @@ function LoginForm() {
                   setShowTextKeyboard(false);
                   setShowPassKeyboard(true);
                 }}
-                sx={{
-                  "&:hover": {
-                    border: "2px solid #063970",
-                  },
-                }}
               />
               <IconButton
                 sx={{
                   position: "absolute",
                   top: "8px",
                   left: "92%",
-                  color: `${showPassKeyboard ? "#0B6BCB" : ""}`,
+                  color: `${showPassKeyboard ? "var(--color-brand-600)" : ""}`,
                 }}
                 onClick={() => handelShowKeypord("pass")}
               >
@@ -222,10 +213,10 @@ function LoginForm() {
             variant="contained"
             type="submit"
             sx={{
-              backgroundColor: "#063970",
+              backgroundColor: "var(--color-brand-600)",
               borderRadius: "12px",
               minWidth: "300px",
-              "&:hover": { backgroundColor: "#154c79" },
+              "&:hover": { backgroundColor: "var(--color-brand-700)" },
               color: "#fff",
               fontWeight: "bold",
               fontSize: "0.875rem",

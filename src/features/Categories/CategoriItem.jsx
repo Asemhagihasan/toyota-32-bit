@@ -7,6 +7,7 @@ function CategoriItem({ category }) {
       sx={{
         minWidth: 140,
         height: "160px",
+        backgroundColor: "var(--color-grey-0)",
         borderRadius: "12px",
         boxShadow: "0 2px 4px rgba(0,0,0,.10)",
         display: "flex",
@@ -34,7 +35,8 @@ function CategoriItem({ category }) {
           textAlign: "center",
           fontSize: "1rem",
           marginBottom: "6px",
-          backgroundColor: "#fff",
+          backgroundColor: "var(--color-grey-0)",
+          color: "var(--color-grey-700)",
         }}
       >
         {category.name}

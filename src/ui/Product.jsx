@@ -30,6 +30,7 @@ function Product({ product }) {
     <Card
       sx={{
         width: { xs: "115px", sm: "125px", md: "145px" },
+        backgroundColor: "var(--color-grey-0)",
         height: "230px",
         borderRadius: "6px",
         display: "flex",
@@ -63,16 +64,18 @@ function Product({ product }) {
           {isInCart ? "-" : "+"}
         </button>
         <Stack>
-          <Typography variant="h6">{price} $</Typography>
+          <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
+            {price} $
+          </Typography>
           <Typography
-            sx={{ fontSize: "1.0875rem" }}
+            sx={{ fontSize: "1.0875rem", color: "var(--color-grey-700)" }}
             variant="subtitle1"
             component="p"
           >
             {name}
           </Typography>
         </Stack>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{ color: "var(--color-grey-700)" }}>
           1 {unit}
         </Typography>
       </Stack>

@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import BillItem from "./BillItem";
 import { useCart } from "../../context/CartContext";
 import BillItemContent from "./BillItemContent";
@@ -50,9 +50,11 @@ function PaymentDetail({
           justifyContent="space-between"
           sx={{ width: "300px", mb: "1.5rem" }}
         >
-          <Typography variant="h6">Cash register</Typography>
+          <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
+            Cash register
+          </Typography>
           <IconButton onClick={handlePrint}>
-            <PrintIcon />
+            <PrintIcon sx={{ color: "var(--color-grey-700)" }} />
           </IconButton>
         </Stack>
         {cartItems.map((item, index) => (
@@ -99,20 +101,31 @@ function PaymentDetail({
             alignItems="center"
             justifyContent="space-between"
           >
-            <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ fontSize: "16px", color: "var(--color-grey-700)" }}
+            >
               Payment method
             </Typography>
-            {paymentMethodCheck ? <AttachMoneyIcon /> : <PaymentIcon />}
+            {paymentMethodCheck ? (
+              <AttachMoneyIcon sx={{ color: "var(--color-grey-700)" }} />
+            ) : (
+              <PaymentIcon sx={{ color: "var(--color-grey-700)" }} />
+            )}
           </Stack>
           <Typography
             variant="subtitle2"
-            sx={{ fontSize: "12px", color: "#e28743" }}
+            sx={{ fontSize: "12px", color: "var(--color-brand-600)" }}
           >
             {paymentMethodCheck ? "Nakit" : "Vise(****0219)"}
           </Typography>
         </Box>
         {email && (
-          <Stack flexDirection="row" justifyContent="space-between">
+          <Stack
+            sx={{ color: "var(--color-grey-700)" }}
+            flexDirection="row"
+            justifyContent="space-between"
+          >
             <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>
               User's Email
             </Typography>

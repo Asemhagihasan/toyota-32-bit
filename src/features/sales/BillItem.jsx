@@ -6,10 +6,16 @@ function BillItem({ item }) {
     <Box>
       <BillItemContent item={{ name: item.name, total: item.totalPrice }} />
       <Stack flexDirection="column">
-        <Typography variant="subtitle2" sx={{ color: "#e28743" }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: "var(--color-brand-600)" }}
+        >
           ${item.totalPrice}
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: "#e28743" }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: "var(--color-brand-600)" }}
+        >
           {item.quantity} x ${item.price}
         </Typography>
       </Stack>

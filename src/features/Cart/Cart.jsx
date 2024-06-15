@@ -25,7 +25,7 @@ function Cart({ setMakePayment }) {
             top: "4rem",
             right: "1rem",
             zIndex: 101,
-            color: "orange",
+            color: "var(--color-brand-600)",
           }}
         >
           Open Cart
@@ -45,7 +45,7 @@ function Cart({ setMakePayment }) {
           position: "absolute",
           top: "0",
           right: "0",
-          backgroundColor: " #f5f7f8",
+          backgroundColor: " var(--color-grey-0)",
           borderTopLeftRadius: "12px",
           transition: "width .4s",
           boxShadow: "0 3px 5px rgba(0,0,0,.15)",
@@ -64,7 +64,7 @@ function Cart({ setMakePayment }) {
           <Box
             sx={{
               width: "100%",
-              backgroundColor: "#063970",
+              backgroundColor: "rgb(19, 35, 55)",
               borderTopLeftRadius: "12px",
               borderTopRightRadius: "12px",
             }}
@@ -74,7 +74,7 @@ function Cart({ setMakePayment }) {
                 variant="subtitle2"
                 sx={{
                   padding: "0.4rem 1.2rem",
-                  color: "#fff",
+                  color: "var(--color-grey-0)",
                   fontSize: "16px",
                 }}
               >

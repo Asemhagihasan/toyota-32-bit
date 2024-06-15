@@ -71,15 +71,16 @@ function FilteredProducts() {
         <CustomInput
           text="Search by code or name"
           sx={{
-            "--Input-focusedHighlight":
-              "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
             width: "100%",
           }}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
         {showNotFound && (
-          <Typography variant="subtitle2" sx={{ minWidth: "125px" }}>
+          <Typography
+            variant="subtitle2"
+            sx={{ minWidth: "125px", color: "var(--color-grey-700)" }}
+          >
             {products.length} item found
           </Typography>
         )}

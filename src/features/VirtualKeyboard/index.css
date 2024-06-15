@@ -12,3 +12,7 @@
   max-width: 1200px !important;
   background-color: transparent !important;
 }
+.hg-button {
+  background-color: var(--color-grey-0) !important;
+  color: var(--color-grey-700) !important;
+}

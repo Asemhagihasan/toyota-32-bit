@@ -33,7 +33,7 @@ function SalesPage() {
         >
           <Typography
             variant="subtitle1"
-            sx={{ textAlign: "center", color: "gray" }}
+            sx={{ textAlign: "center", color: "var(--color-grey-700)" }}
           >
             The store is currently online and available to shoppers
           </Typography>

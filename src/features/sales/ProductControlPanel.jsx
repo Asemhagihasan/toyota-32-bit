@@ -54,7 +54,7 @@ function ProductControlPanel() {
           text="Search by code or name"
           sx={{
             "--Input-focusedHighlight":
-              "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, #e67e22))) !important",
+              "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",
             width: "296.6px",
           }}
           value={value}
@@ -65,9 +65,9 @@ function ProductControlPanel() {
             height: "3rem",
             fontSize: "2rem",
             borderRadius: "6px",
-            backgroundColor: "#fff",
+            backgroundColor: "var(--color-grey-0)",
             color: "#333",
-            "&:hover": { backgroundColor: "#fff" },
+            "&:hover": { backgroundColor: "var(--color-grey-0)" },
           }}
           variant="contained"
           disableElevation

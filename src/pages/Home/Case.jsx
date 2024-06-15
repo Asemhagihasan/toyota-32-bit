@@ -7,8 +7,10 @@ function Case() {
       sx={{
         maxWidth: 300,
         borderRadius: "1rem",
-        backgroundColor: "#f5f7f8",
-        mt: "8px",
+        backgroundColor: "var(--color-grey-0)",
+        color: "var(--color-grey-700)",
+        mt: "1rem",
+        ml: "1rem",
       }}
     >
       <Box p={2}>

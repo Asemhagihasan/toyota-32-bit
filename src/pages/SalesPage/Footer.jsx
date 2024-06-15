@@ -13,7 +13,7 @@ function Footer() {
           width: "100%",
           height: "50px",
           padding: "1rem 1rem",
-          color: "#000",
+          color: "var(--color-grey-700)",
           boxSizing: "border-box",
           display: "flex",
           alignItems: "center",

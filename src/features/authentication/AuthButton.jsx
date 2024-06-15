@@ -21,14 +21,21 @@ function AuthButton() {
     return (
       <>
         <Typography
-          sx={{ display: { xs: "none", s: "none", md: "block" } }}
+          sx={{
+            display: { xs: "none", s: "none", md: "block" },
+            color: "var(--color-grey-700)",
+          }}
           variant="h6"
         >
           {translate("auth.signOut")}
         </Typography>
         <Button onClick={handelLogout}>
           <LogoutIcon
-            sx={{ fontWeight: "bold", fontSize: "1.5rem", color: "#fff" }}
+            sx={{
+              fontWeight: "bold",
+              fontSize: "1.5rem",
+              color: "var(--color-grey-700)",
+            }}
           />
         </Button>
       </>
@@ -39,7 +46,11 @@ function AuthButton() {
       <Typography variant="h6">{translate("auth.signIn")}</Typography>
       <Button onClick={handelLogin}>
         <LoginIcon
-          sx={{ fontWeight: "bold", fontSize: "1.5rem", color: "#fff" }}
+          sx={{
+            fontWeight: "bold",
+            fontSize: "1.5rem",
+            color: "var(--color-grey-0)",
+          }}
         />
       </Button>
     </>

@@ -11,7 +11,7 @@ function QuantityControl({ quantity, productId }) {
       sx={{
         width: { xs: "100px", md: "130px" },
         height: "35px",
-        backgroundColor: "#e5e5e5",
+        backgroundColor: "var(--color-grey-100)",
         borderRadius: "2rem",
       }}
     >
@@ -19,18 +19,21 @@ function QuantityControl({ quantity, productId }) {
         onClick={() => {
           dispatch({ type: "increaseItemQuantity", payload: productId });
         }}
-        sx={{ width: "30px", height: "30px" }}
+        sx={{ width: "30px", height: "30px", color: "var(--color-grey-700)" }}
       >
         +
       </IconButton>
-      <Typography variant="subtitle2" sx={{ color: "gray", fontSize: "16px" }}>
+      <Typography
+        variant="subtitle2"
+        sx={{ color: "var( --color-grey-700)", fontSize: "16px" }}
+      >
         {quantity}
       </Typography>
       <IconButton
         onClick={() => {
           dispatch({ type: "decreaseItemQuantity", payload: productId });
         }}
-        sx={{ width: "30px", height: "30px" }}
+        sx={{ width: "30px", height: "30px", color: "var(--color-grey-700)" }}
       >
         -
       </IconButton>

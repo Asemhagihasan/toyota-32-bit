@@ -13,6 +13,7 @@ function CartItem({ item }) {
           height: "5.5rem",
           boxShadow: "none",
           borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+          backgroundColor: "var(--color-grey-0)",
         }}
       >
         <CardContent
@@ -33,17 +34,25 @@ function CartItem({ item }) {
             <Typography
               variant="subtitle2"
               component="p"
-              sx={{ fontWeight: "600" }}
+              sx={{ fontWeight: "600", color: "var(--color-grey-700)" }}
             >
               {item.name}
             </Typography>
-            <Typography variant="subtitle2" component="p" color="gray">
+            <Typography
+              variant="subtitle2"
+              component="p"
+              sx={{ color: "var(--color-grey-700)" }}
+            >
               #{item.productCode}
             </Typography>
             <Typography
               variant="subtitle2"
               component="p"
-              sx={{ fontSize: "12px", fontWeight: "bold", color: "#d1d1d1" }}
+              sx={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                color: "var(--color-grey-500)",
+              }}
             >
               KDV %{item.KDV * 100}
             </Typography>
@@ -56,7 +65,11 @@ function CartItem({ item }) {
             <Typography
               variant="subtitle1"
               component="p"
-              sx={{ fontWeight: "500", fontSize: "1.2rem", color: "gray" }}
+              sx={{
+                fontWeight: "500",
+                fontSize: "1.2rem",
+                color: "var(--color-grey-700)",
+              }}
             >
               $ {item.totalPrice}
             </Typography>
@@ -65,7 +78,7 @@ function CartItem({ item }) {
             sx={{
               width: "2rem",
               height: "2rem",
-              color: "gray",
+              color: "var(--color-grey-700)",
               fontWeight: "400",
             }}
             onClick={() => {
