@@ -1,8 +1,6 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
-
 import PersonIcon from "@mui/icons-material/Person";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
-import UndoIcon from "@mui/icons-material/Undo";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -102,12 +100,6 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.PriceView")}</Content>
-        )}
-      </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <UndoIcon sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }} />
-        {sideBarIsOpen && (
-          <Content> {translate("sideBarItems.returnTransactions")}</Content>
         )}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/settings">
