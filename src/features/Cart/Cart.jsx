@@ -53,7 +53,11 @@ function Cart({ setMakePayment }) {
         }}
       >
         <Box>
-          <CloseIcon setClicked={setClicked} />
+          <CloseIcon
+            onClick={(e) => {
+              setClicked(!e);
+            }}
+          />
           <Divider />
           {!cartItems.length && <EmptyCart />}
           {cartItems.map((item, index) => (
