@@ -1,10 +1,11 @@
 // src/services/Reduction.js
 class Reduction {
-  constructor(name, description, discount, conditions = {}) {
+  constructor(name, description, discount, conditions = {}, total) {
     this.name = name;
     this.description = description;
     this.discount = discount;
     this.conditions = conditions;
+    this.disabled = !this.isApplicable(total);
   }
 
   isApplicable(total) {

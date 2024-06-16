@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsActiveLink } from "../../hooks/useIsActiveLink";
 import { useTranslation } from "react-i18next";
-import ItemList from "../../ui/ItemList";
+import MenuList from "../../ui/MenuList";
 
 function LocationSetter() {
   const { t: translate } = useTranslation();
@@ -47,8 +47,8 @@ function LocationSetter() {
         >
           {translate("setLocation.scanner")}
         </Link>
-        <ItemList
-          text="Show Price"
+        <MenuList
+          title="Show Price"
           sx={{ width: "174px" }}
           items={[
             {
