@@ -49,7 +49,7 @@ function AuthButton() {
           sx={{
             fontWeight: "bold",
             fontSize: "1.5rem",
-            color: "var(--color-grey-0)",
+            color: "var(--color-grey-700)",
           }}
         />
       </Button>
