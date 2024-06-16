@@ -53,7 +53,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
                   fontWeight: "600",
                 }}
               >
-                {translate("sideBarItems.user")}
+                {translate("salePage.user")}
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -82,19 +82,15 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/categories">
         <ShoppingCartOutlinedIcon sx={iconStyle} />
-        {sideBarIsOpen && <Content>{translate("sideBarItems.sales")}</Content>}
+        {sideBarIsOpen && <Content>{translate("salePage.sales")}</Content>}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/allProducts">
         <SellOutlinedIcon sx={iconStyle} />
-        {sideBarIsOpen && (
-          <Content> {translate("sideBarItems.PriceView")}</Content>
-        )}
+        {sideBarIsOpen && <Content> {translate("salePage.PriceView")}</Content>}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/settings">
         <SettingsIcon sx={iconStyle} />
-        {sideBarIsOpen && (
-          <Content>{translate("sideBarItems.Settings")}</Content>
-        )}
+        {sideBarIsOpen && <Content>{translate("salePage.Settings")}</Content>}
       </Item>
     </Stack>
   );
