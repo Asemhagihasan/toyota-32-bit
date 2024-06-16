@@ -29,6 +29,9 @@ function AppLayout() {
             setSideBarIsOpen={setSideBarIsOpen}
           />
           <Stack
+            onClick={() => {
+              setSideBarIsOpen(false);
+            }}
             sx={{ ml: { xs: "0", s: "0", md: "0", lg: "5.5rem" } }}
             zIndex={1}
           >

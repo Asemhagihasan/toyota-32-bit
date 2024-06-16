@@ -79,12 +79,14 @@ code {
   text-decoration: none;
   transition: all 0.5s;
 }
+
 .item:hover {
   background-color: var(--color-grey-100);
 }
 .item:hover > svg {
   color: var(--color-brand-600);
 }
+
 .active > svg {
   color: var(--color-brand-600);
 }

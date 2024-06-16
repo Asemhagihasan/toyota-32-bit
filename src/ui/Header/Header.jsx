@@ -20,7 +20,7 @@ function Header({ handelButton, sideBarIsOpen }) {
         borderBottom: "1px solid var(--color-grey-200)",
         justifyContent: "space-between",
         zIndex: 103,
-        color: "#fff",
+        color: "var(--color-grey-0)",
       }}
     >
       <Content>
