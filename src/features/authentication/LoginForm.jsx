@@ -158,17 +158,22 @@ function LoginForm() {
                   setShowTextKeyboard(true);
                   setShowPassKeyboard(false);
                 }}
+                sx={{ backgroundColor: "var(--color-grey-50)" }}
               />
               <IconButton
                 sx={{
                   position: "absolute",
                   top: "8px",
                   left: "92%",
-                  color: `${showTextKeyboard ? "var(--color-brand-600)" : ""}`,
+                  color: `${
+                    showTextKeyboard
+                      ? "var(--color-brand-600)"
+                      : "var(--color-grey-700)"
+                  }`,
                 }}
                 onClick={() => handelShowKeypord("text")}
               >
-                <KeyboardIcon />
+                <KeyboardIcon sx={{ color: "var(--color-grey-700)" }} />
               </IconButton>
             </Box>
             <Box sx={{ position: "relative" }}>
@@ -176,19 +181,25 @@ function LoginForm() {
                 text={translate("auth.password")}
                 fullWidth
                 id="pass-input"
+                // type="password"
                 value={userPass}
                 onChange={onChangeInput}
                 onFocus={() => {
                   setShowTextKeyboard(false);
                   setShowPassKeyboard(true);
                 }}
+                sx={{ backgroundColor: "var(--color-grey-50)" }}
               />
               <IconButton
                 sx={{
                   position: "absolute",
                   top: "8px",
                   left: "92%",
-                  color: `${showPassKeyboard ? "var(--color-brand-600)" : ""}`,
+                  color: `${
+                    showPassKeyboard
+                      ? "var(--color-brand-600)"
+                      : "var(--color-grey-700)"
+                  }`,
                 }}
                 onClick={() => handelShowKeypord("pass")}
               >
