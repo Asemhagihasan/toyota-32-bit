@@ -26,7 +26,7 @@ function LocationSetter() {
           }`}
           to="categories"
         >
-          {translate("setLocation.categories")}
+          {translate("salePage.categories")}
         </Link>
         <button
           className={`linkBtn ${
@@ -37,7 +37,7 @@ function LocationSetter() {
           to="products"
           disabled
         >
-          {translate("setLocation.products")}
+          {translate("salePage.products")}
         </button>
         <Link
           className={`linkBtn ${
@@ -45,14 +45,14 @@ function LocationSetter() {
           }`}
           to="qrscanner"
         >
-          {translate("setLocation.scanner")}
+          {translate("salePage.scanner")}
         </Link>
         <MenuList
-          title="Show Price"
+          title={translate("salePage.showPrice")}
           sx={{ width: "174px" }}
           items={[
             {
-              description: "All Products",
+              description: translate("salePage.AllProduct"),
               handelClick: () => {
                 if (location.pathname !== "/salesPage/allProducts") {
                   navigate("/salesPage/allProducts");
@@ -61,7 +61,7 @@ function LocationSetter() {
               },
             },
             {
-              description: "Favorit products",
+              description: translate("salePage.favoriteProducts"),
               handelClick: () => {
                 if (location.pathname !== "/salesPage/favoritProducts") {
                   navigate("/salesPage/favoritProducts");

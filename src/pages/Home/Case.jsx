@@ -1,6 +1,8 @@
 import { Box, Card, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function Case() {
+  const { t: translate } = useTranslation();
   return (
     <Card
       variant="outlined"
@@ -15,16 +17,16 @@ function Case() {
     >
       <Box p={2}>
         <Typography variant="body2" gutterBottom>
-          store No :1057
+          {translate("homePage.storeNo")} :1057
         </Typography>
         <Typography variant="body2" gutterBottom>
-          Case No :1
+          {translate("homePage.caseNo")} :1
         </Typography>
         <Typography variant="body2" gutterBottom>
-          store Ip No :10.0.2.16
+          {translate("homePage.storeIp")}:10.0.2.16
         </Typography>
         <Typography variant="body2" gutterBottom>
-          Version :v1.3.78.146
+          {translate("homePage.version")} :v1.3.78.146
         </Typography>
       </Box>
     </Card>

@@ -1,9 +1,11 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import CaseConnectionStatus from "../Home/CaseConnectionStatus";
 import { useAuth } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
   const { user } = useAuth();
+  const { t: translate } = useTranslation();
   return (
     <Box mt={2}>
       <Divider />
@@ -20,9 +22,13 @@ function Footer() {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="subtitle2">Satici / {user.userName}</Typography>
+        <Typography variant="subtitle2">
+          {translate("salePage.seller")} / {user.userName}
+        </Typography>
         <Stack flexDirection="column" alignItems="center">
-          <Typography variant="subtitle2">Satis belegesi</Typography>
+          <Typography variant="subtitle2">
+            {translate("salePage.salesReceipt")}
+          </Typography>
           <Typography variant="subtitle2">1057/1/10.0.2.16</Typography>
         </Stack>
         <CaseConnectionStatus />

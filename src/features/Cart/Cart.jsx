@@ -5,10 +5,12 @@ import CartItem from "./CartItem";
 import { useCart } from "../../context/CartContext";
 import EmptyCart from "./EmptyCart";
 import CartTotal from "./CartTotal";
+import { useTranslation } from "react-i18next";
 
 function Cart({ setMakePayment }) {
   const [clicked, setClicked] = useState(false);
   const { getCart, total, dispatch, reduction } = useCart();
+  const { t: translate } = useTranslation();
   const cartItems = getCart();
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -28,7 +30,7 @@ function Cart({ setMakePayment }) {
             color: "var(--color-brand-600)",
           }}
         >
-          Open Cart
+          {translate("salePage.openCart")}
         </Button>
       )}
       <Stack
@@ -82,21 +84,27 @@ function Cart({ setMakePayment }) {
                   fontSize: "16px",
                 }}
               >
-                {reduction.name} kampanyasi uygulandi
+                {reduction.description} {translate("salePage.reductionApplied")}
               </Typography>
             )}
             <CartTotal
-              content={{ text: "Ara Toplam", total: total.subTotal }}
+              content={{
+                text: `${translate("salePage.subTotal")}`,
+                total: total.subTotal,
+              }}
             />
             <CartTotal
-              content={{ text: "Toplam Tutar", total: total.totalAmount }}
+              content={{
+                text: `${translate("salePage.totalAmount")}`,
+                total: total.totalAmount,
+              }}
             />
             <Box sx={{ paddingLeft: "0.8rem" }}>
               <Button
                 onClick={() => dispatch({ type: "clearCart" })}
                 color="error"
               >
-                Belge iptal
+                {translate("salePage.cancelDocument")}
               </Button>
               <Button
                 onClick={() => {
@@ -105,7 +113,7 @@ function Cart({ setMakePayment }) {
                 }}
                 sx={{ color: "orange" }}
               >
-                Finish & pay
+                {translate("salePage.finishPay")}
               </Button>
             </Box>
           </Box>

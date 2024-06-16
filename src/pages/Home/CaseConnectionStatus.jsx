@@ -1,8 +1,10 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
 import { useConnection } from "../../context/ConnectionStatus";
+import { useTranslation } from "react-i18next";
 function CaseConnectionStatus() {
   const { isOnline } = useConnection();
+  const { t: translate } = useTranslation();
   return (
     <Stack
       sx={{ color: "var(--color-grey-700)", ml: "1rem", mb: "1rem" }}
@@ -12,7 +14,10 @@ function CaseConnectionStatus() {
       alignItems="center"
     >
       <Typography variant="subtitle2">
-        Store is {isOnline ? "online" : "offline"}
+        {translate("homePage.storeIs")}{" "}
+        {isOnline
+          ? `${translate("homePage.onlineState")}`
+          : `${translate("homePage.offlineState")}`}
       </Typography>
       <Stack
         sx={{

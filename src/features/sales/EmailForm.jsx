@@ -3,8 +3,10 @@ import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import { useRef } from "react";
 import CustomInput from "../../ui/CustomInput";
 import LinkButton from "../../ui/LinkButton";
+import { useTranslation } from "react-i18next";
 
 function EmailForm({ email, setEmail, setSendEmail }) {
+  const { t: translate } = useTranslation();
   function onChangeInput(e) {
     const input = e.target.value;
     setEmail(input);
@@ -15,7 +17,7 @@ function EmailForm({ email, setEmail, setSendEmail }) {
     <Stack sx={{ mt: "3rem" }}>
       <CustomInput
         type="email"
-        text="Please enter the user's email address"
+        text={translate("salePage.userEmailAddress")}
         sx={{
           "--Input-focusedHighlight":
             "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500,var(--color-orange-100) ))) !important",
@@ -38,7 +40,7 @@ function EmailForm({ email, setEmail, setSendEmail }) {
           setSendEmail(false);
         }}
       >
-        Send
+        {translate("salePage.send")}
       </Button>
       <LinkButton
         to="-1"
@@ -47,7 +49,7 @@ function EmailForm({ email, setEmail, setSendEmail }) {
           setSendEmail(false);
         }}
       >
-        &larr; Back to sale page
+        &larr; {translate("salePage.backToSalePage")}
       </LinkButton>
     </Stack>
   );

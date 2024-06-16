@@ -7,15 +7,18 @@ import CustomInput from "../../ui/CustomInput";
 import NotFoundCart from "../../ui/NotFoundCart";
 import Product from "../../ui/Product";
 import { Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function Categories() {
   const { categories } = useLoaderData();
+  const { t: translate } = useTranslation();
   const { query, setQuery, foundProduct, searched } =
     useProductSearch(categories);
+
   return (
     <Stack spacing={1.5}>
       <CustomInput
-        text="Search by code or name"
+        text={translate("salePage.searchQuery")}
         sx={{
           "--Input-focusedHighlight":
             "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",

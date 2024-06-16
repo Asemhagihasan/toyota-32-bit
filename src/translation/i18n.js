@@ -3,16 +3,19 @@ import languageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import { translatedAuthEn } from "./locals/en/translatedAuthEn";
 import { translatedErrorsEn } from "./locals/en/translatedErrorsEn";
-import { translatedSideBarItemsEn } from "./locals/en/translatedSideBarItemsEn";
-import { translatedSetLocationEn } from "./locals/en/translatedSetLocationEn";
 import { translatedErrorsFr } from "./locals/fr/translatedErrorsFr";
 import { translatedAuthFr } from "./locals/fr/translatedAuthFr";
-import { translatedSideBarItemsFr } from "./locals/fr/translatedSideBarItemsFr";
-import { translatedSetLocationFr } from "./locals/fr/translatedSetLocationFr";
 import { translatedErrorsTr } from "./locals/tr/translatedErrorsTr";
 import { translatedAuthTr } from "./locals/tr/translatedAuthTr";
-import { translatedSideBarItemsTr } from "./locals/tr/translatedSideBarItemsTr";
-import { translatedSetLocationTr } from "./locals/tr/translatedSetLocationTr";
+import { translatedHomePageFr } from "./locals/fr/translatedHomePageFr";
+import { translatedHomePageEn } from "./locals/en/translatedHomePageEn";
+import { translatedHomePageTr } from "./locals/tr/translatedHomePageTr";
+import { translatedSalePageEn } from "./locals/en/translatedSalePageEn";
+import { translatedSalePageFr } from "./locals/fr/translatedSalePageFr";
+import { translatedSalePageTr } from "./locals/tr/translatedSalePageTr";
+import { translatedSettingsPageEn } from "./locals/en/translatedSettingsPageEn";
+import { translatedSettingsPageFr } from "./locals/fr/translatedSettingsPageFr";
+import { translatedSettingsPageTr } from "./locals/tr/translatedSettingsPageTr";
 
 i18next
   .use(languageDetector)
@@ -26,24 +29,27 @@ i18next
         translation: {
           auth: translatedAuthEn,
           errors: translatedErrorsEn,
-          sideBarItems: translatedSideBarItemsEn,
-          setLocation: translatedSetLocationEn,
+          salePage: translatedSalePageEn,
+          homePage: translatedHomePageEn,
+          settingsPage: translatedSettingsPageEn,
         },
       },
       fr: {
         translation: {
           auth: translatedAuthFr,
           errors: translatedErrorsFr,
-          sideBarItems: translatedSideBarItemsFr,
-          setLocation: translatedSetLocationFr,
+          salePage: translatedSalePageFr,
+          homePage: translatedHomePageFr,
+          settingsPage: translatedSettingsPageFr,
         },
       },
       tr: {
         translation: {
           auth: translatedAuthTr,
           errors: translatedErrorsTr,
-          sideBarItems: translatedSideBarItemsTr,
-          setLocation: translatedSetLocationTr,
+          salePage: translatedSalePageTr,
+          homePage: translatedHomePageTr,
+          settingsPage: translatedSettingsPageTr,
         },
       },
     },
