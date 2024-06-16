@@ -16,6 +16,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
   const sideBarOpen = sideBarIsOpen
     ? { width: "270px", zIndex: 99, boxShadow: "0 0 20px rgba(0, 0, 0, .5);" }
     : {};
+  const iconStyle = { color: "var(--color-grey-400)", fontSize: "1.7rem" };
 
   return (
     <Stack
@@ -76,32 +77,21 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         </Box>
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
-        <HomeOutlinedIcon
-          sx={{
-            color: "var(--color-grey-400)",
-            fontSize: "1.7rem",
-          }}
-        />
+        <HomeOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && <Content>Home</Content>}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/categories">
-        <ShoppingCartOutlinedIcon
-          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
-        />
+        <ShoppingCartOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && <Content>{translate("sideBarItems.sales")}</Content>}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/allProducts">
-        <SellOutlinedIcon
-          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
-        />
+        <SellOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && (
           <Content> {translate("sideBarItems.PriceView")}</Content>
         )}
       </Item>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/settings">
-        <SettingsIcon
-          sx={{ color: "var(--color-grey-400)", fontSize: "1.5rem" }}
-        />
+        <SettingsIcon sx={iconStyle} />
         {sideBarIsOpen && (
           <Content>{translate("sideBarItems.Settings")}</Content>
         )}
