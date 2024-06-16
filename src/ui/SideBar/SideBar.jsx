@@ -28,13 +28,9 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         backgroundColor: "var(--color-grey-0)",
         position: "absolute",
         top: "0",
-        // left: "0",
         left: !sideBarIsOpen
           ? { xs: "-4.5rem", s: "-4.5rem", md: "-4.5rem", lg: "0" }
           : "0",
-        // display: !sideBarIsOpen
-        //   ? { xs: "none", s: "none", md: "none", lg: "block" }
-        //   : {},
         transition: "all .4s",
         overflowX: "hidden",
         ...sideBarOpen,
