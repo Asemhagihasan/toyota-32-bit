@@ -12,6 +12,7 @@ import Error from "./ui/Error";
 import FilteredProducts from "./features/Products/FilteredProducts";
 import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
 import NoInternetConnection from "./ui/NoInternetConnection.jsx";
+import SettingsPage from "./pages/Settings/SettingsPage.jsx";
 
 const routes = [
   {
@@ -60,6 +61,10 @@ const routes = [
             loader: ProductsLoader,
           },
         ],
+      },
+      {
+        path: "/settings",
+        element: <SettingsPage />,
       },
       {
         path: "/NoInternetConnection",
