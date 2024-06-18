@@ -14,8 +14,6 @@ import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
 import NoInternetConnection from "./ui/NoInternetConnection.jsx";
 import SettingsPage from "./pages/Settings/SettingsPage";
 
-import SettingsPage from "./pages/Settings/SettingsPage";
-
 const routes = [
   {
     name: "AppLayout",
