@@ -7,8 +7,10 @@ import Footer from "./Footer";
 import { useState } from "react";
 import PaymentPanel from "../../features/sales/PaymentPanel";
 import LinkButton from "../../ui/LinkButton";
+import { useTranslation } from "react-i18next";
 function SalesPage() {
   const [makePayment, setMakePayment] = useState(false);
+  const { t: translate } = useTranslation();
   const styledBaseOnState = {
     display: "flex",
     flexDirection: "column",
@@ -35,13 +37,13 @@ function SalesPage() {
             variant="subtitle1"
             sx={{ textAlign: "center", color: "var(--color-grey-700)" }}
           >
-            The store is currently online and available to shoppers
+            {translate("salePage.storeAvailability")}
           </Typography>
           {makePayment ? (
             <>
               <PaymentPanel setMakePayment={setMakePayment} />
               <LinkButton to="-1" onClick={() => setMakePayment(false)}>
-                &larr; Back to sale page
+                &larr; {translate("salePage.goBack")}
               </LinkButton>
             </>
           ) : (

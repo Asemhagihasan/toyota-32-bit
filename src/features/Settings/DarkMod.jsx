@@ -2,6 +2,7 @@ import { Divider, Stack, Typography, useTheme } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/system";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { useTranslation } from "react-i18next";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -53,12 +54,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 function DarkMode() {
   const theme = useTheme();
   const { setIsDarkMode, isDarkMode } = useDarkMode();
+  const { t: translate } = useTranslation();
 
   function handleSwitchChange(e) {
     setIsDarkMode(e.target.checked);
   }
-  console.log(isDarkMode);
-
   return (
     <>
       <Stack
@@ -71,7 +71,7 @@ function DarkMode() {
           variant="subtitle2"
           sx={{ fontSize: "18px", color: "var(--color-grey-700)" }}
         >
-          Dark Mode
+          {translate("settingsPage.darkMode")}
         </Typography>
         <MaterialUISwitch
           defaultChecked={isDarkMode}

@@ -7,6 +7,7 @@ import PaymentDetail from "./PaymentDetail";
 import Popup from "../../ui/Popup";
 import EmailForm from "../sales/EmailForm";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function PaymentPanel({ setMakePayment }) {
   const keyboard = useRef();
@@ -15,6 +16,7 @@ function PaymentPanel({ setMakePayment }) {
   const [paymentMethod, setPaymentMethod] = useState("nakit");
   const [sendEmail, setSendEmail] = useState(false);
   const [email, setEmail] = useState("");
+  const { t: translate } = useTranslation();
   const { total } = useCart();
   function onChangeInput(e) {
     const input = e.target.value;
@@ -48,7 +50,7 @@ function PaymentPanel({ setMakePayment }) {
                 variant="subtitle1"
                 sx={{ color: "var(--color-grey-700)" }}
               >
-                Added ****@gmail.com
+                {translate("salePage.added")} ****@gmail.com
               </Typography>
             )}
             <Button
@@ -77,7 +79,7 @@ function PaymentPanel({ setMakePayment }) {
                 setPaymentMethod("nakit");
               }}
             >
-              Nakit
+              {translate("salePage.cash")}
             </Button>
             <Button
               variant="contained"
@@ -103,11 +105,11 @@ function PaymentPanel({ setMakePayment }) {
                 setPaymentMethod("krediKart");
               }}
             >
-              Kredi Kart
+              {translate("salePage.creditCard")}
             </Button>
           </Box>
           <CustomInput
-            text="Please enter the payment amount"
+            text={translate("salePage.paymentAmount")}
             sx={{
               width: "370px",
               marginLeft: "5px",
@@ -135,7 +137,7 @@ function PaymentPanel({ setMakePayment }) {
               }}
               variant="contained"
             >
-              Email receipt
+              {translate("salePage.emailReceipt")}
             </Button>
 
             <Button
@@ -150,7 +152,7 @@ function PaymentPanel({ setMakePayment }) {
                 setModel(true);
               }}
             >
-              Belge Bitir
+              {translate("salePage.finishCart")}
             </Button>
           </Stack>
         </Box>

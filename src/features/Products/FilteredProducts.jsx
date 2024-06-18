@@ -9,6 +9,7 @@ import useProductSearch from "../../hooks/useProductSearch";
 import CustomInput from "../../ui/CustomInput";
 import { Box, Container, Typography } from "@mui/material";
 import NotFoundCart from "../../ui/NotFoundCart";
+import { useTranslation } from "react-i18next";
 
 function FilteredProducts() {
   const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ function FilteredProducts() {
   const [isLoading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
   const location = useLocation();
-
+  const { t: translate } = useTranslation();
   const Allproducts = useLoaderData();
   const isFavoritSelected = location.pathname === "/salesPage/favoritProducts";
   const { query, setQuery, foundProduct, searched } =
@@ -69,7 +70,7 @@ function FilteredProducts() {
         }}
       >
         <CustomInput
-          text="Search by code or name"
+          text={translate("salePage.searchQuery")}
           sx={{
             width: "100%",
           }}
@@ -81,7 +82,7 @@ function FilteredProducts() {
             variant="subtitle2"
             sx={{ minWidth: "125px", color: "var(--color-grey-700)" }}
           >
-            {products.length} item found
+            {products.length} {translate("salePage.itemFound")}
           </Typography>
         )}
       </Box>
@@ -117,7 +118,7 @@ function FilteredProducts() {
           }}
         >
           <button className="linkBtn" onClick={handleLoad}>
-            Load
+            {translate("salePage.load")}
           </button>
         </Container>
       )}

@@ -11,6 +11,7 @@ import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 
 import Popup from "../../ui/Popup";
+import { useTranslation } from "react-i18next";
 
 function PaymentDetail({
   setModel,
@@ -27,6 +28,7 @@ function PaymentDetail({
     reduction,
     setReduction,
   } = useCart();
+  const { t: translate } = useTranslation();
   const cartItems = getCart();
   const totalTax = calculateTotalTax(cartItems);
   const paymentMethodCheck = paymentMethod === "nakit";
@@ -51,7 +53,7 @@ function PaymentDetail({
           sx={{ width: "300px", mb: "1.5rem" }}
         >
           <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
-            Cash register
+            {translate("salePage.cashRegister")}
           </Typography>
           <IconButton onClick={handlePrint}>
             <PrintIcon sx={{ color: "var(--color-grey-700)" }} />
@@ -60,7 +62,9 @@ function PaymentDetail({
         {cartItems.map((item, index) => (
           <BillItem key={index} item={item} />
         ))}
-        <BillItemContent item={{ name: "subTotal", total: total.subTotal }} />
+        <BillItemContent
+          item={{ name: translate("salePage.subTotal"), total: total.subTotal }}
+        />
         {reduction && (
           <>
             <BillItemContent
@@ -70,27 +74,32 @@ function PaymentDetail({
               }}
             />
             <BillItemContent
-              item={{ name: "Amount total", total: total.totalAmount }}
+              item={{
+                name: translate("salePage.totalAmount"),
+                total: total.totalAmount,
+              }}
             />
           </>
         )}
-        <BillItemContent item={{ name: "Tax", total: totalTax }} />
+        <BillItemContent
+          item={{ name: translate("salePage.tax"), total: totalTax }}
+        />
         <BillItemContent
           item={{
-            name: "Total",
+            name: translate("salePage.total"),
             total: billCost,
           }}
         />
         <BillItemContent
           item={{
-            name: "Alanan para",
+            name: translate("salePage.receivedMoney"),
             total: +value,
           }}
         />
         {paymentMethodCheck && (
           <BillItemContent
             item={{
-              name: "para ustu",
+              name: translate("salePage.change"),
               total: (+value - billCost).toFixed(2),
             }}
           />
@@ -105,7 +114,7 @@ function PaymentDetail({
               variant="subtitle2"
               sx={{ fontSize: "16px", color: "var(--color-grey-700)" }}
             >
-              Payment method
+              {translate("salePage.paymentMethod")}
             </Typography>
             {paymentMethodCheck ? (
               <AttachMoneyIcon sx={{ color: "var(--color-grey-700)" }} />
@@ -117,7 +126,7 @@ function PaymentDetail({
             variant="subtitle2"
             sx={{ fontSize: "12px", color: "var(--color-brand-600)" }}
           >
-            {paymentMethodCheck ? "Nakit" : "Vise(****0219)"}
+            {paymentMethodCheck ? translate("salePage.cash") : "Vise(****0219)"}
           </Typography>
         </Box>
         {email && (
@@ -127,7 +136,7 @@ function PaymentDetail({
             justifyContent="space-between"
           >
             <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>
-              User's Email
+              {translate("salePage.userEmail")}
             </Typography>
             <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>
               {email}
@@ -144,7 +153,7 @@ function PaymentDetail({
         }}
         to="/salesPage/categories"
       >
-        &larr; Back to sale page
+        &larr; {translate("salePage.backToSalePage")}
       </LinkButton>
     </Popup>
   );
