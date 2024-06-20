@@ -18,7 +18,7 @@ export default function PrivateRoute({ children }) {
       />
     );
   }
-  if (!user.isAuthanticated) {
+  if (!user.isAuthenticated) {
     return (
       <Navigate
         to="/auth"
