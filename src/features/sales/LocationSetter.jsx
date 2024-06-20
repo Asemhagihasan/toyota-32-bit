@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsActiveLink } from "../../hooks/useIsActiveLink";
 import { useTranslation } from "react-i18next";
 import MenuList from "../../ui/MenuList";
+import { Height, Padding } from "@mui/icons-material";
 
 function LocationSetter() {
   const { t: translate } = useTranslation();
@@ -49,7 +50,7 @@ function LocationSetter() {
         </Link>
         <MenuList
           title={translate("salePage.showPrice")}
-          sx={{ width: "174px" }}
+          sx={{ height: "41.5px" }}
           items={[
             {
               description: translate("salePage.AllProduct"),

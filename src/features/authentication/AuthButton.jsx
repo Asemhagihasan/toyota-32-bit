@@ -17,7 +17,7 @@ function AuthButton() {
     navigate("/auth");
   }
 
-  if (user?.isAuthanticated) {
+  if (user?.isAuthenticated) {
     return (
       <>
         <Typography

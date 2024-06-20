@@ -6,7 +6,6 @@ function CustomInput({ text, sx, ...props }) {
       placeholder={text}
       color="secondary"
       variant="solid"
-      required
       sx={{
         backgroundColor: "var(--color-grey-0)",
         color: "var(--color-grey-700)",

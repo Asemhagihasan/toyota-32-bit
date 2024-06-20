@@ -4,7 +4,7 @@ import { useInputControl } from "../context/InputControlContext";
 
 function Product({ product }) {
   const { dispatch, getCurrentQuantity } = useCart();
-  const { value, setValue } = useInputControl();
+  const { value, setValue, keyboard } = useInputControl();
   const { id, productCode, name, price, image, unit, KDV } = product;
   const currentQuantity = getCurrentQuantity(id);
   const isInCart = currentQuantity > 0;
@@ -19,7 +19,11 @@ function Product({ product }) {
         totalPrice: parseFloat((price * (+value || 1)).toFixed(2)),
         KDV: KDV,
       };
-      value.length > 0 && setValue("");
+      if (value.length > 0) {
+        setValue("");
+        keyboard?.current?.setInput("");
+      }
+
       dispatch({ type: "addItem", payload: newItem });
       return;
     }
