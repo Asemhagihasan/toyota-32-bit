@@ -13,6 +13,7 @@ import FilteredProducts from "./features/Products/FilteredProducts";
 import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
 import NoInternetConnection from "./ui/NoInternetConnection.jsx";
 import SettingsPage from "./pages/Settings/SettingsPage";
+import { loader as usersLoader } from "./features/authentication/LoginForm.jsx";
 
 const routes = [
   {
@@ -79,6 +80,7 @@ const routes = [
   {
     name: "auth",
     path: "/auth",
+    loader: usersLoader,
     element: <LoginLayout />,
   },
 
