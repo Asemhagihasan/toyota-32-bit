@@ -8,12 +8,12 @@ function LoginLayout() {
       sx={{
         width: "100%",
         height: "100vh",
+        gap: { md: "3rem" },
       }}
       direction="row"
       flexWrap="wrap"
       justifyContent="center"
       alignItems="center"
-      gap="4rem"
     >
       <Logo />
       <LoginForm />
