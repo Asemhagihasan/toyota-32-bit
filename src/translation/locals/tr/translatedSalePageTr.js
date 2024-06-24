@@ -46,4 +46,7 @@ export const translatedSalePageTr = {
   paymentMethod: "Ödeme yöntemi",
   userEmail: "Müşterinin E-postası",
   load: "yükle",
+  productName: "Ürün Adı",
+  quantity: "Miktar",
+  sampleProduct: "Örnek Ürün",
 };
