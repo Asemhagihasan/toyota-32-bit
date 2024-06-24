@@ -1,6 +1,11 @@
 import { Button, Stack, Typography } from "@mui/material";
+import TestBill from "./TestBill";
+import { usePrintBill } from "../../hooks/usePrintBill";
+import { useTranslation } from "react-i18next";
 
 function PrinterTest() {
+  const { pdfRef, printBill } = usePrintBill();
+  const { t: translate } = useTranslation();
   return (
     <>
       <Stack
@@ -10,7 +15,7 @@ function PrinterTest() {
         sx={{ padding: "1.3rem 0", color: "var(--color-grey-700)" }}
       >
         <Typography variant="subtitle2" sx={{ fontSize: "18px" }}>
-          Language
+          {translate("settingsPage.printerTest")}
         </Typography>
         <Button
           sx={{
@@ -21,9 +26,13 @@ function PrinterTest() {
           }}
           variant="contained"
           disableElevation
+          onClick={printBill}
         >
-          Printer Test
+          {translate("settingsPage.printerTest")}
         </Button>
+        <div style={{ display: "none" }}>
+          <TestBill pdfRef={pdfRef} />
+        </div>
       </Stack>
     </>
   );
