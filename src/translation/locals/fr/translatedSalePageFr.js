@@ -46,4 +46,7 @@ export const translatedSalePageFr = {
   paymentMethod: "Moyen de paiement",
   userEmail: "Email du client",
   load: "charger",
+  productName: "Nom du Produit",
+  quantity: "Quantité",
+  sampleProduct: "produit d'exemple",
 };

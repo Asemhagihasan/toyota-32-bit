@@ -45,4 +45,7 @@ export const translatedSalePageEn = {
   paymentMethod: "Payment method",
   userEmail: "User's Email",
   load: "Load",
+  productName: " Product name",
+  quantity: "quantity",
+  sampleProduct: "sample product",
 };

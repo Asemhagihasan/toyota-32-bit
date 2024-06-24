@@ -7,11 +7,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LinkButton from "../../ui/LinkButton";
 import PrintIcon from "@mui/icons-material/Print";
 import { IconButton } from "@mui/material";
-import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
-
 import Popup from "../../ui/Popup";
 import { useTranslation } from "react-i18next";
+import { usePrintBill } from "../../hooks/usePrintBill";
 
 function PaymentDetail({
   setModel,
@@ -34,15 +32,7 @@ function PaymentDetail({
   const paymentMethodCheck = paymentMethod === "nakit";
   const billCost = (+totalTax + +total.totalAmount).toFixed(2);
 
-  const pdfRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => pdfRef.current,
-    documentTitle: "Bill",
-    onAfterPrint: () => {
-      console.log("Printed PDF successfully!");
-    },
-  });
-
+  const { pdfRef, printBill } = usePrintBill();
   return (
     <Popup>
       <Stack ref={pdfRef} spacing={3} mb={3} zIndex={200}>
@@ -55,7 +45,7 @@ function PaymentDetail({
           <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
             {translate("salePage.cashRegister")}
           </Typography>
-          <IconButton onClick={handlePrint}>
+          <IconButton onClick={printBill}>
             <PrintIcon sx={{ color: "var(--color-grey-700)" }} />
           </IconButton>
         </Stack>
