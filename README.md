@@ -46,13 +46,10 @@ This is a React project written using React.js, Context API, and hooks. It allow
 [![git][git]][git-url]
 [![React][React.js]][React-url]
 [![react-router][react-router]][react-router-url]
-[![react-img-mapper][react-img-mapper-shield]][react-img-mapper-url]
 [![react-simple-keyboard][react-simple-keyboard-shield]][react-simple-keyboard-url]
-[![formik][formik-shield]][formik-url]
 [![i18n][i18n-shield]][i18n-url]
 [![Axios][axios-shield]][axios-url]
 [![material][material-shield]][material-url]
-[![MIT License][license-shield]][license-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
