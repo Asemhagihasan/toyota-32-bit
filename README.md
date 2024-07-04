@@ -86,7 +86,42 @@ This project uses Npm as the package manager.
 
 <!-- USAGE EXAMPLES -->
 
-## Pages
+# Pages
+
+<!-- Login page -->
+
+## Login Page
+
+The login page serves as the entry point for users to access the application. It provides essential features and functionalities for user authentication and access control.
+
+### Key Features
+
+1. **Authentication Form**:
+
+   - Users can enter their credentials (user code and password) to authenticate themselves.
+
+2. **Virtual Keyboard Integration**:
+
+   - Includes a virtual keyboard (`VirtualKeyboard`) for secure input of sensitive information.
+
+3. **Form Validation**:
+
+   - Validates user input for user code and password to ensure they meet specified criteria.
+
+4. **Error Handling**:
+
+   - Displays error messages if authentication fails or if there are validation errors.
+
+5. **Localization**:
+
+   - Supports multiple languages using `react-i18next`, providing a localized experience for users.
+
+6. **Redirects**:
+
+   - Redirects users to the home page (`/`) upon successful login.
+
+7. **Conditional UI Elements**:
+   - Shows a login button if the user is not authenticated, allowing them to navigate to the login page.
 
 <!-- Home page -->
 
@@ -127,13 +162,17 @@ This project uses Npm as the package manager.
 - Invoice Display: Upon completing the sale, an invoice is shown with purchase and payment details.
 - Print Invoice: Users can print the invoice by clicking the print button.
 
-![image](./public/Screenshot%202024-07-04%20164140.png)
+![image](./public/Screenshot%202024-07-04%20204222.png)
+
+<!-- Settings page -->
 
 ## Settings Page
 
 - Dark Mode: Allows users to toggle dark mode.
 - Language Change: Users can change the site language.
 - Print Test: Provides a button to print a test invoice to ensure the printing functionality works.
+
+![image](./public/Screenshot%202024-07-04%20204239.png)
 
 <!-- Features -->
 
