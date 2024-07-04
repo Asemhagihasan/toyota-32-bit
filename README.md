@@ -174,7 +174,7 @@ In order to ensure a seamless user experience, the application stores the user's
 
 <!-- Categories -->
 
-## [Categories]()
+## [Categories](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/features/Categories)
 
 The Categories feature in this application provides users with a visually engaging way to explore different product categories.
 
@@ -209,7 +209,7 @@ The Categories feature enhances the user experience by providing intuitive acces
 
 This description focuses on what users can see and do on the Categories page without delving into technical details or implementation specifics. It aims to provide a clear understanding of how users interact with this feature within your application. Adjust and expand upon it based on your specific project and user interface design.
 
-## [Products]()
+## [Products](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/features/Products)
 
 The Products feature allows users to browse and search through a dynamic list of products based on various criteria such as favorites and search queries.
 
@@ -222,41 +222,51 @@ The Products feature allows users to browse and search through a dynamic list of
 - **Category Navigation:** Displays products dynamically based on selected categories.
 - **Product Display:** Lists products within selected categories with detailed information.
 
-<!-- ROADMAP -->
+## [Settings](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/features/Settings)
 
-## Roadmap
+The Settings page in this project provides users with options to customize their experience and manage preferences.
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+### Features
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+- **Dark Mode Toggle:** Toggle between light and dark themes for improved readability.
+- **Language Selection:** Choose preferred language for the application's interface.
+- **Print Test Invoice:** Simulate printing functionality with a sample invoice.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Implementation Details
 
-<!-- CONTRIBUTING -->
+- Dark Mode Implementation: Manages theme changes using state and CSS classes.
+- Language Selection: Integrates i18next for language switching without page reloads.
+- Print Test Invoice: Generates a dummy invoice for testing print functionality.
+- User Preferences: Saves settings locally using localStorage for persistent customization.
 
-## Contributing
+## My Experiences and Difficulties
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+### Learning React and Project Challenges
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+#### Learning Experience
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+During the development of this project, I embarked on a significant learning journey with React. Here are some key highlights of what I've learned:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- **React Fundamentals:** I deepened my understanding of React's core concepts such as components, props, state management, and lifecycle methods.
+- **Hooks:** I extensively used React Hooks like `useState`, `useEffect`, and `useRef` to manage component state, side effects, and references.
 
-<!-- LICENSE -->
+- **Context API:** Leveraging the Context API, I implemented global state management for features like authentication and language preferences.
 
-## License
+- **Routing:** Utilizing React Router, I structured navigation within the application, ensuring seamless transitions between different views and components.
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+- **Material-UI Integration:** I integrated Material-UI to achieve a consistent and responsive design across the application, utilizing its components and styling features effectively.
+
+#### Project Challenges
+
+Despite the rewarding learning experience, I encountered several challenges throughout the project:
+
+- **Data Handling:** Managing large datasets and ensuring efficient retrieval and manipulation posed initial challenges, resolved through optimized API requests and data caching strategies.
+
+- **Component Integration:** Integrating third-party libraries and custom components, such as virtual keyboards and toast notifications, required meticulous configuration and debugging.
+
+- **Localization:** Implementing multi-language support using i18n and react-i18next involved overcoming initial setup complexities and ensuring seamless integration across components.
+
+- **Performance Optimization:** Ensuring smooth performance, particularly with paginated product listings and real-time data updates, required careful optimization of state management and rendering processes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -264,19 +274,23 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+- Asem Haji Hasan - i.asemhagihasan12345@gmail.com - asem.hagihasan@ogr.sakarya.edu.tr
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Asemhagihasan/toyota-32-bit](https://github.com/Asemhagihasan/toyota-32-bit)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+## 💎 Acknowledgements
 
-- []()
-- []()
-- []()
+Useful resources and documents that I used in my project.
+
+- [React](https://react.dev)
+- [StackOverFlow](https://stackoverflow.com)
+- [Material-ui](https://mui.com/material-ui/)
+- [Udemy](https://www.udemy.com/teaching/?ref=teach_header)
+- [Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
