@@ -118,9 +118,9 @@ This project uses Npm as the package manager.
 - Category Selection: Users can select products from various categories.
 - Product Search: Allows users to search for products by name or code.
 - Cart Management: Users can view and modify their cart, including:
-- - Increasing or decreasing product quantities
-- - Removing items
-- - Canceling the sale
+  Increasing or decreasing product quantities
+  Removing items
+  Canceling the sale
 - Discounts: Users can apply discounts from a list based on customer requests.
 - Barcode Scanning: Users can scan product barcodes to add items to the cart.
 - Favorite Items: Users can toggle between all items and favorite items.
