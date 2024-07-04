@@ -126,9 +126,9 @@ This project uses Npm as the package manager.
 - Favorite Items: Users can toggle between all items and favorite items.
 - Infinite Scroll: Displays 20 products per page initially, with the option to load more products, up to 1000 items.
 - Complete Sale: Users can complete the sale by:
-  - Selecting a payment method
-  - Entering the payment amount (the sale cannot be completed if the amount is not entered or is less than the total)
-  - Emailing the invoice
+  Selecting a payment method
+  Entering the payment amount (the sale cannot be completed if the amount is not entered or is less than the total)
+  Emailing the invoice
 - Invoice Display: Upon completing the sale, an invoice is shown with purchase and payment details.
 - Print Invoice: Users can print the invoice by clicking the print button.
 
