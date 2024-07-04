@@ -121,7 +121,10 @@ The login page serves as the entry point for users to access the application. It
    - Redirects users to the home page (`/`) upon successful login.
 
 7. **Conditional UI Elements**:
+
    - Shows a login button if the user is not authenticated, allowing them to navigate to the login page.
+
+   ![image](./public/Screenshot%202024-07-04%20204306.png)
 
 <!-- Home page -->
 
