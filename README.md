@@ -138,6 +138,90 @@ This project uses Npm as the package manager.
 - Language Change: Users can change the site language.
 - Print Test: Provides a button to print a test invoice to ensure the printing functionality works.
 
+<!-- Features -->
+
+## Features
+
+### [Internationalization (i18n)](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/translation)
+
+- The project supports Turkish, English, French, languages, and it is **suitable for adding more language support.**
+- I've implemented a language switcher component using React's Context API.
+
+This Context API setup allows all components to access and update language preferences without the need for prop drilling or repeated rendering of language-related components. This not only enhances application efficiency but also makes it easier to maintain and scale as language support grows.
+
+In order to ensure a seamless user experience, the application stores the user's selected language preference in localStorage. This means that the chosen language persists even after the user refreshes the page or navigates away, providing continuity and personalization throughout their session.
+
+### [Multi-Language Virtual Keyboard](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/features/VirtualKeyboard)
+
+- I added support for a virtual keyboard for users using touchscreen devices.
+- The virtual keyboard supports 2 languages: Turkish and English. Users can change the language by using the button right below the virtual keyboard.
+
+## [Cart](https://github.com/Asemhagihasan/toyota-32-bit/tree/main/src/features/Cart)
+
+- The cart feature in the application allows users to manage selected items before completing a purchase. It enhances the shopping experience by providing flexibility and control over chosen products.
+
+## Key Components
+
+1. **Adding Products to Cart:**
+
+   - Users can add products to the cart from various sections of the application, such as product listings or detail pages.
+   - This functionality typically involves a button or icon associated with each product that triggers the addition process.
+
+2. **Cart Display and Management:**
+   - **Viewing Cart:** Users can view the contents of their cart, including product names, quantities, prices, and subtotal.
+   - **Editing Cart:** Users can adjust quantities of items (increase or decrease), remove items from the cart entirely, or clear the entire cart.
+   - **Updating Quantities:** Adjustments to item quantities should dynamically update the subtotal and total price displayed in the cart.
+
+<!-- Categories -->
+
+## [Categories]()
+
+The Categories feature in this application provides users with a visually engaging way to explore different product categories.
+
+## User Experience
+
+### Visual Representation
+
+- **Category Cards:** Each category is represented by a card displaying an image and category name.
+  - **Image:** Visually represents the category.
+  - **Name:** Clearly identifies the category for users.
+
+### Interaction
+
+- **Browsing Categories:** Users can scroll through a grid of category cards.
+- **Category Selection:** Clicking on a category card redirects users to a dedicated page for that category.
+
+### Design and Layout
+
+- **Clean Interface:** The page layout is designed for clarity and ease of use.
+- **Responsive:** Adapts seamlessly to different screen sizes for optimal viewing and interaction.
+
+### Navigation
+
+- **Clickable Cards:** Each category card is interactive, allowing users to navigate directly to specific category pages.
+- **Efficient Exploration:** Facilitates efficient browsing and exploration of product categories.
+
+## Purpose
+
+The Categories feature enhances the user experience by providing intuitive access to a variety of product categories, ensuring a smooth and enjoyable browsing experience.
+
+---
+
+This description focuses on what users can see and do on the Categories page without delving into technical details or implementation specifics. It aims to provide a clear understanding of how users interact with this feature within your application. Adjust and expand upon it based on your specific project and user interface design.
+
+## [Products]()
+
+The Products feature allows users to browse and search through a dynamic list of products based on various criteria such as favorites and search queries.
+
+### User Experience
+
+- **Search and Filtering:** Users can enter search queries to filter products dynamically. Results update in real-time.
+- **Favorites Filter:** Toggle between viewing all products and only favorites.
+- **Pagination:** Load more products as you scroll or manually trigger pagination.
+- **Error Handling:** Loading indicators and error messages ensure smooth user experience.
+- **Category Navigation:** Displays products dynamically based on selected categories.
+- **Product Display:** Lists products within selected categories with detailed information.
+
 <!-- ROADMAP -->
 
 ## Roadmap
