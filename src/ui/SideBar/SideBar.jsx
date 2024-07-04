@@ -37,7 +37,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         ...sideBarOpen,
       }}
     >
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/" className="account">
+      <Box className="account item">
         <Avatar>
           <PersonIcon fontSize="1.5rem" />
         </Avatar>
@@ -75,7 +75,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
             )
           )}
         </Box>
-      </Item>
+      </Box>
       <Item setSideBarIsOpen={setSideBarIsOpen} to="/">
         <HomeOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && <Content>Home</Content>}

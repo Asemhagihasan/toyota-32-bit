@@ -10,8 +10,8 @@ import { LanguageProvider } from "./context/LanguageContext ";
 function App() {
   const router = createBrowserRouter(routes);
   return (
-    <DarkModeProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <DarkModeProvider>
         <LanguageProvider>
           <ConnectionStatusProvider>
             <InputControlProvider>
@@ -21,8 +21,8 @@ function App() {
             </InputControlProvider>
           </ConnectionStatusProvider>
         </LanguageProvider>
-      </AuthProvider>
-    </DarkModeProvider>
+      </DarkModeProvider>
+    </AuthProvider>
   );
 }
 

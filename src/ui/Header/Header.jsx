@@ -25,12 +25,17 @@ function Header({ handelButton, sideBarIsOpen }) {
     >
       <Content>
         <IconButton
-          // sx={{ "&:hover": { backgroundColor: "var(--color-grey-0)" } }}
+          sx={{ "&:hover": { backgroundColor: "var(--color-grey-0)" } }}
           aria-label="menu-icon"
           onClick={handelButton}
         >
           {sideBarIsOpen ? (
-            <CloseButton sx={{ margin: "0", ml: "4px" }} />
+            <CloseButton
+              sx={{
+                margin: "0",
+                ml: "4px",
+              }}
+            />
           ) : (
             <MenuIcon
               sx={{

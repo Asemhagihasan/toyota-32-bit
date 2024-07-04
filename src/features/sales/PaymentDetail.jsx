@@ -30,9 +30,16 @@ function PaymentDetail({
   const cartItems = getCart();
   const totalTax = calculateTotalTax(cartItems);
   const paymentMethodCheck = paymentMethod === "nakit";
-  const billCost = (+totalTax + +total.totalAmount).toFixed(2);
 
   const { pdfRef, printBill } = usePrintBill();
+
+  function finishSale() {
+    setModel(false);
+    setMakePayment(false);
+    setReduction(null);
+    dispatch({ type: "clearCart" });
+  }
+  console.log(reduction);
   return (
     <Popup>
       <Stack ref={pdfRef} spacing={3} mb={3} zIndex={200}>
@@ -59,7 +66,7 @@ function PaymentDetail({
           <>
             <BillItemContent
               item={{
-                name: `${reduction.name}i`,
+                name: `${reduction.description}i`,
                 total: `-${(total.subTotal - total.totalAmount).toFixed(2)}`,
               }}
             />
@@ -77,7 +84,7 @@ function PaymentDetail({
         <BillItemContent
           item={{
             name: translate("salePage.total"),
-            total: billCost,
+            total: total.totalAmount,
           }}
         />
         <BillItemContent
@@ -90,7 +97,7 @@ function PaymentDetail({
           <BillItemContent
             item={{
               name: translate("salePage.change"),
-              total: (+value - billCost).toFixed(2),
+              total: (+value - +total.totalAmount).toFixed(2),
             }}
           />
         )}
@@ -134,15 +141,7 @@ function PaymentDetail({
           </Stack>
         )}
       </Stack>
-      <LinkButton
-        onClick={() => {
-          setModel(false);
-          setMakePayment(false);
-          setReduction(null);
-          dispatch({ type: "clearCart" });
-        }}
-        to="/salesPage/categories"
-      >
+      <LinkButton onClick={finishSale} to="/salesPage/categories">
         &larr; {translate("salePage.backToSalePage")}
       </LinkButton>
     </Popup>

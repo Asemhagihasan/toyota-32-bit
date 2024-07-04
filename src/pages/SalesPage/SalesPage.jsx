@@ -54,6 +54,7 @@ function SalesPage() {
                 flexWrap="wrap"
                 justifyContent="start"
                 gap={2}
+                sx={{ mt: "1.2rem !important" }}
               >
                 <ProductControlPanel />
                 <Outlet />

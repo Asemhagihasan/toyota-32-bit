@@ -13,6 +13,8 @@ export const translatedSalePageTr = {
   sales: "Satışlar",
   user: "Kullanıcı",
   reductionDesicraption: "40 $ üzeri alışverişlerde %10 indirim",
+  wednesdayDiscount: "Çarşamba Günü %10 İndirim",
+  weekendDiscount: "Hafta Sonu %15 İndirim",
   getReduction: "İndirim Getir",
   storeAvailability: "Mağaza şu anda çevrimiçi ve alışverişe açık.",
   searchQuery: "Kod veya isme göre ara",

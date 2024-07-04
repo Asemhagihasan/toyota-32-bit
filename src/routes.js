@@ -80,6 +80,7 @@ const routes = [
   {
     name: "auth",
     path: "/auth",
+    errorElement: <Error />,
     loader: usersLoader,
     element: <LoginLayout />,
   },

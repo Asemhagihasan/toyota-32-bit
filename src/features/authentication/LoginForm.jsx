@@ -59,7 +59,7 @@ function LoginForm() {
   function handleKeyboardToggle(inputName) {
     setFocusedInput((prev) => (prev === inputName ? "" : inputName));
   }
-  console.log(errors);
+
   function handleSubmit(event) {
     event.preventDefault();
     if (user.isAuthenticated) {
@@ -69,7 +69,8 @@ function LoginForm() {
       }));
       return;
     }
-    setErrors((prev) => ({ ...prev, ...validate(formData) }));
+    const valdiateErrors = validate(formData);
+    setErrors({ ...valdiateErrors });
     const { userCode, userPass } = formData;
     const authenticatedUser = users.find(
       (u) => u.userCode === +userCode && u.userPass === userPass
@@ -84,10 +85,11 @@ function LoginForm() {
       showToastMessage(translate("auth.loginSuccessMessage"), 3000);
       setTimeout(() => navigate("/"), 3000);
     } else {
-      setErrors((prev) => ({
-        ...prev,
-        formError: translate("errors.notFoundErr"),
-      }));
+      !valdiateErrors.userCode &&
+        !valdiateErrors.userPass &&
+        setErrors({
+          formError: translate("errors.notFoundErr"),
+        });
     }
   }
 
@@ -147,7 +149,6 @@ function LoginForm() {
                 text={translate("auth.userCode")}
                 value={formData.userCode}
                 onChange={handleInputChange}
-                onFocus={() => setFocusedInput("userCode")}
                 sx={{ backgroundColor: "var(--color-grey-50)" }}
               />
               <CustomKeyboardIcon
@@ -167,7 +168,6 @@ function LoginForm() {
                 text={translate("auth.password")}
                 value={formData.userPass}
                 onChange={handleInputChange}
-                onFocus={() => setFocusedInput("userPass")}
                 sx={{ backgroundColor: "var(--color-grey-50)" }}
               />
               <CustomKeyboardIcon
@@ -214,7 +214,9 @@ function LoginForm() {
           </Button>
         </Stack>
         {user.isAuthenticated && (
-          <LinkButton to="/">&larr;{translate("auth.goBack")}</LinkButton>
+          <LinkButton sx={{ color: "var(--color-brand-600)" }} to="/">
+            &larr;{translate("auth.goBack")}
+          </LinkButton>
         )}
       </Form>
     </>

@@ -12,6 +12,7 @@ function Cart({ setMakePayment }) {
   const { getCart, total, dispatch, reduction } = useCart();
   const { t: translate } = useTranslation();
   const cartItems = getCart();
+
   useEffect(() => {
     if (cartItems.length === 0) {
       setClicked(false);
@@ -80,7 +81,7 @@ function Cart({ setMakePayment }) {
                 variant="subtitle2"
                 sx={{
                   padding: "0.4rem 1.2rem",
-                  color: "var(--color-grey-0)",
+                  color: "var(--color-grey-700)",
                   fontSize: "16px",
                 }}
               >

@@ -1,23 +1,23 @@
-import { Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import LoginForm from "../../features/authentication/LoginForm";
 import Logo from "../../ui/Logo";
 
 function LoginLayout() {
   return (
-    <Stack
+    <Box
       sx={{
-        width: "100%",
-        height: "100vh",
-        gap: { md: "3rem" },
+        minHeight: "100vh",
+        display: "grid",
+        gridTemplateColumns: "48rem",
+        alignContent: "center",
+        justifyContent: "center",
+        gap: "2rem",
+        backgroundColor: "var(--color-grey-50)",
       }}
-      direction="row"
-      flexWrap="wrap"
-      justifyContent="center"
-      alignItems="center"
     >
       <Logo />
       <LoginForm />
-    </Stack>
+    </Box>
   );
 }
 
