@@ -107,7 +107,7 @@ This project uses Npm as the package manager.
 
 ### The home page ensures that the user has all the necessary information at a glance and provides easy access to essential functions.
 
-![image](./public/Screenshot%202024-07-04%20164140.png)
+![image](./Screenshot%202024-07-04%20164140.png)
 
 <!-- Sale page -->
 
