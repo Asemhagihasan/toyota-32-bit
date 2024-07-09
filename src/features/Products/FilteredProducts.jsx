@@ -23,13 +23,14 @@ function FilteredProducts() {
   const { query, setQuery, foundProduct, searched } =
     useProductSearch(Allproducts);
   const showNotFound = !foundProduct && query.length < 3;
+
   function handleLoad() {
     setPage((prev) => prev + 1);
   }
 
   useEffect(() => {
     setProducts([]);
-  }, [location]);
+  }, [location.pathname]);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,7 +55,7 @@ function FilteredProducts() {
       }
     }
     fetchData();
-  }, [page, isFavoritSelected]);
+  }, [page]);
 
   return (
     <Box>
