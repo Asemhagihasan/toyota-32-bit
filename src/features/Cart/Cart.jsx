@@ -81,7 +81,7 @@ function Cart({ setMakePayment }) {
                 variant="subtitle2"
                 sx={{
                   padding: "0.4rem 1.2rem",
-                  color: "var(--color-grey-700)",
+                  color: "var(--color-brand-50)",
                   fontSize: "16px",
                 }}
               >
