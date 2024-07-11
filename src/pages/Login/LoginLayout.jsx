@@ -7,8 +7,8 @@ function LoginLayout() {
     <Stack
       sx={{
         width: "100%",
-        height: "100vh",
-        gap: { md: "3rem" },
+        minHeight: "100vh",
+        gap: { sm: "3rem", xs: "3rem" },
       }}
       direction="row"
       flexWrap="wrap"

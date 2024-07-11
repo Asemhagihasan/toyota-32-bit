@@ -43,7 +43,15 @@ function AuthButton() {
   }
   return (
     <>
-      <Typography variant="h6">{translate("auth.signIn")}</Typography>
+      <Typography
+        variant="h6"
+        sx={{
+          color: "var(--color-grey-700)",
+          display: { xs: "none", s: "none", md: "block" },
+        }}
+      >
+        {translate("auth.signIn")}
+      </Typography>
       <Button onClick={handelLogin}>
         <LoginIcon
           sx={{
