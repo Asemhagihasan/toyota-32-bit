@@ -3,7 +3,7 @@ import SalesContent from "../../ui/SalesContent";
 import { getCategories } from "../../services/saleContentApi";
 import { useLoaderData } from "react-router-dom";
 import useProductSearch from "../../hooks/useProductSearch";
-import CustomInput from "../../ui/CustomInput";
+import Input from "../../ui/Input";
 import NotFoundCart from "../../ui/NotFoundCart";
 import Product from "../../ui/Product";
 import { Stack } from "@mui/material";
@@ -17,12 +17,8 @@ function Categories() {
 
   return (
     <Stack spacing={1.5}>
-      <CustomInput
-        text={translate("salePage.searchQuery")}
-        sx={{
-          "--Input-focusedHighlight":
-            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",
-        }}
+      <Input
+        placeholder={translate("salePage.searchQuery")}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

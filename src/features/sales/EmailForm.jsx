@@ -1,7 +1,7 @@
 import { Button, Stack } from "@mui/material";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import { useRef } from "react";
-import CustomInput from "../../ui/CustomInput";
+import Input from "../../ui/Input";
 import LinkButton from "../../ui/LinkButton";
 import { useTranslation } from "react-i18next";
 
@@ -15,8 +15,8 @@ function EmailForm({ email, setEmail, setSendEmail }) {
   const keyboard = useRef();
   return (
     <Stack sx={{ mt: "3rem" }}>
-      <CustomInput
-        type="email"
+      <Input
+        placeholder="email"
         text={translate("salePage.userEmailAddress")}
         sx={{
           "--Input-focusedHighlight":
