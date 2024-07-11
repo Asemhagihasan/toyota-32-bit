@@ -1,18 +1,18 @@
 import { Box } from "@mui/material";
-import LoginForm from "../../features/authentication/LoginForm copy";
+import LoginForm from "../../features/authentication/LoginForm";
 import Logo from "../../ui/Logo";
 
 function LoginLayout() {
   return (
     <Box
       sx={{
+        // width: "100%",
         minHeight: "100vh",
-        display: "grid",
-        gridTemplateColumns: "48rem",
-        alignContent: "center",
+        display: "flex",
+        flexWrap: "wrap",
         justifyContent: "center",
-        gap: "2rem",
-        backgroundColor: "var(--color-grey-50)",
+        alignItems: "center",
+        gap: "4rem",
       }}
     >
       <Logo />
