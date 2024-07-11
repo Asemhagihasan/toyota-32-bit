@@ -13,6 +13,8 @@ export const translatedSalePageEn = {
   sales: "Sales",
   user: "User",
   reductionDesicraption: "10% discount on purchases over 40 $",
+  wednesdayDiscount: "10% Wednesday Discount",
+  weekendDiscount: "15% Weekend Discount",
   getReduction: "Get Reduction",
   storeAvailability: "The store is currently online and available to shoppers",
   searchQuery: "Search by code or name",
@@ -45,4 +47,7 @@ export const translatedSalePageEn = {
   paymentMethod: "Payment method",
   userEmail: "User's Email",
   load: "Load",
+  productName: " Product name",
+  quantity: "quantity",
+  sampleProduct: "sample product",
 };

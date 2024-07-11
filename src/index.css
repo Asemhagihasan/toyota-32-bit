@@ -78,6 +78,8 @@ code {
   padding-left: 1.5rem;
   text-decoration: none;
   transition: all 0.5s;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .item:hover {

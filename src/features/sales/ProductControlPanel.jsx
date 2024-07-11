@@ -21,7 +21,7 @@ function ProductControlPanel() {
     ),
     new Reduction(
       "10% Wednesday Discount",
-      translate("salePage.reductionDesicraption"),
+      translate("salePage.wednesdayDiscount"),
       10,
       {
         dayOfWeek: 3,
@@ -30,7 +30,7 @@ function ProductControlPanel() {
     ),
     new Reduction(
       "15% Weekend Discount",
-      translate("salePage.reductionDesicraption"),
+      translate("salePage.weekendDiscount"),
       15,
       { dayOfWeek: 6 },
       total.subTotal

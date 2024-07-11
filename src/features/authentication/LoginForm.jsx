@@ -58,10 +58,6 @@ function LoginForm() {
     setFocusedInput((prev) => (prev === inputName ? "" : inputName));
   }
 
-  const handleVirtualKeyboardInput = (input) => {
-    console.log(input);
-    formik.setFieldValue(focusedInput, input);
-  };
 
   return (
     <>
@@ -131,7 +127,7 @@ function LoginForm() {
             <Typography color="error" mt={1}>
               {error || formik.errors.userPass}
             </Typography>
-          ) : null}
+
         </Stack>
         {focusedInput && (
           <VirtualKeyboard
@@ -153,7 +149,9 @@ function LoginForm() {
           Sign in
         </Button>
         {user.isAuthenticated && (
-          <LinkButton to="/">&larr;{translate("auth.goBack")}</LinkButton>
+          <LinkButton sx={{ color: "var(--color-brand-600)" }} to="/">
+            &larr;{translate("auth.goBack")}
+          </LinkButton>
         )}
       </Box>
     </>

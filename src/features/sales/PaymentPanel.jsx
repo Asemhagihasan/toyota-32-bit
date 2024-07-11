@@ -6,7 +6,6 @@ import { useCart } from "../../context/CartContext";
 import PaymentDetail from "./PaymentDetail";
 import Popup from "../../ui/Popup";
 import EmailForm from "../sales/EmailForm";
-import { ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function PaymentPanel({ setMakePayment }) {
@@ -27,7 +26,6 @@ function PaymentPanel({ setMakePayment }) {
 
   return (
     <>
-      <ToastContainer className="toast-container-center-right" />
       {sendEmail ? (
         <Popup>
           <EmailForm
@@ -143,6 +141,7 @@ function PaymentPanel({ setMakePayment }) {
               sx={{
                 backgroundColor: "green",
                 "&:hover": { backgroundColor: "var(--color-green-300)" },
+                "&:disabled": { backgroundColor: "var(--color-brand-50)" },
               }}
               onClick={() => {
                 setModel(true);

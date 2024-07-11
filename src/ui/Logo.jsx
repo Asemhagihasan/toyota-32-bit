@@ -2,8 +2,12 @@ import { Box } from "@mui/material";
 
 function Logo() {
   return (
-    <Box sx={{ width: "200px" }}>
-      <img style={{ width: "200px" }} src="/logo.png" alt="" />
+    <Box sx={{ textAlign: "center" }}>
+      <img
+        style={{ width: "300px", height: "9.6rem" }}
+        src="/logo.png"
+        alt=""
+      />
     </Box>
   );
 }

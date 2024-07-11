@@ -6,6 +6,10 @@ function Product({ product }) {
   const { dispatch, getCurrentQuantity } = useCart();
   const { value, setValue, keyboard } = useInputControl();
   const { id, productCode, name, price, image, unit, KDV } = product;
+  const priceAfterTax = (price + price * KDV).toFixed(2);
+  const totalPriceAfterTax = parseFloat(
+    (price * (+value || 1) + KDV * (+value || 1) * price).toFixed(2)
+  );
   const currentQuantity = getCurrentQuantity(id);
   const isInCart = currentQuantity > 0;
   function handelClick() {
@@ -15,8 +19,8 @@ function Product({ product }) {
         productCode: productCode,
         name: name,
         quantity: +value || 1,
-        price: price,
-        totalPrice: parseFloat((price * (+value || 1)).toFixed(2)),
+        price: priceAfterTax,
+        totalPrice: totalPriceAfterTax,
         KDV: KDV,
       };
       if (value.length > 0) {
@@ -69,7 +73,7 @@ function Product({ product }) {
         </button>
         <Stack>
           <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
-            {price} $
+            {priceAfterTax} $
           </Typography>
           <Typography
             sx={{ fontSize: "1.0875rem", color: "var(--color-grey-700)" }}
