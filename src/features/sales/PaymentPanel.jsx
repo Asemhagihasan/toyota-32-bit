@@ -1,11 +1,12 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
-import Input from "../../ui/Input";
+import CustomInput from "../../ui/CustomInput";
 import { useRef, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import PaymentDetail from "./PaymentDetail";
 import Popup from "../../ui/Popup";
 import EmailForm from "../sales/EmailForm";
+import { ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 function PaymentPanel({ setMakePayment }) {
@@ -26,6 +27,7 @@ function PaymentPanel({ setMakePayment }) {
 
   return (
     <>
+      <ToastContainer className="toast-container-center-right" />
       {sendEmail ? (
         <Popup>
           <EmailForm
@@ -106,8 +108,12 @@ function PaymentPanel({ setMakePayment }) {
               {translate("salePage.creditCard")}
             </Button>
           </Box>
-          <Input
-            placeholder={translate("salePage.paymentAmount")}
+          <CustomInput
+            text={translate("salePage.paymentAmount")}
+            sx={{
+              width: "370px",
+              marginLeft: "5px",
+            }}
             value={value}
             onChange={onChangeInput}
           />

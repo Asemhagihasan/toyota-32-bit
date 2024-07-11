@@ -5,7 +5,7 @@ function CustomKeyboardIcon({ onClick, showKeyboard }) {
     <IconButton
       sx={{
         position: "absolute",
-        top: "31px",
+        top: "8px",
         left: "92%",
         color: `${
           showKeyboard ? "var(--color-brand-600)" : "var(--color-grey-700)"

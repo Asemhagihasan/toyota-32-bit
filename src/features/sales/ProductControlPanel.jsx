@@ -1,5 +1,5 @@
 import { Box, Button, Stack } from "@mui/material";
-import Input from "../../ui/Input";
+import CustomInput from "../../ui/CustomInput";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import MenuList from "../../ui/MenuList";
 import { useInputControl } from "../../context/InputControlContext";
@@ -54,12 +54,17 @@ function ProductControlPanel() {
           marginBottom: "3px",
         }}
       >
-        <Input
-          placeholder={translate("salePage.quantityPanel")}
+        <CustomInput
+          text={translate("salePage.quantityPanel")}
+          sx={{
+            "--Input-focusedHighlight":
+              "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",
+            width: "296.6px",
+          }}
           value={value}
           onChange={onChangeInput}
         />
-        {/* <Button
+        <Button
           sx={{
             height: "3rem",
             fontSize: "2rem",
@@ -72,7 +77,7 @@ function ProductControlPanel() {
           disableElevation
         >
           -
-        </Button> */}
+        </Button>
       </Box>
       <MenuList
         sx={{ width: "365px" }}
