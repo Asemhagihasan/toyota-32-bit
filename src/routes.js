@@ -13,6 +13,8 @@ import FilteredProducts from "./features/Products/FilteredProducts";
 import { loader as ProductsLoader } from "./features/Products/FilteredProducts";
 import NoInternetConnection from "./ui/NoInternetConnection.jsx";
 import SettingsPage from "./pages/Settings/SettingsPage";
+import { loader as usersLoader } from "./features/authentication/LoginForm.jsx";
+import { loader as categoryLoader } from "./features/Products/Products";
 
 const routes = [
   {
@@ -40,6 +42,7 @@ const routes = [
             path: "categories/:id",
             element: <Products />,
             errorElement: <Error />,
+            loader: categoryLoader,
             auth: true,
           },
           {
@@ -79,6 +82,8 @@ const routes = [
   {
     name: "auth",
     path: "/auth",
+    errorElement: <Error />,
+    loader: usersLoader,
     element: <LoginLayout />,
   },
 

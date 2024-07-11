@@ -7,7 +7,10 @@ function BillItemContent({ item }) {
       flexDirection="row"
       justifyContent="space-between"
     >
-      <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>
+      <Typography
+        variant="subtitle2"
+        sx={{ fontSize: "16px", maxWidth: "200px" }}
+      >
         {item.name}
       </Typography>
       <Typography variant="subtitle2" sx={{ fontSize: "16px" }}>

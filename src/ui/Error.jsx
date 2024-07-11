@@ -7,9 +7,10 @@ function Error({ message }) {
   console.log(error);
   return (
     <div>
-      <Typography variant="h6">Something went wrong 😢</Typography>
-      <Typography variant="h6">
-        {" "}
+      <Typography variant="h6" sx={{ color: "var(--color-grey-700)" }}>
+        Something went wrong 😢
+      </Typography>
+      <Typography variant="h6" sx={{ color: "var(--color-grey-700)" }}>
         {message || error.message || error.data}
       </Typography>
       <LinkButton to="-1">&larr; Go back</LinkButton>

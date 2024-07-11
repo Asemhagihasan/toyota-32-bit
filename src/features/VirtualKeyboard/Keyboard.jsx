@@ -68,7 +68,7 @@ function VirtualKeyboard({ setInput, keyboard, ip }) {
           <Select
             onChange={(e) => onChangeLanguage(e)}
             inputProps={{ defaultValue: "turkish" }}
-            sx={{ width: "40%" }}
+            sx={{ width: "40%", color: "var(--color-grey-700)" }}
           >
             <MenuItem value={"turkish"}>Turkish</MenuItem>
             <MenuItem value={"englishLayout"}>English</MenuItem>

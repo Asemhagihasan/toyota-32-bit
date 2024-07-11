@@ -147,6 +147,7 @@ function PaymentPanel({ setMakePayment }) {
               sx={{
                 backgroundColor: "green",
                 "&:hover": { backgroundColor: "var(--color-green-300)" },
+                "&:disabled": { backgroundColor: "var(--color-brand-50)" },
               }}
               onClick={() => {
                 setModel(true);

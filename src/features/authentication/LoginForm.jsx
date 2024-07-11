@@ -1,107 +1,102 @@
 import { useAuth } from "../../context/AuthContext";
 import { Alert, Button } from "@mui/material";
 import { useRef, useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import {
+  Form,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import KeyboardIcon from "@mui/icons-material/Keyboard";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import Loader from "../../ui/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import { showToastMessage } from "../../utils/showToastMessage";
 import { useTranslation } from "react-i18next";
 import LinkButton from "../../ui/LinkButton";
 import CustomInput from "../../ui/CustomInput";
+import getUsers from "../../services/apiUsers";
+import CustomKeyboardIcon from "./CustomKeyboardIcon";
 
 function LoginForm() {
   const { user, setUser } = useAuth();
   const { t: translate } = useTranslation();
-  const [showTextKeyboard, setShowTextKeyboard] = useState(false);
-  const [showPassKeyboard, setShowPassKeyboard] = useState(false);
-  const [userCode, setUserCode] = useState("");
-  const [userPass, setUserPass] = useState("");
-  const [errMesage, setErrMessage] = useState("");
-  const [defaultErrMessage, setDefaultErrMessage] = useState("");
-  const [isLoading, setIsLoadining] = useState(false);
+  const [formData, setFormData] = useState({ userCode: "", userPass: "" });
+  const [focusedInput, setFocusedInput] = useState("");
+  const [errors, setErrors] = useState({});
   const keyboard = useRef();
   const regex = /\D/;
   const navigate = useNavigate();
-
-  function onChangeInput(e) {
-    const input = e.target.value;
-    showTextKeyboard ? setUserCode(input) : setUserPass(input);
-    keyboard?.current?.setInput(input);
-  }
-  function handelShowKeypord(type) {
-    if (type === "text") {
-      setShowPassKeyboard(false);
-      setShowTextKeyboard((e) => !e);
+  const users = useLoaderData();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
+  function validate(values) {
+    const errors = {};
+    if (!values.userCode) {
+      errors.userCode = "UserCode is required!";
+    } else if (values.userCode.length !== 6 || regex.test(+values.userCode)) {
+      errors.userCode = translate("errors.WrongCodeErr");
     }
-    if (type === "pass") {
-      setShowTextKeyboard(false);
-      setShowPassKeyboard((e) => !e);
+    if (!values.userPass) {
+      errors.userPass = "Password is required";
+    } else if (values.userPass.length < 4) {
+      errors.password = "Password must be more than 4 characters";
+    } else if (values.userPass.length > 10) {
+      errors.password = "Password cannot exceed more than 10 characters";
     }
+    return errors;
   }
 
-  function handelSubmit(event) {
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    keyboard?.current?.setInput(value);
+  }
+
+  function handleKeyboardToggle(inputName) {
+    setFocusedInput((prev) => (prev === inputName ? "" : inputName));
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
-    if (user.isAuthanticated) {
-      setDefaultErrMessage(translate("errors.alreadyLoggedInMessage"));
+    if (user.isAuthenticated) {
+      setErrors((prev) => ({
+        ...prev,
+        alreadyAuthenticated: translate("errors.alreadyLoggedInMessage"),
+      }));
       return;
     }
-    const formData = new FormData(event.target);
-    const userData = {
-      userCode: formData.get("userCode"),
-      userPass: formData.get("userPass"),
-    };
+    const valdiateErrors = validate(formData);
+    setErrors({ ...valdiateErrors });
+    const { userCode, userPass } = formData;
+    const authenticatedUser = users.find(
+      (u) => u.userCode === +userCode && u.userPass === userPass
+    );
 
-    if (userCode.length !== 6 || regex.test(userCode)) {
-      setErrMessage(translate("errors.WrongCodeErr"));
-      return;
-    }
-    setUserPass(userData.userPass);
-    setIsLoadining(true);
-    axios
-      .get("https://661c1c1ce7b95ad7fa69b72a.mockapi.io/api/v3/users")
-      .then((response) => {
-        setIsLoadining(false);
-        const users = response?.data;
-        const authenticatedUser = users.find((user) => {
-          return (
-            user.userCode === +userData.userCode &&
-            user.userPass === userData.userPass
-          );
+    if (authenticatedUser) {
+      const updatedUser = { ...authenticatedUser, isAuthenticated: true };
+      setErrors({});
+      setUser(updatedUser);
+      setFormData({ userCode: "", userPass: "" });
+      setFocusedInput("");
+      showToastMessage(translate("auth.loginSuccessMessage"), 3000);
+      setTimeout(() => navigate("/"), 3000);
+    } else {
+      !valdiateErrors.userCode &&
+        !valdiateErrors.userPass &&
+        setErrors({
+          formError: translate("errors.notFoundErr"),
         });
-        if (authenticatedUser) {
-          authenticatedUser.isAuthanticated = true;
-          setErrMessage("");
-          setUser(authenticatedUser);
-          setUserCode("");
-          setUserPass("");
-          setShowPassKeyboard(false);
-          setShowTextKeyboard(false);
-          showToastMessage(translate("auth.loginSuccessMessage"), 3000);
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
-        } else {
-          setErrMessage(translate("errors.notFoundErr"));
-        }
-      })
-      .catch(() => {
-        setIsLoadining(false);
-        setDefaultErrMessage(translate("errors.internetConnectionErr"));
-      });
+    }
   }
 
   return (
     <>
       <ToastContainer />
-      {defaultErrMessage !== "" && (
+      {errors?.alreadyAuthenticated && (
         <Alert
           sx={{
             position: "absolute",
@@ -111,7 +106,7 @@ function LoginForm() {
           }}
           severity="error"
         >
-          {defaultErrMessage}
+          {errors?.alreadyAuthenticated}
         </Alert>
       )}
 
@@ -123,13 +118,13 @@ function LoginForm() {
           alignItems: "center",
           gap: "1rem",
         }}
-        onSubmit={(values) => handelSubmit(values)}
+        onSubmit={handleSubmit}
       >
         <Stack
           alignItems="center"
           spacing={3}
           sx={{
-            backgroundColor: "var( --color-grey-0)",
+            backgroundColor: "var(--color-grey-0)",
             borderRadius: "16px",
             boxShadow: "0 3px 5px rgba(0,0,0,.15)",
             padding: "1rem 2rem",
@@ -150,76 +145,58 @@ function LoginForm() {
             <Box sx={{ position: "relative" }}>
               <CustomInput
                 fullWidth
+                name="userCode"
                 text={translate("auth.userCode")}
-                id="text-input"
-                value={userCode}
-                onChange={onChangeInput}
-                onFocus={() => {
-                  setShowTextKeyboard(true);
-                  setShowPassKeyboard(false);
-                }}
+                value={formData.userCode}
+                onChange={handleInputChange}
                 sx={{ backgroundColor: "var(--color-grey-50)" }}
               />
-              <IconButton
-                sx={{
-                  position: "absolute",
-                  top: "8px",
-                  left: "92%",
-                  color: `${
-                    showTextKeyboard
-                      ? "var(--color-brand-600)"
-                      : "var(--color-grey-700)"
-                  }`,
-                }}
-                onClick={() => handelShowKeypord("text")}
-              >
-                <KeyboardIcon sx={{ color: "var(--color-grey-700)" }} />
-              </IconButton>
-            </Box>
-            <Box sx={{ position: "relative" }}>
-              <CustomInput
-                text={translate("auth.password")}
-                fullWidth
-                id="pass-input"
-                // type="password"
-                value={userPass}
-                onChange={onChangeInput}
-                onFocus={() => {
-                  setShowTextKeyboard(false);
-                  setShowPassKeyboard(true);
-                }}
-                sx={{ backgroundColor: "var(--color-grey-50)" }}
+              <CustomKeyboardIcon
+                onClick={() => handleKeyboardToggle("userCode")}
+                showKeyboard={focusedInput === "userCode"}
               />
-              <IconButton
-                sx={{
-                  position: "absolute",
-                  top: "8px",
-                  left: "92%",
-                  color: `${
-                    showPassKeyboard
-                      ? "var(--color-brand-600)"
-                      : "var(--color-grey-700)"
-                  }`,
-                }}
-                onClick={() => handelShowKeypord("pass")}
-              >
-                <KeyboardIcon />
-              </IconButton>
-              {errMesage !== "" && (
-                <Typography variant="body2" color="error" mt="0.875rem">
-                  {errMesage}
+              {errors.userCode && (
+                <Typography variant="subtitle2" color="error" mt={1}>
+                  {errors.userCode}
                 </Typography>
               )}
             </Box>
-            {showTextKeyboard && (
-              <VirtualKeyboard setInput={setUserCode} keyboard={keyboard} />
+            <Box sx={{ position: "relative" }}>
+              <CustomInput
+                fullWidth
+                name="userPass"
+                text={translate("auth.password")}
+                value={formData.userPass}
+                onChange={handleInputChange}
+                sx={{ backgroundColor: "var(--color-grey-50)" }}
+              />
+              <CustomKeyboardIcon
+                onClick={() => handleKeyboardToggle("userPass")}
+                showKeyboard={focusedInput === "userPass"}
+              />
+              {(errors.userPass || errors.formError) && (
+                <Typography variant="subtitle2" color="error" mt={1}>
+                  {errors.userPass || errors.formError}
+                </Typography>
+              )}
+            </Box>
+            {focusedInput === "userCode" && (
+              <VirtualKeyboard
+                setInput={(input) =>
+                  setFormData({ ...formData, userCode: input })
+                }
+                keyboard={keyboard}
+              />
             )}
-            {showPassKeyboard && (
-              <VirtualKeyboard setInput={setUserPass} keyboard={keyboard} />
+            {focusedInput === "userPass" && (
+              <VirtualKeyboard
+                setInput={(input) =>
+                  setFormData({ ...formData, userPass: input })
+                }
+                keyboard={keyboard}
+              />
             )}
           </Stack>
-          <input type="hidden" name="userCode" value={userCode} />
-          <input type="hidden" name="userPass" value={userPass} />
           <Button
             variant="contained"
             type="submit"
@@ -236,18 +213,19 @@ function LoginForm() {
             {translate("auth.signIn")}
           </Button>
         </Stack>
-        {user.isAuthanticated && (
-          <LinkButton to="/">&larr;{translate("auth.goBack")}</LinkButton>
+        {user.isAuthenticated && (
+          <LinkButton sx={{ color: "var(--color-brand-600)" }} to="/">
+            &larr;{translate("auth.goBack")}
+          </LinkButton>
         )}
       </Form>
     </>
   );
 }
 
-// export function loader() {
-//   const users = getUsers();
-//   console.log(users);
-//   return users;
-// }
+export async function loader() {
+  const users = await getUsers();
+  return users;
+}
 
 export default LoginForm;

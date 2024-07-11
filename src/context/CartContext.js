@@ -26,7 +26,7 @@ function reducer(state, action) {
           const updatedItem = {
             ...item,
             quantity: item.quantity + 1,
-            totalPrice: parseFloat((item.totalPrice + item.price).toFixed(2)),
+            totalPrice: parseFloat((item.totalPrice + +item.price).toFixed(2)),
           };
           return updatedItem;
         }
@@ -88,8 +88,7 @@ function CartProvider({ children }) {
   function calculateTotalTax() {
     return cart
       .reduce((sum, item) => {
-        if (item.quantity > 1) return sum + item.KDV * item.quantity;
-        return sum + item.KDV;
+        return sum + item.KDV * item.totalPrice;
       }, 0)
       .toFixed(2);
   }

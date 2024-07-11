@@ -7,11 +7,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LinkButton from "../../ui/LinkButton";
 import PrintIcon from "@mui/icons-material/Print";
 import { IconButton } from "@mui/material";
-import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
-
 import Popup from "../../ui/Popup";
 import { useTranslation } from "react-i18next";
+import { usePrintBill } from "../../hooks/usePrintBill";
 
 function PaymentDetail({
   setModel,
@@ -32,17 +30,16 @@ function PaymentDetail({
   const cartItems = getCart();
   const totalTax = calculateTotalTax(cartItems);
   const paymentMethodCheck = paymentMethod === "nakit";
-  const billCost = (+totalTax + +total.totalAmount).toFixed(2);
 
-  const pdfRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => pdfRef.current,
-    documentTitle: "Bill",
-    onAfterPrint: () => {
-      console.log("Printed PDF successfully!");
-    },
-  });
+  const { pdfRef, printBill } = usePrintBill();
 
+  function finishSale() {
+    setModel(false);
+    setMakePayment(false);
+    setReduction(null);
+    dispatch({ type: "clearCart" });
+  }
+  console.log(reduction);
   return (
     <Popup>
       <Stack ref={pdfRef} spacing={3} mb={3} zIndex={200}>
@@ -55,7 +52,7 @@ function PaymentDetail({
           <Typography sx={{ color: "var(--color-grey-700)" }} variant="h6">
             {translate("salePage.cashRegister")}
           </Typography>
-          <IconButton onClick={handlePrint}>
+          <IconButton onClick={printBill}>
             <PrintIcon sx={{ color: "var(--color-grey-700)" }} />
           </IconButton>
         </Stack>
@@ -69,7 +66,7 @@ function PaymentDetail({
           <>
             <BillItemContent
               item={{
-                name: `${reduction.name}i`,
+                name: `${reduction.description}i`,
                 total: `-${(total.subTotal - total.totalAmount).toFixed(2)}`,
               }}
             />
@@ -87,7 +84,7 @@ function PaymentDetail({
         <BillItemContent
           item={{
             name: translate("salePage.total"),
-            total: billCost,
+            total: total.totalAmount,
           }}
         />
         <BillItemContent
@@ -100,7 +97,7 @@ function PaymentDetail({
           <BillItemContent
             item={{
               name: translate("salePage.change"),
-              total: (+value - billCost).toFixed(2),
+              total: (+value - +total.totalAmount).toFixed(2),
             }}
           />
         )}
@@ -144,15 +141,7 @@ function PaymentDetail({
           </Stack>
         )}
       </Stack>
-      <LinkButton
-        onClick={() => {
-          setModel(false);
-          setMakePayment(false);
-          setReduction(null);
-          dispatch({ type: "clearCart" });
-        }}
-        to="/salesPage/categories"
-      >
+      <LinkButton onClick={finishSale} to="/salesPage/categories">
         &larr; {translate("salePage.backToSalePage")}
       </LinkButton>
     </Popup>

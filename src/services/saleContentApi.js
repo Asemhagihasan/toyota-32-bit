@@ -34,7 +34,6 @@ export function getCategoryById(id) {
 export async function getProductById(id) {
   try {
     const categories = await getCategories();
-    console.log(categories);
     for (const category of categories) {
       const product = category?.children.find(
         (product) => product.productCode === id
