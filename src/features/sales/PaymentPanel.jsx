@@ -1,6 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
-import CustomInput from "../../ui/CustomInput";
+import Input from "../../ui/Input";
 import { useRef, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import PaymentDetail from "./PaymentDetail";
@@ -106,12 +106,8 @@ function PaymentPanel({ setMakePayment }) {
               {translate("salePage.creditCard")}
             </Button>
           </Box>
-          <CustomInput
-            text={translate("salePage.paymentAmount")}
-            sx={{
-              width: "370px",
-              marginLeft: "5px",
-            }}
+          <Input
+            placeholder={translate("salePage.paymentAmount")}
             value={value}
             onChange={onChangeInput}
           />

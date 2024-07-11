@@ -6,7 +6,7 @@ import Error from "../../ui/Error";
 import { useEffect, useState } from "react";
 import { useLoaderData, useLocation } from "react-router-dom";
 import useProductSearch from "../../hooks/useProductSearch";
-import CustomInput from "../../ui/CustomInput";
+import Input from "../../ui/Input";
 import { Box, Container, Typography } from "@mui/material";
 import NotFoundCart from "../../ui/NotFoundCart";
 import { useTranslation } from "react-i18next";
@@ -70,8 +70,8 @@ function FilteredProducts() {
           marginBottom: "1rem",
         }}
       >
-        <CustomInput
-          text={translate("salePage.searchQuery")}
+        <Input
+          placeholder={translate("salePage.searchQuery")}
           sx={{
             width: "100%",
           }}
