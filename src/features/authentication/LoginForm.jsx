@@ -12,9 +12,8 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import Loader from "../../ui/Loader";
-import { ToastContainer } from "react-toastify";
+import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
-import { showToastMessage } from "../../utils/showToastMessage";
 import { useTranslation } from "react-i18next";
 import LinkButton from "../../ui/LinkButton";
 import CustomInput from "../../ui/CustomInput";
@@ -63,10 +62,7 @@ function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
     if (user.isAuthenticated) {
-      setErrors((prev) => ({
-        ...prev,
-        alreadyAuthenticated: translate("errors.alreadyLoggedInMessage"),
-      }));
+      toast.error(translate("errors.alreadyLoggedInMessage"));
       return;
     }
     const valdiateErrors = validate(formData);
@@ -82,8 +78,8 @@ function LoginForm() {
       setUser(updatedUser);
       setFormData({ userCode: "", userPass: "" });
       setFocusedInput("");
-      showToastMessage(translate("auth.loginSuccessMessage"), 3000);
-      setTimeout(() => navigate("/"), 3000);
+      toast.success(translate("auth.loginSuccessMessage"));
+      navigate("/");
     } else {
       !valdiateErrors.userCode &&
         !valdiateErrors.userPass &&
@@ -95,7 +91,6 @@ function LoginForm() {
 
   return (
     <>
-      <ToastContainer />
       {errors?.alreadyAuthenticated && (
         <Alert
           sx={{

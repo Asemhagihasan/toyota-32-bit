@@ -6,6 +6,7 @@ import { useInputControl } from "../../context/InputControlContext";
 import Reduction from "../../utils/Reduction";
 import { useCart } from "../../context/CartContext";
 import { useTranslation } from "react-i18next";
+import Input from "../../ui/Input";
 
 function ProductControlPanel() {
   const { value, onChangeInput, keyboard, setValue } = useInputControl();
@@ -54,30 +55,14 @@ function ProductControlPanel() {
           marginBottom: "3px",
         }}
       >
-        <CustomInput
-          text={translate("salePage.quantityPanel")}
+        <Input
+          placeholder={translate("salePage.quantityPanel")}
           sx={{
-            "--Input-focusedHighlight":
-              "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, var(--color-brand-600)))) !important",
-            width: "296.6px",
+            width: "320px",
           }}
           value={value}
           onChange={onChangeInput}
         />
-        <Button
-          sx={{
-            height: "3rem",
-            fontSize: "2rem",
-            borderRadius: "6px",
-            backgroundColor: "var(--color-grey-0)",
-            color: "#333",
-            "&:hover": { backgroundColor: "var(--color-grey-0)" },
-          }}
-          variant="contained"
-          disableElevation
-        >
-          -
-        </Button>
       </Box>
       <MenuList
         sx={{ width: "365px" }}
