@@ -33,9 +33,9 @@ function VirtualKeyboard({ setInput, keyboard, ip }) {
     if (button === "{shift}" || button === "{lock}") handleShift();
   }
 
-  function onChange(input) {
-    setInput(input);
-  }
+  // function onChange(input) {
+  //   setInput(input);
+  // }
 
   return (
     <>
@@ -52,7 +52,7 @@ function VirtualKeyboard({ setInput, keyboard, ip }) {
             "{bksp}": "del",
             "{enter}": "enter",
           }}
-          onChange={onChange}
+          onChange={setInput}
           onKeyPress={onKeyPress}
           // onRender={() => console.log("Rendered")}
         />
@@ -62,7 +62,7 @@ function VirtualKeyboard({ setInput, keyboard, ip }) {
             keyboardRef={(r) => (keyboard.current = r)}
             {...keyboardLayout}
             layoutName={layout}
-            onChange={onChange}
+            onChange={setInput}
             onKeyPress={onKeyPress}
           />
           <Select

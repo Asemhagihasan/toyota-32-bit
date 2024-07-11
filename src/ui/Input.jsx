@@ -1,10 +1,12 @@
-import { Typography } from "@mui/material";
+import React, { forwardRef } from "react";
 import { styled } from "@mui/system";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 const StyledInput = styled("input")(() => ({
   padding: "0.8rem 1.2rem",
   border: "1px solid var(--color-grey-300)",
-  color: "var(--color-brand-50)",
+  color: "var(--color-grey-700)",
   fontSize: "16px",
   backgroundColor: "var(--color-grey-50)",
   borderRadius: "7px",
@@ -18,9 +20,9 @@ const StyledInput = styled("input")(() => ({
   flexGrow: "2",
 }));
 
-export default function Input({ label, ...props }) {
+const Input = forwardRef(({ label, ...props }, ref) => {
   return (
-    <>
+    <Stack flexDirection="column" gap={0.5}>
       {label && (
         <Typography
           variant="subtitle2"
@@ -29,7 +31,9 @@ export default function Input({ label, ...props }) {
           {label}
         </Typography>
       )}
-      <StyledInput {...props} />
-    </>
+      <StyledInput ref={ref} {...props} />
+    </Stack>
   );
-}
+});
+
+export default Input;
