@@ -4,6 +4,7 @@ import { useRef } from "react";
 import CustomInput from "../../ui/CustomInput";
 import LinkButton from "../../ui/LinkButton";
 import { useTranslation } from "react-i18next";
+import Input from "../../ui/Input";
 
 function EmailForm({ email, setEmail, setSendEmail }) {
   const { t: translate } = useTranslation();
@@ -15,12 +16,10 @@ function EmailForm({ email, setEmail, setSendEmail }) {
   const keyboard = useRef();
   return (
     <Stack sx={{ mt: "3rem" }}>
-      <CustomInput
+      <Input
         type="email"
-        text={translate("salePage.userEmailAddress")}
+        placeholder={translate("salePage.userEmailAddress")}
         sx={{
-          "--Input-focusedHighlight":
-            "var(--_Input-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500,var(--color-orange-100) ))) !important",
           width: "100% - 10px",
           marginLeft: "5px",
         }}

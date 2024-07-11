@@ -4,6 +4,8 @@ import { styled } from "@mui/system";
 const StyledInput = styled("input")(() => ({
   padding: "0.8rem 1.2rem",
   border: "1px solid var(--color-grey-300)",
+  color: "var(--color-brand-50)",
+  fontSize: "16px",
   backgroundColor: "var(--color-grey-50)",
   borderRadius: "7px",
   "&:focus": {
@@ -13,6 +15,7 @@ const StyledInput = styled("input")(() => ({
   },
   maxWidth: "568px",
   minWidth: "320px",
+  flexGrow: "2",
 }));
 
 export default function Input({ label, ...props }) {
