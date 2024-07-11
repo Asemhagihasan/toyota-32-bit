@@ -14,7 +14,6 @@ import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import Loader from "../../ui/Loader";
 import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
-import { showToastMessage } from "../../utils/showToastMessage";
 import { useTranslation } from "react-i18next";
 import LinkButton from "../../ui/LinkButton";
 import CustomInput from "../../ui/CustomInput";
