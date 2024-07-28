@@ -4,4 +4,5 @@ export const translatedErrorsFr = {
   WrongCodeErr: "Le code utilisateur doit comporter 6 chiffres",
   alreadyLoggedInMessage:
     "Vous êtes déjà connecté(e). Aucune action supplémentaire n'est nécessaire.",
+  fieldRequired: "Ce champ est requis.",
 };

@@ -11,7 +11,7 @@ import CustomKeyboardIcon from "./CustomKeyboardIcon";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import { Button } from "@mui/material";
-import { get, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
@@ -35,9 +35,6 @@ function LoginForm() {
   } = useForm();
 
   function handleKeyboardToggle(inputName) {
-    // if (focusedInput !== inputName) {
-    //   setValue(inputName, "");
-    // }
     setFocusedInput((prev) => (prev === inputName ? "" : inputName));
   }
 
@@ -92,12 +89,12 @@ function LoginForm() {
           <Box sx={{ position: "relative" }}>
             <Input
               type="text"
-              label="User code"
+              label={translate("auth.userCode")}
               onFocus={() => setFocusedInput("userCode")}
               placeholder={translate("auth.userCode")}
               id="userCode"
               {...register("userCode", {
-                required: "This Field is required",
+                required: translate("errors.fieldRequired"),
                 validate: (value) =>
                   value.length === 6 || translate("errors.WrongCodeErr"),
               })}
@@ -119,11 +116,11 @@ function LoginForm() {
               onFocus={() => setFocusedInput("userPass")}
               label="Password"
               {...register("userPass", {
-                required: "This Field is required",
+                required: translate("errors.fieldRequired"),
               })}
             />
             {errors.userPass && (
-              <Typography color="error">This field is required</Typography>
+              <Typography color="error">{errors.userPass.message}</Typography>
             )}
             <CustomKeyboardIcon
               showKeyboard={focusedInput === "userPass"}

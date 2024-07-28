@@ -16,6 +16,9 @@ import { translatedSalePageTr } from "./locals/tr/translatedSalePageTr";
 import { translatedSettingsPageEn } from "./locals/en/translatedSettingsPageEn";
 import { translatedSettingsPageFr } from "./locals/fr/translatedSettingsPageFr";
 import { translatedSettingsPageTr } from "./locals/tr/translatedSettingsPageTr";
+import { translatedPageNotFoundEn } from "./locals/en/translatedPageNotFoundEn";
+import { translatedPageNotFoundFr } from "./locals/fr/translatedPageNotFoundFr";
+import { translatedPageNotFoundTr } from "./locals/tr/translatedPageNotFoundTr";
 
 i18next
   .use(languageDetector)
@@ -32,6 +35,7 @@ i18next
           salePage: translatedSalePageEn,
           homePage: translatedHomePageEn,
           settingsPage: translatedSettingsPageEn,
+          pageNotFound: translatedPageNotFoundEn,
         },
       },
       fr: {
@@ -41,6 +45,7 @@ i18next
           salePage: translatedSalePageFr,
           homePage: translatedHomePageFr,
           settingsPage: translatedSettingsPageFr,
+          pageNotFound: translatedPageNotFoundFr,
         },
       },
       tr: {
@@ -50,6 +55,7 @@ i18next
           salePage: translatedSalePageTr,
           homePage: translatedHomePageTr,
           settingsPage: translatedSettingsPageTr,
+          pageNotFound: translatedPageNotFoundTr,
         },
       },
     },

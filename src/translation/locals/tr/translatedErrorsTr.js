@@ -3,4 +3,5 @@ export const translatedErrorsTr = {
   internetConnectionErr: "Veri alınamadı",
   WrongCodeErr: "Kullanıcı kodu 6 haneli olmalı",
   alreadyLoggedInMessage: "Zaten giriş yaptınız. Başka bir işlem gerekmiyor.",
+  fieldRequired: "Bu alan gereklidir.",
 };

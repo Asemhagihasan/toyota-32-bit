@@ -5,4 +5,5 @@ export const translatedErrorsEn = {
   alreadyAuthenticatedMessage: "You are already authenticated.",
   alreadyLoggedInMessage:
     "You are already logged in. No further action is needed.",
+  fieldRequired: "This field is required",
 };
