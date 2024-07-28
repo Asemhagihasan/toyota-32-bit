@@ -7,6 +7,7 @@ import Categories, {
   loader as categoriesLoader,
 } from "./features/Categories/Categories";
 import SalesPage from "./pages/SalesPage/SalesPage";
+import PageNotFound from "./pages/PageNotFound.jsx";
 import QRScanner from "./features/sales/QRScanner.jsx";
 import Error from "./ui/Error";
 import FilteredProducts from "./features/Products/FilteredProducts";
@@ -51,15 +52,9 @@ const routes = [
             auth: true,
           },
           {
-            path: "allProducts",
+            path: "filtredProducts",
             element: <FilteredProducts />,
             errorElement: <Error />,
-            auth: true,
-            loader: ProductsLoader,
-          },
-          {
-            path: "favoritProducts",
-            element: <FilteredProducts />,
             auth: true,
             loader: ProductsLoader,
           },
@@ -87,10 +82,10 @@ const routes = [
     element: <LoginLayout />,
   },
 
-  // {
-  //   element: <PageNotFoud />,
-  //   path: "*",
-  // },
+  {
+    element: <PageNotFound />,
+    path: "*",
+  },
 ];
 
 function RenderRoutes(routes) {
