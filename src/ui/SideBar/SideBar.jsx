@@ -84,7 +84,7 @@ function SideBar({ sideBarIsOpen, setSideBarIsOpen }) {
         <ShoppingCartOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && <Content>{translate("salePage.sales")}</Content>}
       </Item>
-      <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/allProducts">
+      <Item setSideBarIsOpen={setSideBarIsOpen} to="/salesPage/filtredProducts">
         <SellOutlinedIcon sx={iconStyle} />
         {sideBarIsOpen && <Content> {translate("salePage.PriceView")}</Content>}
       </Item>

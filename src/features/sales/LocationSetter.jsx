@@ -1,14 +1,10 @@
 import { Stack } from "@mui/material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useIsActiveLink } from "../../hooks/useIsActiveLink";
 import { useTranslation } from "react-i18next";
-import MenuList from "../../ui/MenuList";
-import { Height, Padding } from "@mui/icons-material";
 
 function LocationSetter() {
   const { t: translate } = useTranslation();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -48,30 +44,14 @@ function LocationSetter() {
         >
           {translate("salePage.scanner")}
         </Link>
-        <MenuList
-          title={translate("salePage.showPrice")}
-          sx={{ height: "41.5px" }}
-          items={[
-            {
-              description: translate("salePage.AllProduct"),
-              handelClick: () => {
-                if (location.pathname !== "/salesPage/allProducts") {
-                  navigate("/salesPage/allProducts");
-                }
-                return;
-              },
-            },
-            {
-              description: translate("salePage.favoriteProducts"),
-              handelClick: () => {
-                if (location.pathname !== "/salesPage/favoritProducts") {
-                  navigate("/salesPage/favoritProducts");
-                }
-                return;
-              },
-            },
-          ]}
-        />
+        <Link
+          className={`linkBtn ${
+            useIsActiveLink("/salesPage/filtredProducts") ? "activeLink" : ""
+          }`}
+          to="filtredProducts"
+        >
+          {translate("salePage.PriceView")}
+        </Link>
       </Stack>
     </>
   );
