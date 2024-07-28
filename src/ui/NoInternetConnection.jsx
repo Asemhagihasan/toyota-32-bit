@@ -1,7 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useConnection } from "../context/ConnectionStatus";
 
 function NoInternetConnection() {
+  const { isOnline } = useConnection();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isOnline) navigate("/");
+  }, [isOnline]);
   return (
     <Typography
       variant="h5"

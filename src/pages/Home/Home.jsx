@@ -14,7 +14,7 @@ function Home() {
       }}
     >
       <Case />
-      <CaseConnectionStatus />
+      <CaseConnectionStatus sx={{ mb: "1rem" }} />
     </Box>
   );
 }

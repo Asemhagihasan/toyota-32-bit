@@ -10,19 +10,17 @@ const StyledInput = styled("input")(() => ({
   fontSize: "16px",
   backgroundColor: "var(--color-grey-50)",
   borderRadius: "7px",
+  boxSizing: "border-box",
   "&:focus": {
     outline: "2px solid transparent",
     outlineOffset: "2px",
     border: "solid 2px var(--color-brand-600)",
   },
-  maxWidth: "568px",
-  minWidth: "320px",
-  flexGrow: "2",
 }));
 
 const Input = forwardRef(({ label, ...props }, ref) => {
   return (
-    <Stack flexDirection="column" gap={0.5}>
+    <Stack flexDirection="column" gap={0.5} {...props.sx}>
       {label && (
         <Typography
           variant="subtitle2"

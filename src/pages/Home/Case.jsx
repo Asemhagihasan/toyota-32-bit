@@ -7,6 +7,7 @@ function Case() {
     <Card
       variant="outlined"
       sx={{
+        minWidth: 200,
         maxWidth: 300,
         borderRadius: "1rem",
         backgroundColor: "var(--color-grey-0)",

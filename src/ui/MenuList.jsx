@@ -3,7 +3,7 @@ import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-function MenuList({ items, title, sx, handelClick }) {
+function MenuList({ items = [], title, sx, handelClick }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const isReducton = items[0]?.isApplicable;
@@ -47,7 +47,7 @@ function MenuList({ items, title, sx, handelClick }) {
             disabled={item?.disabled || false}
             onClick={() => {
               handleClose();
-              isReducton ? handelClick(item) : item.handelClick();
+              isReducton ? handelClick(item) : item.handleClick();
             }}
             key={item.description}
             sx={{ ...sx }}

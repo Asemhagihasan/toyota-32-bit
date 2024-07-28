@@ -1,5 +1,4 @@
-import { Box, Button, Stack } from "@mui/material";
-import CustomInput from "../../ui/CustomInput";
+import { Box } from "@mui/material";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import MenuList from "../../ui/MenuList";
 import { useInputControl } from "../../context/InputControlContext";
@@ -41,40 +40,28 @@ function ProductControlPanel() {
   return (
     <Box
       sx={{
-        width: "375px",
+        width: "420px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        overflowX: "hidden",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.3rem",
-          marginBottom: "3px",
-        }}
-      >
-        <Input
-          placeholder={translate("salePage.quantityPanel")}
-          sx={{
-            width: "320px",
-          }}
-          value={value}
-          onChange={onChangeInput}
-        />
-      </Box>
+      <Input
+        placeholder={translate("salePage.quantityPanel")}
+        value={value}
+        onChange={onChangeInput}
+        sx={{ width: "100%" }}
+      />
       <MenuList
-        sx={{ width: "365px" }}
+        sx={{ width: "420px" }}
         title={translate("salePage.getReduction")}
         items={reductions}
         handelClick={(reduction) => {
           setReduction(reduction);
         }}
       />
-      <Stack sx={{ width: "375px" }}>
-        <VirtualKeyboard ip={true} keyboard={keyboard} setInput={setValue} />
-      </Stack>
+      <VirtualKeyboard ip={true} keyboard={keyboard} setInput={setValue} />
     </Box>
   );
 }

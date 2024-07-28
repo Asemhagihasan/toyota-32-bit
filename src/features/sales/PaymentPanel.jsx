@@ -42,6 +42,7 @@ function PaymentPanel({ setMakePayment }) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            mt: "3rem !important",
           }}
         >
           <Box width="375px" mb="6px">
@@ -112,8 +113,8 @@ function PaymentPanel({ setMakePayment }) {
           <Input
             placeholder={translate("salePage.paymentAmount")}
             sx={{
-              width: "350px",
-              marginLeft: "20px",
+              // width: "350px",
+              width: "365px",
             }}
             value={value}
             onChange={onChangeInput}

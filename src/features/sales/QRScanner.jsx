@@ -101,6 +101,7 @@ function QRScanner() {
         sx={{
           textAlign: "center",
           fontWeight: "500",
+          color: "var(--color-grey-700)",
         }}
         variant="h5"
       >
