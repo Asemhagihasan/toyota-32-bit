@@ -53,7 +53,7 @@ export async function getProductById(id) {
 
 export function getProducts(page) {
   return axios
-    .get(`http://localhost:8000/data/${page}`)
+    .get(`https://661c1c1ce7b95ad7fa69b72a.mockapi.io/api/v3/products/${page}`)
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
         return response.data.children;
@@ -67,7 +67,7 @@ export function getProducts(page) {
 }
 export function getAllProducts() {
   return axios
-    .get("http://localhost:8000/data")
+    .get("https://661c1c1ce7b95ad7fa69b72a.mockapi.io/api/v3/products")
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
         return response.data;
