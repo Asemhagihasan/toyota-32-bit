@@ -55,10 +55,180 @@ This is a React project written using React.js, Context API, and hooks. It allow
 
 ## Demo
 
-### [Demo](https://market-cash-system.netlify.app/)
-
+You can find the live demo here : [https://market-cash-system.netlify.app/](https://market-cash-system.netlify.app/)
 userCode :123456
 password:992428
+
+<!-- Project Structure -->
+
+## Project Structure
+
+│ .gitignore
+│ folder_structure.txt
+│ package-lock.json
+│ package.json
+│ README.md
+│ store.json
+│  
+├───public
+│ error-404.png
+│ index.html
+│ logo.png
+│ Screenshot 2024-07-04 164140.png
+│ Screenshot 2024-07-04 204148.png
+│ Screenshot 2024-07-04 204222.png
+│ Screenshot 2024-07-04 204239.png
+│ Screenshot 2024-07-04 204306.png
+│  
+└───src
+│ App.jsx
+│ index.css
+│ index.js
+│ routes.js
+│  
+ ├───context
+│ AuthContext.js
+│ CartContext.js
+│ ConnectionStatus.js
+│ DarkModeContext.js
+│ InputControlContext.js
+│ LanguageContext .js
+│  
+ ├───features
+│ ├───authentication
+│ │ AuthButton.jsx
+│ │ CustomKeyboardIcon.jsx
+│ │ LoginForm.jsx
+│ │  
+ │ ├───Cart
+│ │ Cart.jsx
+│ │ CartItem.jsx
+│ │ CartTotal.jsx
+│ │ EmptyCart.jsx
+│ │ QuantityControl.jsx
+│ │  
+ │ ├───Categories
+│ │ Categories.jsx
+│ │ CategoriItem.jsx
+│ │  
+ │ ├───Products
+│ │ Filter.jsx
+│ │ FilteredProducts.jsx
+│ │ Products.jsx
+│ │ useProducts.js
+│ │ useProductSearch.js
+│ │  
+ │ ├───sales
+│ │ BillItem.jsx
+│ │ BillItemContent.jsx
+│ │ EmailForm.jsx
+│ │ LocationSetter.jsx
+│ │ PaymentDetail.jsx
+│ │ PaymentPanel.jsx
+│ │ ProductControlPanel.jsx
+│ │ QRScanner.jsx
+│ │  
+ │ ├───Settings
+│ │ DarkMod.jsx
+│ │ LanguageSeter.jsx
+│ │ PrinterTest.jsx
+│ │ TestBill.jsx
+│ │  
+ │ └───VirtualKeyboard
+│ index.css
+│ Keyboard.jsx
+│  
+ ├───hooks
+│ useIsActiveLink.js
+│ useMoveBack.js
+│ usePrintBill.js
+│  
+ ├───pages
+│ │ PageNotFound.jsx
+│ │  
+ │ ├───Home
+│ │ Case.jsx
+│ │ CaseConnectionStatus.jsx
+│ │ Home.jsx
+│ │  
+ │ ├───Login
+│ │ LoginLayout.jsx
+│ │  
+ │ ├───SalesPage
+│ │ Footer.jsx
+│ │ SalesPage.jsx
+│ │  
+ │ └───Settings
+│ SettingsPage.jsx
+│  
+ ├───services
+│ apiUsers.js
+│ saleContentApi.js
+│ storeApi.js
+│  
+ ├───translation
+│ │ i18n.js
+│ │ LanguageSelector.jsx
+│ │  
+ │ └───locals
+│ ├───en
+│ │ translatedAuthEn.js
+│ │ translatedErrorsEn.js
+│ │ translatedHomePageEn.js
+│ │ translatedPageNotFoundEn.js
+│ │ translatedSalePageEn.js
+│ │ translatedSettingsPageEn.js
+│ │  
+ │ ├───fr
+│ │ translatedAuthFr.js
+│ │ translatedErrorsFr.js
+│ │ translatedHomePageFr.js
+│ │ translatedPageNotFoundFr.js
+│ │ translatedSalePageFr.js
+│ │ translatedSettingsPageFr.js
+│ │  
+ │ └───tr
+│ translatedAuthTr.js
+│ translatedErrorsTr.js
+│ translatedHomePageTr.js
+│ translatedPageNotFoundTr.js
+│ translatedSalePageTr.js
+│ translatedSettingsPageTr.js
+│  
+ ├───ui
+│ │ CloseButton.jsx
+│ │ CustomInput.jsx
+│ │ Error.jsx
+│ │ Form.jsx
+│ │ Input.jsx
+│ │ LinkButton.jsx
+│ │ Loader.jsx
+│ │ Logo.jsx
+│ │ MenuList.jsx
+│ │ NoInternetConnection.jsx
+│ │ NotFoundCart.jsx
+│ │ Popup.jsx
+│ │ Product.jsx
+│ │ SalesContent.jsx
+│ │ Select.jsx
+│ │ Trigger.jsx
+│ │  
+ │ ├───AppLayout
+│ │ AppLayout.jsx
+│ │  
+ │ ├───Header
+│ │ Content.jsx
+│ │ Header.jsx
+│ │  
+ │ └───SideBar
+│ Content.jsx
+│ Item.jsx
+│ SideBar.jsx
+│  
+ └───utils
+PrivateRoute.js
+Reduction.js
+showToastMessage.js
 
 <!-- GETTING STARTED -->
 
