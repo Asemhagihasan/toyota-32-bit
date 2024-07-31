@@ -1,8 +1,13 @@
 import { Box, Card, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useLoaderData } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function Case() {
   const { t: translate } = useTranslation();
+  const { user } = useAuth();
+  const data = useLoaderData();
+  const { storeNo, CaseNo, storIp, version } = user.isAuthenticated ? data : {};
   return (
     <Card
       variant="outlined"
@@ -18,16 +23,16 @@ function Case() {
     >
       <Box p={2}>
         <Typography variant="body2" gutterBottom>
-          {translate("homePage.storeNo")} :1057
+          {translate("homePage.storeNo")} :{storeNo}
         </Typography>
         <Typography variant="body2" gutterBottom>
-          {translate("homePage.caseNo")} :1
+          {translate("homePage.caseNo")} :{CaseNo}
         </Typography>
         <Typography variant="body2" gutterBottom>
-          {translate("homePage.storeIp")}:10.0.2.16
+          {translate("homePage.storeIp")}:{storIp}
         </Typography>
         <Typography variant="body2" gutterBottom>
-          {translate("homePage.version")} :v1.3.78.146
+          {translate("homePage.version")} :{version}
         </Typography>
       </Box>
     </Card>
