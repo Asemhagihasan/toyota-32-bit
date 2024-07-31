@@ -4,7 +4,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import Loader from "../../ui/Loader";
-import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import getUsers from "../../services/apiUsers";
 import CustomKeyboardIcon from "./CustomKeyboardIcon";

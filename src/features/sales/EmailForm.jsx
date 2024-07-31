@@ -1,7 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import VirtualKeyboard from "../VirtualKeyboard/Keyboard";
 import { useRef } from "react";
-import CustomInput from "../../ui/CustomInput";
 import LinkButton from "../../ui/LinkButton";
 import { useTranslation } from "react-i18next";
 import Input from "../../ui/Input";
@@ -31,9 +30,9 @@ function EmailForm({ email, setEmail, setSendEmail }) {
         variant="contained"
         disableElevation
         sx={{
-          backgroundColor: "var(--color-orange-200)",
-          "&:hover": { backgroundColor: "var(--color-orange-200)" },
-          mt: "1rem",
+          backgroundColor: "var(--color-brand-600)",
+          "&:hover": { backgroundColor: "var(--color-brand-700)" },
+          my: "1rem",
         }}
         onClick={() => {
           setSendEmail(false);

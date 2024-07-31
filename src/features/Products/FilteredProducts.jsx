@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Box, Container, Typography } from "@mui/material";
-import { getAllProducts } from "../../services/saleContentApi";
+import { getCategories } from "../../services/saleContentApi";
 import { useProducts } from "./useProducts";
 import useProductSearch from "./useProductSearch";
 import Product from "../../ui/Product";
@@ -175,7 +175,7 @@ function FilteredProducts() {
 }
 
 export async function loader() {
-  const products = await getAllProducts();
+  const products = await getCategories();
   return products;
 }
 

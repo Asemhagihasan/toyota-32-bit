@@ -16,7 +16,7 @@ import NoInternetConnection from "./ui/NoInternetConnection.jsx";
 import SettingsPage from "./pages/Settings/SettingsPage";
 import { loader as usersLoader } from "./features/authentication/LoginForm.jsx";
 import { loader as categoryLoader } from "./features/Products/Products";
-
+import { loader as storeLoader } from "./pages/Home/Home";
 const routes = [
   {
     name: "AppLayout",
@@ -26,6 +26,8 @@ const routes = [
         index: true,
         path: "/",
         element: <Home />,
+        loader: storeLoader,
+        errorElement: <Error />,
       },
       {
         path: "/salesPage",
